@@ -271,17 +271,11 @@ class DBInterface {
 
             $stmtUpdate = $this->dbh->prepare(
                     "UPDATE user SET ".
-<<<<<<< HEAD
                             "username = :username,
                              password = :password, 
                              email = :email, 
                              device = :device".
-=======
-                            "password = :password, ".
-                            "email = :email, ".
-                            "device = :device ".
->>>>>>> FETCH_HEAD
-                        "WHERE id = :id"
+						"WHERE id = :id"
                 );
 
             if (!$stmtUpdate)
