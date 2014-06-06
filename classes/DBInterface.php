@@ -267,7 +267,7 @@ class DBInterface {
                 );
 
             if (!$stmtUpdate)
-                throw new Exception($this->formatErrorMessage(null, "Unable to prepare user update"));
+                throw new Exception($this->formatErrorMessage($stmtUpdate, "Unable to prepare user update"));
         }
         $params = Array(
         		':username' => $user->username,
