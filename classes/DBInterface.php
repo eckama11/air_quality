@@ -277,13 +277,13 @@ class DBInterface {
             );
             $printString = '';
             foreach($params as $key=>$val){
-            	$printString += $key . ':' . $val . '\, ';
+            	$printString .= $key . ':' . $val . '\, ';
             }
             syslog(LOG_EMERG, $printString);
         $success = $stmtUpdate->execute($params);
         
         if (!$success)
-            throw new Exception($this->formatErrorMessage($stmtUpdate, "Unable to store user record in database"));
+            throw new Exception($this->formatErrorMessage($stmtUpdate, $printString));
         
         return new User(
                 $user->id,
