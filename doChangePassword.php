@@ -25,7 +25,7 @@ try {
     // Update the user
     $loginSession->authenticatedUser->password = $newPassword1;
     
-    $db->writeUser($loginSession->authenticatedUser);
+    $db->updateUser($loginSession->authenticatedUser);
 
     $rv->success = true;
 } catch (Exception $ex) {

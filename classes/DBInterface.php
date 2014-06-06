@@ -247,6 +247,50 @@ class DBInterface {
         return $rv;
     } // readUsers
 
+	/**
+     * Updates an User to the database.
+     * @param   User    $user   The User to write.  If the id property is 0, a new
+     *                                  record will be created, otherwise an existing record matching
+     *                                  the id will be updated.
+     * @return  User    A new User instance (with the new id if a new record was created).
+     */
+     public function updateUser( User $user) {
+     	static $stmtUpdate;
+     	if ($stmtUpdate == null) {
+            $stmtUpdate = $this->dbh->prepare(
+                    "UPDATE user SET ".
+                            "username = :username,
+                             password = :password, 
+                             email = :email, 
+                             device = :device".
+						"WHERE id = :id"
+                );
+
+            if (!$stmtUpdate)
+                throw new Exception($this->formatErrorMessage(null, "Unable to prepare user update"));
+        }
+        $params = Array(
+        		':username' => $user->username,
+                ':password' => $user->password,
+                ':email' => $user->email,
+                ':device' => $user->device,
+                ':id' => $user->id;
+            );
+            
+        $success = $stmtUpdate->execute($params);
+        
+        if ($success == false)
+            throw new Exception($this->formatErrorMessage($stmt, "Unable to store user record in database"));
+        
+        return new User(
+                $user->id,
+                $user->username,
+                $user->password,
+                $user->email,
+                $user->device
+            );
+     }
+     
     /**
      * Writes an User to the database.
      * @param   User    $user   The User to write.  If the id property is 0, a new
@@ -268,19 +312,7 @@ class DBInterface {
 
             if (!$stmtInsert)
                 throw new Exception($this->formatErrorMessage(null, "Unable to prepare user insert"));
-
-            $stmtUpdate = $this->dbh->prepare(
-                    "UPDATE user SET ".
-                            "username = :username,
-                             password = :password, 
-                             email = :email, 
-                             device = :device".
-						"WHERE id = :id"
-                );
-
-            if (!$stmtUpdate)
-                throw new Exception($this->formatErrorMessage(null, "Unable to prepare user update"));
-        }
+   		}
 
         $params = Array(
         		':username' => $user->username,
@@ -296,8 +328,6 @@ class DBInterface {
             $stmt = $stmtUpdate;
         }
         
-	throw new Exception(print_r($params));
-	exit;
         $success = $stmt->execute($params);
 	
         if ($success == false)
