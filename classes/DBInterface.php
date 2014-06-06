@@ -275,8 +275,11 @@ class DBInterface {
                 ':device' => $user->device,
                 ':id' => $user->id
             );
-            
-            syslog(LOG_EMERG, print_r($params));
+            $printString = '';
+            foreach($params as $key=>$val){
+            	$printString += $key . ':' . $val ', ';
+            }
+            syslog(LOG_EMERG, $printString);
         $success = $stmtUpdate->execute($params);
         
         if (!$success)
