@@ -274,7 +274,7 @@ class DBInterface {
                 ':password' => $user->password,
                 ':email' => $user->email,
                 ':device' => $user->device,
-                ':id' => $user->id;
+                ':id' => $user->id
             );
             
         $success = $stmtUpdate->execute($params);
