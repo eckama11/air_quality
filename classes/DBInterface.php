@@ -256,34 +256,26 @@ class DBInterface {
      */
      public function updateUser( User $user) {
      	static $stmtUpdate;
-     	if ($stmtUpdate == null) {
-            $stmtUpdate = $this->dbh->prepare(
-                    "UPDATE user SET ".
-                            "username = ':username',
-                             password = ':password', 
-                             email = ':email', 
-                             device = ':device' WHERE id = :id"
-                );
+     	if (is_null($stmtUpdate) || empty($stmtUpdate)) {
+     		$sql = 'UPDATE user SET username = :username, password=:password, email=:email, device=:device WHERE id=:id';
+     		$stmtUpdate = $this->dbh->prepare($sql);
 
             if (!$stmtUpdate)
                 throw new Exception($this->formatErrorMessage($stmtUpdate, "Unable to prepare user update"));
-        }
-        $params = Array(
+        	}
+        	
+        	$params = Array(
         		':username' => $user->username,
                 ':password' => $user->password,
                 ':email' => $user->email,
                 ':device' => $user->device,
                 ':id' => $user->id
             );
-            $printString = '';
-            foreach($params as $key=>$val){
-            	$printString .= $key . ':' . $val . '\, ';
-            }
-            syslog(LOG_EMERG, $printString);
+            
         $success = $stmtUpdate->execute($params);
         
         if (!$success)
-            throw new Exception($this->formatErrorMessage($stmtUpdate, $printString));
+            throw new Exception($this->formatErrorMessage($stmtUpdate, "Unable to store user record in database"));
         
         return new User(
                 $user->id,
