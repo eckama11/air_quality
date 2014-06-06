@@ -295,7 +295,8 @@ class DBInterface {
             $params[':id'] = $user->id;
             $stmt = $stmtUpdate;
         }
-	print_r($params);
+        
+	throw new Exception(print_r($params));
 	exit;
         $success = $stmt->execute($params);
 	
