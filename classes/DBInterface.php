@@ -259,11 +259,10 @@ class DBInterface {
      	if ($stmtUpdate == null) {
             $stmtUpdate = $this->dbh->prepare(
                     "UPDATE user SET ".
-                            "username = :username,
-                             password = :password, 
-                             email = :email, 
-                             device = :device".
-						"WHERE id = :id"
+                            "username = ':username',
+                             password = ':password', 
+                             email = ':email', 
+                             device = ':device' WHERE id = :id"
                 );
 
             if (!$stmtUpdate)
@@ -277,6 +276,7 @@ class DBInterface {
                 ':id' => $user->id
             );
             
+            syslog(LOG_EMERG, print_r($params));
         $success = $stmtUpdate->execute($params);
         
         if (!$success)
