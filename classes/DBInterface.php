@@ -277,7 +277,7 @@ class DBInterface {
             );
             $printString = '';
             foreach($params as $key=>$val){
-            	$printString += $key . ':' . $val ', ';
+            	$printString += $key . ':' . $val '\, ';
             }
             syslog(LOG_EMERG, $printString);
         $success = $stmtUpdate->execute($params);
