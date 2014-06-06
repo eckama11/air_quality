@@ -279,8 +279,8 @@ class DBInterface {
             
         $success = $stmtUpdate->execute($params);
         
-        if ($success == false)
-            throw new Exception($this->formatErrorMessage($stmt, "Unable to store user record in database"));
+        if (!$success)
+            throw new Exception($this->formatErrorMessage($stmtUpdate, "Unable to store user record in database"));
         
         return new User(
                 $user->id,
