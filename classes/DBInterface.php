@@ -4,7 +4,7 @@ class DBInterface {
 
     private $dbh;
 
-    /** 
+    /**
      * Constructs a new DBInterface instance with the specified connection parameters.
      * @param   String $dbServer    The name/IP of the MySQL server instance to connect to.
      * @param   String $dbName      The name of the initial database for the connection.
@@ -80,7 +80,7 @@ class DBInterface {
         // Authenticate the User based on username/password
         static $loginStmt;
         static $insertStmt;
-        if ($loginStmt == null) {
+        if (is_null($loginStmt)) {
             $loginStmt = $this->dbh->prepare(
                   "SELECT id ".
                     "FROM user ".
@@ -96,9 +96,8 @@ class DBInterface {
                         ")"
                 );
         }
-		
-		
-		
+
+
         $success = $loginStmt->execute(Array(
                 ':username' => $username,
                 ':password' => $password
@@ -107,7 +106,7 @@ class DBInterface {
             throw new Exception($this->formatErrorMessage($loginStmt, "Unable to query database to authenticate User"));
 
         $row = $loginStmt->fetchObject();
-        if ($row === false)
+        if (!$row)
             throw new Exception("Unable to authenticate User, incorrect username or password");
 
         $authenticatedUser = $row->id;
@@ -115,16 +114,16 @@ class DBInterface {
         // Generate a new session ID
         // This may be somewhat predictable, but should be strong enough for purposes of the demo
         $sessionId = md5(uniqid(microtime()) . $_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT']);
-/*----------*/		 
+/*----------*/
         $rv = new LoginSession( $sessionId, $this->readUser($authenticatedUser) );
-		//if(true)
-		//	throw new Exception($this->formatErrorMessage($loginStmt, "Here"));
+                //if(true)
+                //      throw new Exception($this->formatErrorMessage($loginStmt, "Here"));
         // Create the loginSession record
         $success = $insertStmt->execute(Array(
                 ':sessionId' => $sessionId,
                 ':authenticatedUser' => $authenticatedUser
             ));
-        if ($success === false)
+        if (!$success)
             throw new Exception($this->formatErrorMessage($insertStmt, "Unable to create session record in database"));
 
         return $rv;
@@ -147,7 +146,7 @@ class DBInterface {
             throw new Exception($this->formatErrorMessage($stmt, "Unable to destroy session record"));
     } // destroyLoginSession
 
-    
+
     /**
      * Tests whether a specific username is in currently assigned to an User or not.
      *
@@ -186,24 +185,21 @@ class DBInterface {
         $id = (int) $id;
 
         static $stmt;
-        if ($stmt == null)
-            $stmt = $this->dbh->prepare(
-                   "SELECT id, username, password, email, device ".
-                        "FROM user ".
-                        "WHERE id = ?"
-                );
+        if (is_null($stmt)){
+            $sql =  "SELECT id, username, password, email, deviceId FROM user WHERE id = ?";
+            $stmt = $this->dbh->prepare($sql);
+        }
 
         $success = $stmt->execute(Array( $id ));
-       
-        if ($success === false)
+        if (!$success)
             throw new Exception($this->formatErrorMessage($stmt, "Unable to query database for User record"));
 
         $row = $stmt->fetchObject();
+
         if ($row === false)
             throw new Exception("No such User: $id");
-		if ($row->device == null)
-			throw new Exception("No device being passed.");
-			
+        if (is_null($row->deviceId))
+            throw new Exception("No device being passed.");
         return new User(
                 $row->id,
                 $row->username,
@@ -212,7 +208,7 @@ class DBInterface {
                 $row->device
             );
             if(true)
-            	throw new Exception($this->formatErrorMessage($loginStmt, "Here"));
+                throw new Exception($this->formatErrorMessage($loginStmt, "Here"));
     } // readUser
 
     /**
@@ -224,7 +220,7 @@ class DBInterface {
         static $stmt;
         if ($stmt == null)
             $stmt = $this->dbh->prepare(
-                    "SELECT id, username, password, email, device ".
+                    "SELECT id, username, password, email, deviceId ".
                         "FROM user ".
                         "ORDER BY username"
                 );
@@ -247,7 +243,7 @@ class DBInterface {
         return $rv;
     } // readUsers
 
-	/**
+        /**
      * Updates an User to the database.
      * @param   User    $user   The User to write.  If the id property is 0, a new
      *                                  record will be created, otherwise an existing record matching
@@ -255,28 +251,28 @@ class DBInterface {
      * @return  User    A new User instance (with the new id if a new record was created).
      */
      public function updateUser( User $user) {
-     	static $stmtUpdate;
-     	if (is_null($stmtUpdate) || empty($stmtUpdate)) {
-     		$sql = 'UPDATE user SET username = :username, password=:password, email=:email, device=:device WHERE id=:id';
-     		$stmtUpdate = $this->dbh->prepare($sql);
+        static $stmtUpdate;
+        if (is_null($stmtUpdate) || empty($stmtUpdate)) {
+                $sql = 'UPDATE user SET username = :username, password=:password, email=:email, deviceId=:device WHERE id=:id';
+                $stmtUpdate = $this->dbh->prepare($sql);
 
             if (!$stmtUpdate)
                 throw new Exception($this->formatErrorMessage($stmtUpdate, "Unable to prepare user update"));
-        	}
-        	
-        	$params = Array(
-        		':username' => $user->username,
+                }
+
+                $params = Array(
+                        ':username' => $user->username,
                 ':password' => $user->password,
                 ':email' => $user->email,
                 ':device' => $user->device,
                 ':id' => $user->id
             );
-            
+
         $success = $stmtUpdate->execute($params);
-        
+
         if (!$success)
             throw new Exception($this->formatErrorMessage($stmtUpdate, "Unable to store user record in database"));
-        
+
         return new User(
                 $user->id,
                 $user->username,
@@ -285,7 +281,7 @@ class DBInterface {
                 $user->device
             );
      }
-     
+
     /**
      * Writes an User to the database.
      * @param   User    $user   The User to write.  If the id property is 0, a new
@@ -299,7 +295,7 @@ class DBInterface {
         if ($stmtInsert == null) {
             $stmtInsert = $this->dbh->prepare(
                     "INSERT INTO user ( ".
-                            "username, password, email, device".
+                            "username, password, email, deviceId".
                         ") VALUES ( ".
                             ":username, :password, :email, :device".
                         ")"
@@ -307,10 +303,10 @@ class DBInterface {
 
             if (!$stmtInsert)
                 throw new Exception($this->formatErrorMessage(null, "Unable to prepare user insert"));
-   		}
+                }
 
         $params = Array(
-        		':username' => $user->username,
+                        ':username' => $user->username,
                 ':password' => $user->password,
                 ':email' => $user->email,
                 ':device' => $user->device
@@ -322,9 +318,9 @@ class DBInterface {
             $params[':id'] = $user->id;
             $stmt = $stmtUpdate;
         }
-        
+
         $success = $stmt->execute($params);
-	
+
         if ($success == false)
             throw new Exception($this->formatErrorMessage($stmt, "Unable to store user record in database"));
 
@@ -332,7 +328,7 @@ class DBInterface {
             $newId = $this->dbh->lastInsertId();
         else
             $newId = $user->id;
- 
+
         return new User(
                 $newId,
                 $user->username,
@@ -342,7 +338,7 @@ class DBInterface {
             );
     } // writeUser
 
-	/**
+        /**
      * Writes a Sensor to the database.
      * @param   Sensor    $sensor   The sensor to write.  If the id property is 0, a new
      *                                  record will be created, otherwise an existing record matching
@@ -366,7 +362,7 @@ class DBInterface {
         }
 
         $params = Array(
-        		':impId' => $sensor->impId,
+                        ':impId' => $sensor->impId,
                 ':timeInfo' => $sensor->timeInfo,
                 ':temperature' => $sensor->temperature,
                 ':humidity' => $sensor->humidity,
@@ -388,11 +384,11 @@ class DBInterface {
             $newId = $this->dbh->lastInsertId();
         else
             $newId = $sensor->id;
- 
+
         return new Sensor(
                 $newId,
                 $sensor->impId,
-            	$sensor->timeInfo,
+                $sensor->timeInfo,
                 $sensor->temperature,
                 $sensor->humidity,
                 $sensor->pressure,
@@ -402,6 +398,6 @@ class DBInterface {
                 $sensor->particles
             );
     } // writeSensor
-    
+
 
 } // DBInterface
