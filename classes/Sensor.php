@@ -149,7 +149,7 @@ class Sensor
     } // __toString
     
     public function toArray(){
-    	$arr = new Array();
+    	$arr = Array();
     	$arr['id'] = $this->id;
     	$arr['impId'] = $this->impId;
     	$arr['timeInfo'] = $this->timeInfo;
