@@ -29,9 +29,15 @@ $sensor = $db->readSensors();
 			<table>
 			<?php
 				foreach($sensor as $reading){
-					
+					$values = $reading->toArray();
+					echo "<tr>";
+					foreach($values as $key=>$val){
+						echo "<td>$val</td>";
+					}
+					echo "</tr>";
 				}
 			?>
+			</table>
 			<!-- JavaScript -->
 			<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 			<script src="js/bootstrap.js"></script>
