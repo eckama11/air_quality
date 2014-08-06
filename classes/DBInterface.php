@@ -417,7 +417,7 @@ class DBInterface {
         $rv = Array();
         while ($row = $stmt->fetchObject()) {
             $rv[] = new Sensor(
-            		$row->id;
+            		$row->id,
 					$row->impId,
 					$row->_timeInfo,
 					$row->_temperature,
