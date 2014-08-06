@@ -407,7 +407,7 @@ class DBInterface {
      public function readSensors() {
         static $stmt;
         if ($stmt == null)
-        	$sql = 'SELECT * FROM sensors WHERE DATE(time) = DATE(NOW())';
+        	$sql = 'SELECT * FROM sensors WHERE DATE(timeInfo) = DATE(NOW())';
             $stmt = $this->dbh->prepare($sql);
              
 		$success = $stmt->execute(Array( ));
