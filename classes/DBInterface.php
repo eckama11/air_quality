@@ -448,6 +448,141 @@ class DBInterface {
              
 		$success = $stmt->execute(Array( ));
         if ($success === false)
+            throw new Exception($this->formatErrorMessage($stmt, "Unable to query database for temperature Reading records"));
+
+        $rv = Array();
+        while ($row = $stmt->fetchObject()) {
+            $rv[] = new Reading(
+            		$row->timeInfo,
+					$row->temperature
+                );
+        } // while
+
+        return $rv;
+    } // readTemp
+    
+    /**
+     * Reads a list of all Sensor Readings from the database.
+     * @return  Array[Times, Humidity] Array of times and temperatures read from today.
+     */
+     // THIS WILL NEED TO TAKE IN A SENSOR or USER TO OUTPUT JUST ONE SENSOR'S DATA or USER'S DATA
+     // WILL NEED TO TAKE IN DATE TO SHOW now it shows current date
+    public function readHumidity() {
+        static $stmt;
+        if ($stmt == null)
+        	$sql = "SELECT DATE_FORMAT(timeInfo,'%H:%i:%s') as 'timeInfo', humidity FROM sensors WHERE DATE(timeInfo) = DATE(NOW())";
+            $stmt = $this->dbh->prepare($sql);
+             
+		$success = $stmt->execute(Array( ));
+        if ($success === false)
+            throw new Exception($this->formatErrorMessage($stmt, "Unable to query database for humidity Reading records"));
+
+        $rv = Array();
+        while ($row = $stmt->fetchObject()) {
+            $rv[] = new Reading(
+            		$row->timeInfo,
+					$row->humidity
+                );
+        } // while
+
+        return $rv;
+    } // readHumidity
+    
+    /**
+     * Reads a list of all Sensor Readings from the database.
+     * @return  Array[Times, Pressure] Array of times and temperatures read from today.
+     */
+     // THIS WILL NEED TO TAKE IN A SENSOR or USER TO OUTPUT JUST ONE SENSOR'S DATA or USER'S DATA
+     // WILL NEED TO TAKE IN DATE TO SHOW now it shows current date
+    public function readPressure() {
+        static $stmt;
+        if ($stmt == null)
+        	$sql = "SELECT DATE_FORMAT(timeInfo,'%H:%i:%s') as 'timeInfo', pressure FROM sensors WHERE DATE(timeInfo) = DATE(NOW())";
+            $stmt = $this->dbh->prepare($sql);
+             
+		$success = $stmt->execute(Array( ));
+        if ($success === false)
+            throw new Exception($this->formatErrorMessage($stmt, "Unable to query database for pressure Reading records"));
+
+        $rv = Array();
+        while ($row = $stmt->fetchObject()) {
+            $rv[] = new Reading(
+            		$row->timeInfo,
+					$row->pressure
+                );
+        } // while
+
+        return $rv;
+    } // readPressure
+    
+    /**
+     * Reads a list of all Sensor Readings from the database.
+     * @return  Array[Times, Altitude] Array of times and temperatures read from today.
+     */
+     // THIS WILL NEED TO TAKE IN A SENSOR or USER TO OUTPUT JUST ONE SENSOR'S DATA or USER'S DATA
+     // WILL NEED TO TAKE IN DATE TO SHOW now it shows current date
+     public function readAltitude() {
+        static $stmt;
+        if ($stmt == null)
+        	$sql = "SELECT DATE_FORMAT(timeInfo,'%H:%i:%s') as 'timeInfo', altitude FROM sensors WHERE DATE(timeInfo) = DATE(NOW())";
+            $stmt = $this->dbh->prepare($sql);
+             
+		$success = $stmt->execute(Array( ));
+        if ($success === false)
+            throw new Exception($this->formatErrorMessage($stmt, "Unable to query database for Altitude Reading records"));
+
+        $rv = Array();
+        while ($row = $stmt->fetchObject()) {
+            $rv[] = new Reading(
+            		$row->timeInfo,
+					$row->altitude
+                );
+        } // while
+
+        return $rv;
+    } // readAltitude
+    
+    /**
+     * Reads a list of all Sensor Readings from the database.
+     * @return  Array[Times, Particles] Array of times and temperatures read from today.
+     */
+     // THIS WILL NEED TO TAKE IN A SENSOR or USER TO OUTPUT JUST ONE SENSOR'S DATA or USER'S DATA
+     // WILL NEED TO TAKE IN DATE TO SHOW now it shows current date
+     public function readParticles() {
+        static $stmt;
+        if ($stmt == null)
+        	$sql = "SELECT DATE_FORMAT(timeInfo,'%H:%i:%s') as 'timeInfo', particles FROM sensors WHERE DATE(timeInfo) = DATE(NOW())";
+            $stmt = $this->dbh->prepare($sql);
+             
+		$success = $stmt->execute(Array( ));
+        if ($success === false)
+            throw new Exception($this->formatErrorMessage($stmt, "Unable to query database for particle Reading records"));
+
+        $rv = Array();
+        while ($row = $stmt->fetchObject()) {
+            $rv[] = new Reading(
+            		$row->timeInfo,
+					$row->particles
+                );
+        } // while
+
+        return $rv;
+    } // readAltitude
+    
+    /**
+     * Reads a list of all Sensor Readings from the database.
+     * @return  Array[Times, Latitude, Longitude] Array of times and temperatures read from today.
+     //THIS WILL NEED A DIFFERENT CLASS THAN READING SINCE IT HAS 2 OUTPUTS
+     // THIS WILL NEED TO TAKE IN A SENSOR or USER TO OUTPUT JUST ONE SENSOR'S DATA or USER'S DATA
+     // WILL NEED TO TAKE IN DATE TO SHOW now it shows current date
+    public function readLatitudeLongitude() {
+        static $stmt;
+        if ($stmt == null)
+        	$sql = "SELECT DATE_FORMAT(timeInfo,'%H:%i:%s') as 'timeInfo', latitude, longitude FROM sensors WHERE DATE(timeInfo) = DATE(NOW())";
+            $stmt = $this->dbh->prepare($sql);
+             
+		$success = $stmt->execute(Array( ));
+        if ($success === false)
             throw new Exception($this->formatErrorMessage($stmt, "Unable to query database for Reading records"));
 
         $rv = Array();
@@ -459,6 +594,8 @@ class DBInterface {
         } // while
 
         return $rv;
-    } // readTemp
+    } // readLatitudeLongitude
+    */
+    
     
 } // DBInterface
