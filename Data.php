@@ -18,7 +18,7 @@ $sensor = $db->readSensors();
 			<link rel="stylesheet" href="css/custom.css" />
 			<style type="text/css">
 			input { max-width: 100%; }
-			#readings {width:85%; border:3px black solid;}
+			#readings {width:85%; border:3px black solid; margin-left:auto; margin-right:auto;}
 			#readings th {color:black; font-weight:bold; text-decoration:underline;}
 			#readings td {color:maroon; font-weight:normal;}
 			</style>
