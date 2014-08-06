@@ -22,10 +22,27 @@ $sensor = $db->readSensors();
 			#readings th {color:black; font-weight:bold; text-decoration:underline;}
 			#readings td {color:maroon; font-weight:normal;}
 			</style>
-			<script type="text/javascript">
+			<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    		<script type="text/javascript">
+				google.load("visualization", "1", {packages:["corechart"]});
+				google.setOnLoadCallback(drawChart);
+				function drawChart() {
+					var data = google.visualization.arrayToDataTable([
+					  ['Time', 'Temperature'],
+					  ['2004',  1000],
+					  ['2005',  1170],
+					  ['2006',  660],
+					  ['2007',  1030]
+					]);
 
-			
-			</script>
+					var options = {
+					  title: 'Company Performance'
+					};
+
+					var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+					chart.draw(data, options);
+				  }
+    		</script>
 		</head>
  
 		<body>
@@ -54,6 +71,7 @@ $sensor = $db->readSensors();
 				}
 			?>
 			</table>
+			<div id="chart_div" style="width: 900px; height: 500px;"></div>
 			<!-- JavaScript -->
 			<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 			<script src="js/bootstrap.js"></script>

@@ -164,4 +164,4 @@ class Sensor
     	return $arr;
     }
 
-} // class User
+} // class Sensor

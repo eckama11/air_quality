@@ -401,13 +401,14 @@ class DBInterface {
 
 	/**
      * Reads a list of all Sensor Readings from the database.
-     * @return  Array[User] Array of Sensor instances.
+     * @return  Array[Sensor] Array of Sensor instances.
      */
-     // THIS WILL NEED TO TAKE IN A SENSOR TO OUTPUT JUST ONE SENSORS DATA
+     // THIS WILL NEED TO TAKE IN A SENSOR or USER TO OUTPUT JUST ONE SENSOR'S DATA or USER'S DATA
      public function readSensors() {
         static $stmt;
         if ($stmt == null)
-        	$sql = "SELECT id, impId, DATE_FORMAT(timeInfo,'%H:%i:%s') as 'timeInfo', temperature, humidity, pressure, altitude, latitude, longitude, particles FROM sensors WHERE DATE(timeInfo) = DATE(NOW())";
+        	$sql = "SELECT id, impId, DATE_FORMAT(timeInfo,'%H:%i:%s') as 'timeInfo', ".
+        		"temperature, humidity, pressure, altitude, latitude, longitude, particles FROM sensors WHERE DATE(timeInfo) = DATE(NOW())";
             $stmt = $this->dbh->prepare($sql);
              
 		$success = $stmt->execute(Array( ));
@@ -432,5 +433,32 @@ class DBInterface {
 
         return $rv;
     } // readSensors
+    
+    /**
+     * Reads a list of all Sensor Readings from the database.
+     * @return  Array[Times, Temp] Array of times and temperatures read from today.
+     */
+     // THIS WILL NEED TO TAKE IN A SENSOR or USER TO OUTPUT JUST ONE SENSOR'S DATA or USER'S DATA
+     // WILL NEED TO TAKE IN DATE TO SHOW now it shows current date
+    public function readTemp() {
+        static $stmt;
+        if ($stmt == null)
+        	$sql = "SELECT DATE_FORMAT(timeInfo,'%H:%i:%s') as 'timeInfo', temperature FROM sensors WHERE DATE(timeInfo) = DATE(NOW())";
+            $stmt = $this->dbh->prepare($sql);
+             
+		$success = $stmt->execute(Array( ));
+        if ($success === false)
+            throw new Exception($this->formatErrorMessage($stmt, "Unable to query database for Reading records"));
+
+        $rv = Array();
+        while ($row = $stmt->fetchObject()) {
+            $rv[] = new Reading(
+            		$row->timeInfo,
+					$row->reading
+                );
+        } // while
+
+        return $rv;
+    } // readTemp
     
 } // DBInterface
