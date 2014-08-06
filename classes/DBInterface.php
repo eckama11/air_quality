@@ -407,7 +407,7 @@ class DBInterface {
      public function readSensors() {
         static $stmt;
         if ($stmt == null)
-        	$sql = "SELECT id, impId, DATE_FORMAT(timeInfo,'%H:%i:%s'), temperature, humidity, pressure, altitude, latitude, longitude, particles FROM sensors WHERE DATE(timeInfo) = DATE(NOW())";
+        	$sql = "SELECT id, impId, DATE_FORMAT(timeInfo,'%H:%i:%s') as 'timeInfo', temperature, humidity, pressure, altitude, latitude, longitude, particles FROM sensors WHERE DATE(timeInfo) = DATE(NOW())";
             $stmt = $this->dbh->prepare($sql);
              
 		$success = $stmt->execute(Array( ));
