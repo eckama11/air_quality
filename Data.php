@@ -29,6 +29,7 @@ $sensor = $db->readSensors();
 		</head>
  
 		<body>
+			<h1 style="text-align:center;">Readings as of <?php echo date('l F d, Y'); ?></h1>
 			<table id="readings">
 			<tr>
 				<th>Reading Id</th>
