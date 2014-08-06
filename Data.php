@@ -18,6 +18,9 @@ $sensor = $db->readSensors();
 			<link rel="stylesheet" href="css/custom.css" />
 			<style type="text/css">
 			input { max-width: 100%; }
+			#readings {width:85%; border:3px black solid;}
+			#readings th {color:black; font-weight:bold; text-decoration:underline;}
+			#readings td {color:maroon; font-weight:normal;}
 			</style>
 			<script type="text/javascript">
 
@@ -26,7 +29,19 @@ $sensor = $db->readSensors();
 		</head>
  
 		<body>
-			<table>
+			<table id="readings">
+			<tr>
+				<th>Reading Id</th>
+				<th>Sensor Id</th>
+				<th>DateTime</th>
+				<th>Temperature</th>
+				<th>Humidity</th>
+				<th>Pressure</th>
+				<th>Altitude</th>
+				<th>Latitude</th>
+				<th>Longitude</th>
+				<th>Particles (ppm)</th>
+			</tr>
 			<?php
 				foreach($sensor as $reading){
 					$values = $reading->toArray();
