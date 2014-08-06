@@ -35,8 +35,7 @@ class Sensor
         if (!is_numeric($id))
             throw new Exception("The \$id parameter must be an integer");
         $this->_id = (int) $id;
-
-        $this->_impId = $impId;
+		$this->_impId = $impId;
         $this->_timeInfo = $timeInfo;
         $this->_temperature = $temperature;
         $this->_humidity = $humidity;

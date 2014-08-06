@@ -399,5 +399,38 @@ class DBInterface {
             );
     } // writeSensor
 
+	/**
+     * Reads a list of all Sensor Readings from the database.
+     * @return  Array[User] Array of Sensor instances.
+     */
+     // THIS WILL NEED TO TAKE IN A SENSOR TO OUTPUT JUST ONE SENSORS DATA
+     public function readSensors() {
+        static $stmt;
+        if ($stmt == null)
+        	$sql = 'SELECT * FROM sensor WHERE DATE(time) = CURDATE()';
+            $stmt = $this->dbh->prepare($sql);
+             
+		$success = $stmt->execute(Array( ));
+        if ($success === false)
+            throw new Exception($this->formatErrorMessage($stmt, "Unable to query database for User records"));
 
+        $rv = Array();
+        while ($row = $stmt->fetchObject()) {
+            $rv[] = new Sensor(
+            		$row->id;
+					$row->impId,
+					$row->_timeInfo,
+					$row->_temperature,
+					$row->_humidity,
+					$row->_pressure,
+					$row->_altitude,
+					$row->_latitude,
+					$row->_longitude,
+					$row->_particles
+                );
+        } // while
+
+        return $rv;
+    } // readSensors
+    
 } // DBInterface
