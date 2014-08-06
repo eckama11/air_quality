@@ -3,7 +3,7 @@ require_once("common.php");
     if (!isset($loginSession))
         doUnauthenticatedRedirect();
         
-$user = $db->readSensors();
+$sensor = $db->readSensors();
 ?>
 
 
@@ -26,7 +26,12 @@ $user = $db->readSensors();
 		</head>
  
 		<body>
-			<?php var_dump($user); ?>
+			<table>
+			<?php
+				foreach($sensor as $reading){
+					
+				}
+			?>
 			<!-- JavaScript -->
 			<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 			<script src="js/bootstrap.js"></script>

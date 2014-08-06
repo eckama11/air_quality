@@ -147,5 +147,21 @@ class Sensor
         	altitude=$this->altitude, latitude=$this->latitude, longitude=$this->longitude,
         	particles=$this->particles)";
     } // __toString
+    
+    public function toArray(){
+    	$arr = new Array();
+    	$arr['id'] = $this->id;
+    	$arr['impId'] = $this->impId;
+    	$arr['timeInfo'] = $this->timeInfo;
+    	$arr['temperature'] = $this->temperature;
+    	$arr['humidity'] = $this->humidity;
+    	$arr['pressure'] = $this->pressure;
+    	$arr['altitude'] = $this->altitude;
+    	$arr['latitude'] = $this->latitude;
+    	$arr['longitude'] = $this->longitude;
+    	$arr['particles'] = $this->particles;
+    	
+    	return $arr;
+    }
 
 } // class User
