@@ -419,14 +419,14 @@ class DBInterface {
             $rv[] = new Sensor(
             		$row->id,
 					$row->impId,
-					$row->_timeInfo,
-					$row->_temperature,
-					$row->_humidity,
-					$row->_pressure,
-					$row->_altitude,
-					$row->_latitude,
-					$row->_longitude,
-					$row->_particles
+					$row->timeInfo,
+					$row->temperature,
+					$row->humidity,
+					$row->pressure,
+					$row->altitude,
+					$row->latitude,
+					$row->longitude,
+					$row->particles
                 );
         } // while
 
