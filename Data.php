@@ -45,7 +45,7 @@ $sensor = $db->readSensors();
 				$i = 0;
 				foreach($db->readTemp() as $read){
 					$r = $read->objectToArray();
-					echo "<p>$i: $r[0] > $r[1]</p>"
+					echo "<p>$i: $r[0] > $r[1]</p>";
 				}
 			?>
 			<table id="readings">
