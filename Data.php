@@ -8,7 +8,7 @@ $sensor = $db->readSensors();
 $temps = $db->readTemp();
 $js_array = '[';
 foreach($temps as $temp){
-	$js_array .= "[{$temp[0]}],[{$temp[1]}]";
+	$js_array .= "[".$temp[0]."],[".$temp[1]."]";
 }
 $js_array .= ']';
 ?>
