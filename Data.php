@@ -42,8 +42,7 @@ $sensor = $db->readSensors();
 		<body>
 			<h1 style="text-align:center;">Readings as of <?php echo date('l F d, Y'); ?></h1>
 			<?php 
-				$i = 0;
-				foreach($db->readTemp() as $read){
+				for($i=0;$db->readTemp();$i++){
 					$r = $read->objectToArray();
 					echo "<p>$i: $r[0] > $r[1]</p>";
 				}
