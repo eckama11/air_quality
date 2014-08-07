@@ -45,6 +45,10 @@ class Reading
         return __CLASS__ ."(timeInfo=$this->timeInfo, reading=$this->reading)";
     } // __toString
     
+    public function objectToArray(){
+    	return Array($this->timeInfo, $this->reading);
+    }
+    
     public function toArray(){
     	$arr = Array();
     	$arr['timeInfo'] = $this->timeInfo;

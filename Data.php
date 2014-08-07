@@ -41,7 +41,11 @@ $sensor = $db->readSensors();
  
 		<body>
 			<h1 style="text-align:center;">Readings as of <?php echo date('l F d, Y'); ?></h1>
-			<?php var_dump($db->readTemp()); ?>
+			<?php 
+				foreach($read in $db->readTemp()){
+					echo $read->objectToArray();	
+				}
+			?>
 			<table id="readings">
 			<tr>
 				<th>Reading Id</th>
