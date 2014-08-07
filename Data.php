@@ -4,6 +4,13 @@ require_once("common.php");
         doUnauthenticatedRedirect();
         
 $sensor = $db->readSensors();
+
+$temps = $db->readTemp();
+$js_array = '[';
+foreach($temps as $temp){
+	$js_array .= "[{$temp[0]}],[{$temp[1]}]";
+}
+$js_array .= ']';
 ?>
 
 
@@ -27,7 +34,7 @@ $sensor = $db->readSensors();
 				google.load("visualization", "1", {packages:["corechart"]});
 				google.setOnLoadCallback(drawChart);
 				function drawChart() {
-					var data = google.visualization.arrayToDataTable();
+					var data = google.visualization.arrayToDataTable(<?php echo $js_array; ?>);
 
 					var options = {
 					  title: 'Company Performance'
@@ -41,14 +48,6 @@ $sensor = $db->readSensors();
  
 		<body>
 			<h1 style="text-align:center;">Readings as of <?php echo date('l F d, Y'); ?></h1>
-			<?php 
-				$i=0;
-				foreach($db->readTemp() as $read){
-					$r = $read->objectToArray();
-					echo "<p>$i: $r[0] > $r[1]</p>";
-					$i++;
-				}
-			?>
 			<table id="readings">
 			<tr>
 				<th>Reading Id</th>
