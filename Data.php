@@ -27,13 +27,7 @@ $sensor = $db->readSensors();
 				google.load("visualization", "1", {packages:["corechart"]});
 				google.setOnLoadCallback(drawChart);
 				function drawChart() {
-					var data = google.visualization.arrayToDataTable([
-					  ['Time', 'Temperature'],
-					  ['2004',  1000],
-					  ['2005',  1170],
-					  ['2006',  660],
-					  ['2007',  1030]
-					]);
+					var data = google.visualization.arrayToDataTable();
 
 					var options = {
 					  title: 'Company Performance'
@@ -47,6 +41,7 @@ $sensor = $db->readSensors();
  
 		<body>
 			<h1 style="text-align:center;">Readings as of <?php echo date('l F d, Y'); ?></h1>
+			<?php var_dump($db->readTemp()); ?>
 			<table id="readings">
 			<tr>
 				<th>Reading Id</th>
