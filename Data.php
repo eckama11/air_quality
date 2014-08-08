@@ -22,7 +22,7 @@ $js_array = $db->readTemp();
 			input { max-width: 100%; }
 			
 			</style>
-			<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+			<!--<script type="text/javascript" src="https://www.google.com/jsapi"></script>-->
     		<script type="text/javascript">
 				google.load("visualization", "1", {packages:["corechart"]});
 				google.setOnLoadCallback(drawChart);
@@ -40,8 +40,8 @@ $js_array = $db->readTemp();
 		</head>
  
 		<body>
-			<h1 style="text-align:center;">Readings as of <?php echo date('F d, Y'); ?></h1>
-			<!-- THIS IS FOR BUG FIXING
+			<!-- <h1 style="text-align:center;">Readings as of <?php echo date('F d, Y'); ?></h1>
+			THIS IS FOR BUG FIXING
 			<?php echo $js_array; ?>
 			<table id="readings">
 			<tr>
