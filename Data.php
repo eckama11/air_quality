@@ -13,7 +13,7 @@ $js_array = $db->readTemp();
 	<html xmlns="http://www.w3.org/1999/xhtml">
 		<head>
 			<base href="<?php echo htmlentities(BASE_URL); ?>">
-			<title>Login</title>
+			<title>Readings</title>
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<!-- StyleSheet -->
 			<link rel="stylesheet" href="css/bootstrap.min.css" />
@@ -22,7 +22,8 @@ $js_array = $db->readTemp();
 			input { max-width: 100%; }
 			
 			</style>
-			<!--<script type="text/javascript" src="https://www.google.com/jsapi"></script>-->
+			<!--
+			<script type="text/javascript" src="https://www.google.com/jsapi"></script>
     		<script type="text/javascript">
 				google.load("visualization", "1", {packages:["corechart"]});
 				google.setOnLoadCallback(drawChart);
@@ -37,6 +38,7 @@ $js_array = $db->readTemp();
 					chart.draw(data, options);
 				  }
     		</script>
+    		-->
 		</head>
  
 		<body>
