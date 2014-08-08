@@ -22,7 +22,6 @@ $js_array = $db->readTemp();
 			input { max-width: 100%; }
 			
 			</style>
-			<!--
 			<script type="text/javascript" src="https://www.google.com/jsapi"></script>
     		<script type="text/javascript">
 				google.load("visualization", "1", {packages:["corechart"]});
@@ -38,8 +37,7 @@ $js_array = $db->readTemp();
 					chart.draw(data, options);
 				  }
     		</script>
-    		-->
-		</head>
+    	</head>
  
 		<body>
 			<!-- <h1 style="text-align:center;">Readings as of <?php echo date('F d, Y'); ?></h1>
@@ -69,10 +67,8 @@ $js_array = $db->readTemp();
 				}
 			?>
 			</table>
-			<div id="chart_div" style="width: 90%; height: 500px; margin: auto; border: 2px black solid;"></div>-->
-			<!-- JavaScript 
-			<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-			<script src="js/bootstrap.js"></script>-->
+			-->
+			<div id="chart_div" style="width: 90%; height: 500px; margin: auto; border: 2px black solid;"></div>
 		</body>
 	</html>
 	
