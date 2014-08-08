@@ -450,7 +450,8 @@ class DBInterface {
         if ($success === false)
             throw new Exception($this->formatErrorMessage($stmt, "Unable to query database for temperature Reading records"));
 
-        $rv = Array(array('Time', 'Temperature'));
+        $rv = Array();
+        $rv[] = array('Time', 'Temperature');
         while ($row = $stmt->fetchObject()) {
             $rv[]  = array(
                         $row->timeInfo,

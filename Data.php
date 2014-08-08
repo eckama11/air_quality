@@ -5,7 +5,6 @@ require_once("common.php");
         
 $sensor = $db->readSensors();
 
-$temps = $db->readTemp();
 $js_array = $db->readTemp();
 
 ?>
