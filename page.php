@@ -54,6 +54,13 @@ function showError(message) {
 				</button>
 				<div class="collapse navbar-collapse navHeaderCollapse">
 					<ul class="nav navbar-nav navbar-right">
+						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+							<li role="presentation" class="divider"></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+						</ul>
 						<li class="dropdown">
         					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
         					Readings<b class="caret"></b></a>
@@ -61,8 +68,6 @@ function showError(message) {
 								<li><a href="page.php/Data">Temperature</a></li>
 								<li><a href="#">Another action</a></li>
 								<li><a href="#">Something else here</a></li>
-								<li class="divider"></li>
-								<li><a href="#">Separated link</a></li>
 						    </ul>
 						</li>
 						<li><a href="page.php/Pass">Password Reset</a></li>
@@ -77,8 +82,8 @@ function showError(message) {
         </div>
 <?php	require_once($page); ?>
 		<!-- JavaScript -->
-		<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-		<script src="js/bootstrap.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
 	</body>
 </html>
 	
