@@ -35,7 +35,7 @@ $js_array = json_encode($js_array);
 				google.load("visualization", "1", {packages:["corechart"]});
 				google.setOnLoadCallback(drawChart);
 				function drawChart() {
-					var data = google.visualization.arrayToDataTable(<?php $js_array; ?>);
+					var data = google.visualization.arrayToDataTable(<? $js_array; ?>);
 
 					var options = {
 					  title: 'Company Performance'
