@@ -11,7 +11,6 @@ foreach($temps as $temp){
 	$temp = $temp->objectToArray();
 	$js_array[] = Array($temp[0],$temp[1]);
 }
-$js_array = json_encode($js_array);
 ?>
 
 
@@ -35,10 +34,10 @@ $js_array = json_encode($js_array);
 				google.load("visualization", "1", {packages:["corechart"]});
 				google.setOnLoadCallback(drawChart);
 				function drawChart() {
-					var data = google.visualization.arrayToDataTable(<? $js_array; ?>);
+					var data = google.visualization.arrayToDataTable(<?= json_encode($js_array); ?>);
 
 					var options = {
-					  title: 'Company Performance'
+					  title: 'Temperature readings'
 					};
 
 					var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
