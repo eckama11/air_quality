@@ -55,7 +55,7 @@ function showError(message) {
 				<div class="collapse navbar-collapse navHeaderCollapse">
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Readings <span class="caret"></span></a>
+							<a href="page.php/air" class="dropdown-toggle" data-toggle="dropdown">Readings <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="page.php/Data">Temperature</a></li>
 							</ul>
