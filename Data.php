@@ -6,12 +6,12 @@ require_once("common.php");
 $sensor = $db->readSensors();
 
 $temps = $db->readTemp();
-$js_array = '[';
+$js_array = Array();
 foreach($temps as $temp){
 	$temp = $temp->objectToArray();
-	$js_array .= "[".$temp[0]."],[".$temp[1]."]";
+	$js_array[] = Array($temp[0],$temp[1]);
 }
-$js_array .= ']';
+$js_array = json_encode($js_array);
 ?>
 
 
@@ -35,7 +35,7 @@ $js_array .= ']';
 				google.load("visualization", "1", {packages:["corechart"]});
 				google.setOnLoadCallback(drawChart);
 				function drawChart() {
-					var data = google.visualization.arrayToDataTable(<?php echo $js_array; ?>);
+					var data = google.visualization.arrayToDataTable(<?php $js_array; ?>);
 
 					var options = {
 					  title: 'Company Performance'
@@ -49,6 +49,7 @@ $js_array .= ']';
  
 		<body>
 			<h1 style="text-align:center;">Readings as of <?php echo date('l F d, Y'); ?></h1>
+			<?php echo $js_array; ?>
 			<table id="readings">
 			<tr>
 				<th>Reading Id</th>
