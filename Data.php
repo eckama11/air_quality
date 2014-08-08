@@ -70,9 +70,9 @@ $js_array = $db->readTemp();
 			?>
 			</table>
 			<div id="chart_div" style="width: 90%; height: 500px; margin: auto; border: 2px black solid;"></div>-->
-			<!-- JavaScript -->
+			<!-- JavaScript 
 			<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-			<script src="js/bootstrap.js"></script>
+			<script src="js/bootstrap.js"></script>-->
 		</body>
 	</html>
 	
