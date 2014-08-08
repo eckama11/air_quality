@@ -6,11 +6,8 @@ require_once("common.php");
 $sensor = $db->readSensors();
 
 $temps = $db->readTemp();
-$js_array = Array();
-foreach($temps as $temp){
-	$temp = $temp->objectToArray();
-	$js_array[] = Array($temp[0],$temp[1]);
-}
+$js_array = $db->readTemp();
+
 ?>
 
 

@@ -453,10 +453,10 @@ class DBInterface {
         $rv = Array();
         $rv[] = new Reading('Time', 'Temperature');
         while ($row = $stmt->fetchObject()) {
-            $rv[] = new Reading(
-            		$row->timeInfo,
-					$row->temperature
-                );
+            $rv[] = $rv[] = array(
+                        $row->timeInfo,
+                        (double)$row->temperature
+                    );
         } // while
 
         return $rv;
