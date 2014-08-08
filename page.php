@@ -54,7 +54,7 @@ function showError(message) {
 				</button>
 				<div class="collapse navbar-collapse navHeaderCollapse">
 					<ul class="nav navbar-nav navbar-right">
-						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+						<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
 							Dropdown
 							<span class="caret"></span>
 						</button>
