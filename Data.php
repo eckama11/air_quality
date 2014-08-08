@@ -33,7 +33,7 @@ $js_array = $db->readTemp();
 					var data = google.visualization.arrayToDataTable(<?= json_encode($js_array); ?>);
 
 					var options = {
-					  title: 'Temperature readings'
+					  title: 'Temperature Readings'
 					};
 
 					var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
@@ -44,6 +44,7 @@ $js_array = $db->readTemp();
  
 		<body>
 			<h1 style="text-align:center;">Readings as of <?php echo date('F d, Y'); ?></h1>
+			<!-- THIS IS FOR BUG FIXING
 			<?php echo $js_array; ?>
 			<table id="readings">
 			<tr>
@@ -68,7 +69,7 @@ $js_array = $db->readTemp();
 					echo "</tr>";
 				}
 			?>
-			</table>
+			</table>-->
 			<div id="chart_div" style="width: 900px; height: 500px; margin: auto; border: 2px black solid;"></div>
 			<!-- JavaScript -->
 			<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
