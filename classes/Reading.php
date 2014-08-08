@@ -51,7 +51,7 @@ class Reading
     
     public function toArray(){
     	$arr = Array();
-    	$arr['timeInfo'] = $this->timeInfo;
+    	$arr['timeInfo'] = new DateTime($this->timeInfo);
     	$arr['reading'] = (float)$this->reading;
     	
     	return $arr;
