@@ -443,7 +443,7 @@ class DBInterface {
     public function readTemp() {
         static $stmt;
         if ($stmt == null)
-        	$sql = "SELECT DATE_FORMAT(timeInfo,'%H:%i:%s') as 'timeInfo', temperature FROM sensors WHERE DATE(timeInfo) = DATE(NOW())";
+        	$sql = "SELECT DATE_FORMAT(timeInfo,'%r') as 'timeInfo', temperature FROM sensors WHERE DATE(timeInfo) = DATE(NOW())";
             $stmt = $this->dbh->prepare($sql);
              
 		$success = $stmt->execute(Array( ));

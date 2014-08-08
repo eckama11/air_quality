@@ -43,7 +43,7 @@ $js_array = $db->readTemp();
 		</head>
  
 		<body>
-			<h1 style="text-align:center;">Readings as of <?php echo date('l F d, Y'); ?></h1>
+			<h1 style="text-align:center;">Readings as of <?php echo date('F d, Y'); ?></h1>
 			<?php echo $js_array; ?>
 			<table id="readings">
 			<tr>
