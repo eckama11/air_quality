@@ -54,12 +54,12 @@ function showError(message) {
 				</button>
 				<div class="collapse navbar-collapse navHeaderCollapse">
 					<ul class="nav navbar-nav navbar-right">
-						<ul class="dropdown-menu" role="menu">
+						<li class="dropdown-menu" role="menu">
 							<li><a href="page.php/Data">Temperature</a></li>
 							<li><a href="#">Dropdown link</a></li>
 							<li><a href="page.php/Pass">Password Reset</a></li>
 							<li><a href="logout.php">Logout</a></li>
-						</ul>
+						</li>
 					</ul>
 				</div>
 			</div>
