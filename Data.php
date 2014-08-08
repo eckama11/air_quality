@@ -9,7 +9,6 @@ $js_array = $db->readTemp();
 
 ?>
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	<html xmlns="http://www.w3.org/1999/xhtml">
 		<head>
@@ -21,9 +20,7 @@ $js_array = $db->readTemp();
 			<link rel="stylesheet" href="css/custom.css" />
 			<style type="text/css">
 			input { max-width: 100%; }
-			#readings {width:85%; border:3px black solid; margin-left:auto; margin-right:auto;}
-			#readings th {color:black; font-weight:bold; text-decoration:underline;}
-			#readings td {color:maroon; font-weight:normal;}
+			
 			</style>
 			<script type="text/javascript" src="https://www.google.com/jsapi"></script>
     		<script type="text/javascript">
