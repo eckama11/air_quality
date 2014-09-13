@@ -37,41 +37,11 @@ $js_array = $db->readTemp();
     		</script>
     		<script type="text/javascript">
 				// Init date picker and display UI
-				$('.datepicker').datepicker();
+				$('#datepicker').datepicker();
 			</script>
     	</head>
- 
 		<body>
-			<!-- <h1 style="text-align:center;">Readings as of <?php echo date('F d, Y'); ?></h1>
-			THIS IS FOR BUG FIXING
-			<?php echo $js_array; ?>
-			<table id="readings">
-			<tr>
-				<th>Reading Id</th>
-				<th>Sensor Id</th>
-				<th>DateTime</th>
-				<th>Temperature</th>
-				<th>Humidity</th>
-				<th>Pressure</th>
-				<th>Altitude</th>
-				<th>Latitude</th>
-				<th>Longitude</th>
-				<th>Particles (ppm)</th>
-			</tr>
-			<?php
-				/*foreach($sensor as $reading){
-					$values = $reading->toArray();
-					echo "<tr>";
-					foreach($values as $key=>$val){
-						echo "<td>$val</td>";
-					}
-					echo "</tr>";
-				}*/
-			?>
-			</table>
-			-->
-           		<input class="span2" size="16" type="text" class="datepicker" data-provide="datepicker" value="12-02-2012" />
-			
+           	<input class="span2" size="16" type="text" id="datepicker" data-provide="datepicker" value="12-02-2012" />
 			<br />
 			<div id="chart_div" style="width: 90%; height: 500px; margin: auto; border: 2px black solid;"></div>
 		</body>
