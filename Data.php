@@ -38,14 +38,12 @@ $js_array = $db->readTemp();
 			</script>
     	</head>
 		<body>
-    		<div class="well" style="margin-left:auto; margin-right:auto;">
-    			<div class="input-append date" id="datepicker" data-date="2014" data-date-format="yyyy-mm-dd">
+    			<div class="input-append date" style="margin-left:auto; margin-right:auto;" id="datepicker" data-date="2014" data-date-format="yyyy-mm-dd">
     				<input class="span2" size="16" type="text" readonly="readonly"/>
     				<span class="add-on">
     					<i class="icon-calendar"></i>
     				</span>
     			</div>
-    		</div>
     		<br />
 			<div id="chart_div" style="width: 90%; height: 500px; margin: auto; border: 2px black solid;"></div>
 		</body>
