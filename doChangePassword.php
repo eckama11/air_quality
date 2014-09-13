@@ -35,7 +35,7 @@ try {
 	// Hash the password with the salt
 	$hash = crypt($newPassword1, $salt);
     // Update the user
-    $loginSession->authenticatedUser->password = $newPassword1;
+    $loginSession->authenticatedUser->password = $hash;
     
     $db->updateUser($loginSession->authenticatedUser);
 

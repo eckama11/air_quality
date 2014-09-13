@@ -9,7 +9,7 @@
   if (!$con) {
     die("connection failed: " . $con->error);
   }
-  unset($dbuser,$dbpass);
+  unset($dbUsername,$dbPassword);
 
   $imp = $con->real_escape_string($_POST['imp']);
   $newTemp = floatval($con->real_escape_string($_POST['newTemp']));
