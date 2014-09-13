@@ -21,12 +21,11 @@ $salt = sprintf("$2a$%02d$", $cost) . $salt;
 // Hash the password with the salt
 $password = crypt($hash, $salt);
 
-$sql = 'UPDATE user SET password=:password WHERE username="eckama" AND username="areis"';
+$sql = 'UPDATE user SET password=? WHERE username="eckama" AND username="areis"';
 $stmtUpdate = $con->prepare($sql);
 	
-$stmtUpdate->bindParam(':password', $password);
-
-$success = $stmtUpdate->execute($params);
+$stmtUpdate->bind_param('s',$password);
+$success = $stmtUpdate->execute();
 if ($success) {
 	echo "passwords changed";
 }
