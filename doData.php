@@ -1,12 +1,11 @@
 <?php
-  $dbuser="air_quality";
-  $dbpass="air_quality";
+  require_once("creds.php");
 
   if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     die("not post request");
   }
 
-  $con = new mysqli("localhost",$dbuser,$dbpass,'air_quality');
+  $con = new mysqli("localhost",$dbUsername,$dbPassword,$dbName);
   if (!$con) {
     die("connection failed: " . $con->error);
   }
