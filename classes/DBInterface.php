@@ -95,7 +95,7 @@ class DBInterface {
                   "SELECT id ".
                     "FROM user ".
                     "WHERE username=:username ".
-                        "AND password=$hash"
+                        "AND password='$hash'"
                 );
 
             $insertStmt = $this->dbh->prepare(
