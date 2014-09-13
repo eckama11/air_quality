@@ -76,7 +76,7 @@ $js_array = $db->readTemp();
 			</table>
 			-->
 			
-            <div style="width: 90%;">
+            <div style="width: 30%; margin: auto;">
             	<input data-provide="datepicker" data-date-autoclose="true" data-date-today-btn="true" data-date-today-highlight="true" class="form-control" type="text" name="startDate" id="startDate" placeholder="Enter employment start date" />
 			</div>
 			<br />
