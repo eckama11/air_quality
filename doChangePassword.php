@@ -12,7 +12,7 @@ try {
         throw new Exception("You do not have sufficient access to perform this action");
 
     // Verify the current password is a match
-    if ($loginSession->authenticatedUser->password != $currentPassword)
+    if ($loginSession->authenticatedUser->password != password_hash($currentPassword, PASSWORD_DEFAULT))
         throw new Exception("The current password was not correct");
 
     if ($newPassword1 != $newPassword2)
