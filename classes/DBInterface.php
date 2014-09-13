@@ -80,26 +80,12 @@ class DBInterface {
         static $loginStmt;
         static $insertStmt;
         if (is_null($loginStmt)) {
-        	//throw new Exception("hashing0");
-        	$sth = $this->dbh->prepare(
-        		"SELECT password ".
-				"FROM user ".
-				"WHERE username=:username "
-				);
-			$sth->execute(Array(
-                ':username' => $username
-            ));
-			$user = $sth->fetchObject();
-			//throw new Exception("hashing4");
-			// Hashing the password with its hash as the salt returns the same hash
-			if ( crypt($password, $user->password) === $user->password ) {
-				//throw new Exception("hashing5");
-				$loginStmt = $this->dbh->prepare(
+            $loginStmt = $this->dbh->prepare(
                   "SELECT id ".
                     "FROM user ".
-                    "WHERE username=:username "
+                    "WHERE username=:username ".
+                        "AND password=:password "
                 );
-			}
 
             $insertStmt = $this->dbh->prepare(
                     "INSERT INTO loginSession ( ".
@@ -110,10 +96,11 @@ class DBInterface {
                 );
         }
 
+
         $success = $loginStmt->execute(Array(
-                ':username' => $username
-        ));
-        
+                ':username' => $username,
+                ':password' => $password
+            ));
         if ($success === false)
             throw new Exception($this->formatErrorMessage($loginStmt, "Unable to query database to authenticate User"));
 
@@ -137,9 +124,7 @@ class DBInterface {
             ));
         if (!$success)
             throw new Exception($this->formatErrorMessage($insertStmt, "Unable to create session record in database"));
-		throw new Exception($rv."alsdfjk");
-		//LoginSession(sessionId=8f3c895e02d36e010ecc5ad6d289f1ca, authenticatedUser=User
-		//(id=4, username=eckama, password=$2a$10$Y8hvkr0DqRC9mljp2UcS5.jwOUanRDKH8WTP5ymydnEHxkGyshfgS, email=eckama@msn.com, device=))
+
         return $rv;
     } // createLoginSession
 
@@ -212,7 +197,7 @@ class DBInterface {
 
         if ($row === false)
             throw new Exception("No such User: $id");
-        if (is_null($row->deviceId) || empty($row->deviceId))
+        if (is_null($row->deviceId))
             throw new Exception("No device being passed.");
         return new User(
                 $row->id,
@@ -221,6 +206,8 @@ class DBInterface {
                 $row->email,
                 $row->device
             );
+            if(true)
+                throw new Exception($this->formatErrorMessage($loginStmt, "Here"));
     } // readUser
 
     /**
