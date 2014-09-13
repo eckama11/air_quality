@@ -39,7 +39,7 @@ $js_array = $db->readTemp();
     	</head>
 		<body>
 			<div class="row">
-				<div class="col-md-4 col-md-offset-4">
+				<div class="center-block">
            			<input type="text" id="datepicker" data-provide="datepicker" placeholder="Click to choose a date..." />
 				</div>
 			</div>
