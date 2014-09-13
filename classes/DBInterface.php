@@ -94,12 +94,13 @@ class DBInterface {
 
 			// Hashing the password with its hash as the salt returns the same hash
 			if ( crypt($password, $user->hash) === $user->hash ) {
-				$loginStmt = $this->dbh->prepare(
-                  "SELECT id ".
-                    "FROM user ".
-                    "WHERE username=:username ".
-                        "AND password=:password "
-                );
+				throw new Exception($this->formatErrorMessage($loginStmt, "password is hashing"));
+				//$loginStmt = $this->dbh->prepare(
+                  //"SELECT id ".
+                    //"FROM user ".
+                    //"WHERE username=:username ".
+                      //  "AND password=:password "
+                //);
 			}
 
             $insertStmt = $this->dbh->prepare(
