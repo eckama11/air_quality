@@ -82,8 +82,8 @@ class DBInterface {
         static $checkPassword;
         if (is_null($loginStmt)) {
         //password_verify($currentPassword, $password in database)
-        $checkPassword = this->dbh->prepare(
-        	"Select password ".
+        $checkPassword = $this->dbh->prepare(
+        	"SELECT password ".
         		"FROM user ".
         		"WHERE username=:username"
         );
