@@ -99,8 +99,7 @@ class DBInterface {
 				$loginStmt = $this->dbh->prepare(
                   "SELECT id ".
                     "FROM user ".
-                    "WHERE username=:username ".
-                        "AND password=:password "
+                    "WHERE username=:username "
                 );
 			}
 
