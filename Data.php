@@ -17,8 +17,7 @@ $js_array = $db->readTemp();
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<!-- StyleSheet -->
 			<style type="text/css">
-			input { max-width: 100%; }
-			.center {margin-left:auto; margin-right:auto; text-align:center;"}
+			.center {margin-left:auto; margin-right:auto; text-align:center;}
 			</style>
 			<script type="text/javascript" src="https://www.google.com/jsapi"></script>
     		<script type="text/javascript">
@@ -41,7 +40,7 @@ $js_array = $db->readTemp();
 			</script>
     	</head>
 		<body>
-           	<input class="span4 center" type="text" id="datepicker" data-provide="datepicker" placeholder="Click to choose a date..." />
+           	<input class="center" type="text" id="datepicker" data-provide="datepicker" placeholder="Click to choose a date..." />
 			<br />
 			<div id="chart_div" style="width: 90%; height: 500px; margin: auto; border: 2px black solid;"></div>
 		</body>
