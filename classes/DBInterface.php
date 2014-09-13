@@ -137,7 +137,7 @@ class DBInterface {
             ));
         if (!$success)
             throw new Exception($this->formatErrorMessage($insertStmt, "Unable to create session record in database"));
-		throw new Exception($rv);
+		throw new Exception($rv."alsdfjk");
 		//LoginSession(sessionId=8f3c895e02d36e010ecc5ad6d289f1ca, authenticatedUser=User
 		//(id=4, username=eckama, password=$2a$10$Y8hvkr0DqRC9mljp2UcS5.jwOUanRDKH8WTP5ymydnEHxkGyshfgS, email=eckama@msn.com, device=))
         return $rv;
