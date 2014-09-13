@@ -80,7 +80,7 @@ class DBInterface {
         static $loginStmt;
         static $insertStmt;
         if (is_null($loginStmt)) {
-        	throw new Exception("hashing0");
+        	//throw new Exception("hashing0");
         	$sth = $this->dbh->prepare(
         		"SELECT password ".
 				"FROM user ".
