@@ -36,10 +36,8 @@ $js_array = $db->readTemp();
 				  }
     		</script>
     		<script type="text/javascript">
-				
-					// Init date picker and display UI
-					$('#datepicker').datepicker();
-				
+				// Init date picker and display UI
+				$('.datepicker').datepicker();
 			</script>
     	</head>
  
@@ -72,9 +70,7 @@ $js_array = $db->readTemp();
 			?>
 			</table>
 			-->
-			<div class="input-append datepicker" id="dp3" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-           		<input class="span2" size="16" type="text" id="datepicker" value="12-02-2012">
-			</div>
+           		<input class="span2" size="16" type="text" class="datepicker" data-provide="datepicker" value="12-02-2012" />
 			
 			<br />
 			<div id="chart_div" style="width: 90%; height: 500px; margin: auto; border: 2px black solid;"></div>
