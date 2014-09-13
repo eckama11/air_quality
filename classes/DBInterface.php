@@ -80,13 +80,13 @@ class DBInterface {
         static $loginStmt;
         static $insertStmt;
         if (is_null($loginStmt)) {
-        	throw new Exception($this->formatErrorMessage($loginStmt, "password is hashing0"));
+        	throw new Exception("hashing0");
         	$sth = $this->dbh->prepare(
         		"SELECT password ".
 				"FROM user ".
 				"WHERE username=:username "
 				);
-			throw new Exception($this->formatErrorMessage($loginStmt, "password is hashing1"));
+			throw new Exception("hashing1");
 			$sth->bindParam(':username', $username);
 
 			$sth->execute();
