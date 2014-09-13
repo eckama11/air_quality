@@ -1,7 +1,6 @@
 <?php
-require_once("../creds.php");
-class DBInterface {
 
+class DBInterface {
     private $dbh;
 
     /**
