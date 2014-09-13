@@ -90,7 +90,7 @@ class DBInterface {
 			$sth->bindParam(':username', $username);
 			//throw new Exception("hashing2");
 			$sth->execute();
-			throw new Exception("hashing3");
+			//throw new Exception("hashing3");
 			$user = $sth->fetch(PDO::FETCH_OBJ);
 			throw new Exception("hashing4");
 			// Hashing the password with its hash as the salt returns the same hash
