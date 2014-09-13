@@ -16,10 +16,7 @@ $js_array = $db->readTemp();
 			<title>Readings</title>
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<!-- StyleSheet -->
-			<style type="text/css">
-			.center {margin-left:auto; margin-right:auto;}
-			#datepicker {display:block; width:150px; margin-bottom:25px;}
-			</style>
+			
 			<script type="text/javascript" src="https://www.google.com/jsapi"></script>
     		<script type="text/javascript">
 				google.load("visualization", "1", {packages:["corechart"]});
@@ -41,7 +38,9 @@ $js_array = $db->readTemp();
 			</script>
     	</head>
 		<body>
-           	<input class="center" type="text" id="datepicker" data-provide="datepicker" placeholder="Click to choose a date..." />
+			<div>
+           		<input type="text" id="datepicker" data-provide="datepicker" placeholder="Click to choose a date..." />
+			</div>
 			<br />
 			<div id="chart_div" style="width: 90%; height: 500px; margin: auto; border: 2px black solid;"></div>
 		</body>
