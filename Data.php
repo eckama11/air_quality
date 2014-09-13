@@ -38,8 +38,10 @@ $js_array = $db->readTemp();
 			</script>
     	</head>
 		<body>
-			<div class="col-md-2 col-md-offset-5">
-           		<input type="text" id="datepicker" data-provide="datepicker" placeholder="Click to choose a date..." />
+			<div class="row">
+				<div class="col-md-2 col-md-offset-5">
+           			<input type="text" id="datepicker" data-provide="datepicker" placeholder="Click to choose a date..." />
+				</div>
 			</div>
 			<br />
 			<div id="chart_div" style="width: 90%; height: 500px; margin: auto; border: 2px black solid;"></div>
