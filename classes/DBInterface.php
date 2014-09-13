@@ -86,10 +86,9 @@ class DBInterface {
 				"FROM user ".
 				"WHERE username=:username "
 				);
-			//throw new Exception("hashing1");
-			$sth->bindParam(':username', $username);
-			//throw new Exception("hashing2");
-			$sth->execute();
+			$sth->execute(Array(
+                ':username' => $username
+            ));
 			//throw new Exception("hashing3");
 			$user = $sth->fetch(PDO::FETCH_OBJ);
 			//throw new Exception("hashing4");
