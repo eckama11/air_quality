@@ -22,7 +22,7 @@ $salt = sprintf("$2a$%02d$", $cost) . $salt;
 $password = crypt($hash, $salt);
 
 $sql = 'UPDATE user SET password=:password WHERE username="eckama" AND username="areis"';
-$stmtUpdate = $this->dbh->prepare($sql);
+$stmtUpdate = $con->prepare($sql);
 	
 $params = Array(
 	':password' => $password,
