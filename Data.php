@@ -75,9 +75,9 @@ $js_array = $db->readTemp();
 			?>
 			</table>
 			-->
-			
-            <div style="width: 30%; margin: auto;">
-            	<input data-provide="datepicker" data-date-autoclose="true" data-date-today-btn="true" data-date-today-highlight="true" class="form-control" type="text" name="startDate" id="startDate" placeholder="Pick date to chart" />
+			<div class="input-append date" id="dp3" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+           		<input class="span2" size="16" type="text" value="12-02-2012">
+           		<span class="add-on"><i class="icon-th"></i></span>
 			</div>
 			<br />
 			<div id="chart_div" style="width: 90%; height: 500px; margin: auto; border: 2px black solid;"></div>
