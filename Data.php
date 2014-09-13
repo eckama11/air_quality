@@ -41,7 +41,7 @@ $js_array = $db->readTemp();
 			</script>
     	</head>
 		<body>
-           	<input class="span2" size="16" type="text" id="datepicker" data-provide="datepicker" value="12-02-2012" />
+           	<input class="span3 center" type="text" id="datepicker" data-provide="datepicker" placeholder="Click to choose a date..." />
 			<br />
 			<div id="chart_div" style="width: 90%; height: 500px; margin: auto; border: 2px black solid;"></div>
 		</body>
