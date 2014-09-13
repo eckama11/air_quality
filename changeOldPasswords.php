@@ -24,9 +24,8 @@ $password = crypt($hash, $salt);
 $sql = 'UPDATE user SET password=:password WHERE username="eckama" AND username="areis"';
 $stmtUpdate = $con->prepare($sql);
 	
-$params = Array(
-	':password' => $password,
-);
+$stmtUpdate->bindParam(':password', $password);
+
 $success = $stmtUpdate->execute($params);
 if ($success) {
 	echo "passwords changed";
