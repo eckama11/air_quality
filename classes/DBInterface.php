@@ -79,20 +79,25 @@ class DBInterface {
         // Authenticate the User based on username/password
         static $loginStmt;
         static $insertStmt;
+        static $checkPassword;
         if (is_null($loginStmt)) {
-        	$hash = '$2y$07$BCryptRequires22Chrcte/VlQH0piJtjXl.0t1XkA8pw9dMXTpOq';
-
-			if (password_verify($password, $hash)) {
-				$loginStmt = $this->dbh->prepare(
+        //password_verify($currentPassword, $password in database)
+        $checkPassword = this->dbh->prepare(
+        	"Select password ".
+        		"FROM user ".
+        		"WHERE username=:username"
+        );
+        $success = $checkPassword->execute(Array(
+                ':username' => $username
+            ));
+        $hash= $checkPassword->fetchObject()->password;  
+            $loginStmt = $this->dbh->prepare(
                   "SELECT id ".
                     "FROM user ".
-                    "WHERE username=:username "
+                    "WHERE username=:username ".
+                        "AND password=$hash"
                 );
-                $row = $loginStmt->fetchObject();
-			} else {
-				throw new Exception("Unable to authenticate User, incorrect username or password");
-			}
-            
+
             $insertStmt = $this->dbh->prepare(
                     "INSERT INTO loginSession ( ".
                             "sessionId, authenticatedUser ".
@@ -102,13 +107,17 @@ class DBInterface {
                 );
         }
 
+
         $success = $loginStmt->execute(Array(
-                ':username' => $username
+                ':username' => $username,
+                ':password' => $password
             ));
         if ($success === false)
             throw new Exception($this->formatErrorMessage($loginStmt, "Unable to query database to authenticate User"));
 
-        
+        $row = $loginStmt->fetchObject();
+        if (!$row)
+            throw new Exception("Unable to authenticate User, incorrect username or password");
 
         $authenticatedUser = $row->id;
 
