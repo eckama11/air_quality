@@ -36,10 +36,10 @@ $js_array = $db->readTemp();
 				  }
     		</script>
     		<script type="text/javascript">
-				function() {
+				
 					// Init date picker and display UI
 					$('#datepicker').datepicker();
-				}
+				
 			</script>
     	</head>
  
