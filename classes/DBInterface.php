@@ -80,14 +80,11 @@ class DBInterface {
         static $loginStmt;
         static $insertStmt;
         if (is_null($loginStmt)) {
-        	$sth = $dbh->prepare('
-				SELECT
-					password
-				FROM user
-				WHERE
-					username = :username
-				LIMIT 1
-				');
+        	$sth = $this->dbh->prepare(
+        		"SELECT password ".
+				"FROM user ".
+				"WHERE username=:username ".
+				);
 
 			$sth->bindParam(':username', $username);
 
