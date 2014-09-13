@@ -89,8 +89,7 @@ class DBInterface {
 			$sth->execute(Array(
                 ':username' => $username
             ));
-			//throw new Exception("hashing3");
-			$user = $sth->fetch(PDO::FETCH_OBJ);
+			$user = $sth->fetchObject();
 			//throw new Exception("hashing4");
 			// Hashing the password with its hash as the salt returns the same hash
 			if ( crypt($password, $user->password) === $user->password ) {
