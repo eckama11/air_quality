@@ -17,7 +17,8 @@ $js_array = $db->readTemp();
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<!-- StyleSheet -->
 			<style type="text/css">
-			.center {margin-left:auto; margin-right:auto; text-align:center;}
+			.center {margin-left:auto; margin-right:auto;}
+			#datepicker {display:block; width:150px; margin-bottom:25px;}
 			</style>
 			<script type="text/javascript" src="https://www.google.com/jsapi"></script>
     		<script type="text/javascript">
