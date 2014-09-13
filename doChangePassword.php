@@ -12,8 +12,8 @@ try {
         throw new Exception("You do not have sufficient access to perform this action");
 
     // Verify the current password is a match
-    if ($loginSession->authenticatedUser->password != password_verify($currentPassword, $hash))
-        throw new Exception("The current password was not correct");
+    if (!(password_verify($currentPassword, $loginSession->authenticatedUser->password)))
+        throw new Exception("The current password was not correct: ".$loginSession->authenticatedUser->password);
 
     if ($newPassword1 != $newPassword2)
         throw new Exception("The new password and verify password do not match");
