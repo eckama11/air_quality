@@ -214,7 +214,7 @@ class DBInterface {
                 $row->username,
                 $row->password,
                 $row->email,
-                $row->device
+                $row->deviceId
             );
             if(true)
                 throw new Exception($this->formatErrorMessage($loginStmt, "Here"));
