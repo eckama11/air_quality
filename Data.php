@@ -38,7 +38,7 @@ $js_array = $db->readTemp();
 			</script>
     	</head>
 		<body>
-    		<input type="text" style="width: 30%; margin-left: auto; margin-right: auto; border: 2px black solid;" id="datepicker" data-provide="datepicker" placeholder="Click to choose a date..." />
+    		<input type="text" style="display: block; width: 30%; margin-left: auto; margin-right: auto; border: 2px black solid;" id="datepicker" data-provide="datepicker" placeholder="Click to choose a date..." />
 			<br />
 			<div id="chart_div" style="width: 90%; height: 500px; margin: auto; border: 2px black solid;"></div>
 		</body>
