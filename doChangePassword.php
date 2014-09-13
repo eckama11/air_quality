@@ -21,9 +21,9 @@ try {
     // Perform password strength checking
     if (strlen($newPassword1) < 8)
         throw new Exception("The new password must be at least 8 characters long");
-
+	$password = password_hash($newPassword1, PASSWORD_DEFAULT)
     // Update the user
-    $loginSession->authenticatedUser->password = $newPassword1;
+    $loginSession->authenticatedUser->password = $password;
     
     $db->updateUser($loginSession->authenticatedUser);
 
