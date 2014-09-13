@@ -82,7 +82,7 @@ class DBInterface {
         if (is_null($loginStmt)) {
         	$sth = $dbh->prepare('
 				SELECT
-					hash
+					password
 				FROM users
 				WHERE
 					username = :username
