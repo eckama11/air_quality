@@ -80,12 +80,30 @@ class DBInterface {
         static $loginStmt;
         static $insertStmt;
         if (is_null($loginStmt)) {
-            $loginStmt = $this->dbh->prepare(
+        	$sth = $dbh->prepare('
+				SELECT
+					hash
+				FROM users
+				WHERE
+					username = :username
+				LIMIT 1
+				');
+
+			$sth->bindParam(':username', $username);
+
+			$sth->execute();
+
+			$user = $sth->fetch(PDO::FETCH_OBJ);
+
+			// Hashing the password with its hash as the salt returns the same hash
+			if ( crypt($password, $user->hash) === $user->hash ) {
+				$loginStmt = $this->dbh->prepare(
                   "SELECT id ".
                     "FROM user ".
                     "WHERE username=:username ".
                         "AND password=:password "
                 );
+			}
 
             $insertStmt = $this->dbh->prepare(
                     "INSERT INTO loginSession ( ".
