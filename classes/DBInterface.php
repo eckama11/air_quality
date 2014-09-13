@@ -83,7 +83,7 @@ class DBInterface {
         	$sth = $this->dbh->prepare(
         		"SELECT password ".
 				"FROM user ".
-				"WHERE username=:username ".
+				"WHERE username=:username "
 				);
 
 			$sth->bindParam(':username', $username);
