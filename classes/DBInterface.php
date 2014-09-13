@@ -109,8 +109,7 @@ class DBInterface {
 
 
         $success = $loginStmt->execute(Array(
-                ':username' => $username,
-                ':password' => $password
+                ':username' => $username
             ));
         if ($success === false)
             throw new Exception($this->formatErrorMessage($loginStmt, "Unable to query database to authenticate User"));
