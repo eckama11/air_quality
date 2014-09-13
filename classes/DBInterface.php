@@ -83,7 +83,7 @@ class DBInterface {
         	$sth = $dbh->prepare('
 				SELECT
 					password
-				FROM users
+				FROM user
 				WHERE
 					username = :username
 				LIMIT 1
