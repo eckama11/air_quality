@@ -20,8 +20,8 @@ function __autoload( $class ) {
 	require_once( CLASSES_DIR . str_replace("\\", "/", $class) .'.php' );
 } // __autoload( $class )
 
-
-$db = new DBInterface("localhost", "air_quality", "air_quality", "air_quality");
+require_once("creds.php");
+$db = new DBInterface("localhost", $dbName, $dbUsername, $dbPassword);
 
 
 /**
