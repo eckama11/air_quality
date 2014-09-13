@@ -77,7 +77,7 @@ $js_array = $db->readTemp();
 			-->
 			
             <div style="width: 30%; margin: auto;">
-            	<input data-provide="datepicker" data-date-autoclose="true" data-date-today-btn="true" data-date-today-highlight="true" class="form-control" type="text" name="startDate" id="startDate" placeholder="Enter employment start date" />
+            	<input data-provide="datepicker" data-date-autoclose="true" data-date-today-btn="true" data-date-today-highlight="true" class="form-control" type="text" name="startDate" id="startDate" placeholder="Pick date to chart" />
 			</div>
 			<br />
 			<div id="chart_div" style="width: 90%; height: 500px; margin: auto; border: 2px black solid;"></div>
