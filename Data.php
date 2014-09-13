@@ -38,7 +38,7 @@ $js_array = $db->readTemp();
 			</script>
     	</head>
 		<body>
-			<div class="input-group pager">
+			<div class="col-md-2 col-md-offset-5">
            		<input type="text" id="datepicker" data-provide="datepicker" placeholder="Click to choose a date..." />
 			</div>
 			<br />
