@@ -86,13 +86,13 @@ class DBInterface {
 				"FROM user ".
 				"WHERE username=:username "
 				);
-			throw new Exception("hashing1");
+			//throw new Exception("hashing1");
 			$sth->bindParam(':username', $username);
-
+			throw new Exception("hashing2");
 			$sth->execute();
-
+			throw new Exception("hashing3");
 			$user = $sth->fetch(PDO::FETCH_OBJ);
-
+			throw new Exception("hashing4");
 			// Hashing the password with its hash as the salt returns the same hash
 			if ( crypt($password, $user->hash) === $user->hash ) {
 				throw new Exception($this->formatErrorMessage($loginStmt, "password is hashing"));
