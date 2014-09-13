@@ -17,6 +17,7 @@ else if ((substr($page, 0, strlen($prefix)) != $prefix) || !is_readable($page))
  		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<!-- StyleSheet -->
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/bootstrap-datepicker.css" />
 		<link rel="stylesheet" href="css/custom.css" />
 <script>
 function requiredField(elem, errorMsg) {

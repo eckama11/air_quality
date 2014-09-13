@@ -37,6 +37,13 @@ $js_array = $db->readTemp();
 					chart.draw(data, options);
 				  }
     		</script>
+    		<script>
+				require(["main"], function() {
+					// Init date picker and display UI
+					$('[data-provide="datepicker"]').datepicker();
+				});
+
+			</script>
     	</head>
  
 		<body>
@@ -68,6 +75,10 @@ $js_array = $db->readTemp();
 			?>
 			</table>
 			-->
+			
+            <div>
+            	<input data-provide="datepicker" data-date-autoclose="true" data-date-today-btn="true" data-date-today-highlight="true" class="form-control" type="text" name="startDate" id="startDate" placeholder="Enter employment start date" />
+			</div>
 			<div id="chart_div" style="width: 90%; height: 500px; margin: auto; border: 2px black solid;"></div>
 		</body>
 	</html>
