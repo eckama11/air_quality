@@ -37,6 +37,7 @@ if (array_key_exists(session_name(), $_COOKIE)) {
     		session_destroy();   // destroy session data in storage
     		$db->destroyLoginSession($loginSession);
     		unset($loginSession);
+    		header("Location: ". BASE_URL ."page.php/doLogin");
 		}
 		else {
 			$_SESSION['LAST_ACTIVITY'] = time();
