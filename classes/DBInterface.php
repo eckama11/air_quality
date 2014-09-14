@@ -451,7 +451,7 @@ class DBInterface {
      // WILL NEED TO TAKE IN DATE TO SHOW now it shows current date
     public function readTemp( $device ) {
         static $stmt;
-        static $deviceId = $device;
+        $deviceId = $device;
         if ($stmt == null)
         	$sql = "SELECT DATE_FORMAT(timeInfo,'%r') as 'timeInfo', temperature FROM sensors WHERE DATE(timeInfo) = DATE(NOW()) ".
         	"AND impId='$deviceId'";
@@ -481,7 +481,7 @@ class DBInterface {
      // WILL NEED TO TAKE IN DATE TO SHOW now it shows current date
     public function readHumidity( $device ) {
         static $stmt;
-        static $deviceId = $device;
+        $deviceId = $device;
         if ($stmt == null)
         	$sql = "SELECT DATE_FORMAT(timeInfo,'%H:%i:%s') as 'timeInfo', humidity FROM sensors WHERE DATE(timeInfo) = DATE(NOW()) ".
             "AND impId='$deviceId'";
