@@ -30,20 +30,6 @@ $db = new DBInterface("localhost", $dbName, $dbUsername, $dbPassword);
 if (array_key_exists(session_name(), $_COOKIE)) {
     try {
         session_start();
-        //$_SESSION['LAST_ACTIVITY'] = time();
-		if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 10)) {
-    		// last request was more than 30 minutes ago
-    		session_unset();     // unset $_SESSION variable for the run-time 
-    		session_destroy();   // destroy session data in storage
-    		$db->destroyLoginSession($loginSession);
-    		unset($loginSession);
-    		header("Location: ". BASE_URL ."page.php/doLogin");
-		}
-		else {
-			$_SESSION['LAST_ACTIVITY'] = time();
-		} 
-         
-        echo rand();
         $loginSession = $db->readLoginSession($_COOKIE[session_name()]);
     } catch (Exception $ex) {
         // Unable to restore session for some reason
