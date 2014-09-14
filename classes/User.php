@@ -67,14 +67,14 @@ class User
 		$this->_email = $newEmail;
 	} //setEmail
 
-	protected function getDevice() {
+	protected function getDeviceId() {
         return $this->_deviceId;
     } // getDevice
     
-	protected function setDevice($newDevice) {
-		if (empty($newDevice))
+	protected function setDeviceId($newDeviceId) {
+		if (empty($newDeviceId))
 			throw new Exception("Device cannot be empty string");
-		$this->_deviceId = $newDevice;
+		$this->_deviceId = $newDeviceId;
 	} //setEmail
 	
     public function __toString() {
