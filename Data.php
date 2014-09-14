@@ -6,7 +6,7 @@ require_once("common.php");
 //$sensor = $db->readSensors();
 $device = $loginSession->authenticatedUser->deviceId;
 $js_array = $db->readTemp($device);
-//echo count($js_array);
+$readingCount = count($js_array);
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -43,7 +43,10 @@ $js_array = $db->readTemp($device);
     		data-provide="datepicker" data-date-format="yyyy-mm-dd" placeholder="Click to choose a date..." />
   			
     		<br />
-			<div id="chart_div" style="width: 90%; height: 500px; margin: auto; border: 2px black solid;"></div>
+    		<?php if($readingCount > 1) : ?>
+    			<div id="chart_div" style="width: 90%; height: 500px; margin: auto; border: 2px black solid;"></div>
+			<?php endif; ?>
+			
 		</body>
 	</html>
 	
