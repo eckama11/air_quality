@@ -483,7 +483,7 @@ class DBInterface {
         static $stmt;
         $deviceId = $device;
         if ($stmt == null)
-        	$sql = "SELECT DATE_FORMAT(timeInfo,'%H:%i:%s') as 'timeInfo', humidity FROM sensors WHERE DATE(timeInfo) = DATE(NOW()) ".
+        	$sql = "SELECT DATE_FORMAT(timeInfo,'%r') as 'timeInfo', humidity FROM sensors WHERE DATE(timeInfo) = DATE(NOW()) ".
             "AND impId='$deviceId'";
             $stmt = $this->dbh->prepare($sql);
              
@@ -491,7 +491,8 @@ class DBInterface {
         if ($success === false)
             throw new Exception($this->formatErrorMessage($stmt, "Unable to query database for humidity Reading records"));
 
-        $rv = Array('Time', 'Humidity');
+        $rv = Array();
+        $rv[] = array('Time', 'Humidity');
         while ($row = $stmt->fetchObject()) {
             $rv[] = array(
             		$row->timeInfo,
