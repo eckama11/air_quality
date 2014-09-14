@@ -3,9 +3,9 @@ require_once("common.php");
     if (!isset($loginSession))
         doUnauthenticatedRedirect();
         
-$sensor = $db->readSensors();
-
-$js_array = $db->readTemp();
+//$sensor = $db->readSensors();
+$device = $loginSession->authenticatedUser->deviceId;
+$js_array = $db->readTemp($device);
 
 ?>
 

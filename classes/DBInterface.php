@@ -449,10 +449,10 @@ class DBInterface {
      */
      // THIS WILL NEED TO TAKE IN A SENSOR or USER TO OUTPUT JUST ONE SENSOR'S DATA or USER'S DATA
      // WILL NEED TO TAKE IN DATE TO SHOW now it shows current date
-    public function readTemp() {
+    public function readTemp( $device ) {
         static $stmt;
         if ($stmt == null)
-        	$sql = "SELECT DATE_FORMAT(timeInfo,'%r') as 'timeInfo', temperature FROM sensors WHERE DATE(timeInfo) = DATE(NOW())";
+        	$sql = "SELECT DATE_FORMAT(timeInfo,'%r') as 'timeInfo', temperature FROM sensors WHERE DATE(timeInfo) = DATE(NOW()) AND deviceId='$device'";
             $stmt = $this->dbh->prepare($sql);
              
 		$success = $stmt->execute(Array( ));
