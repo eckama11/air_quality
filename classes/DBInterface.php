@@ -496,7 +496,7 @@ class DBInterface {
         while ($row = $stmt->fetchObject()) {
             $rv[] = array(
             		$row->timeInfo,
-					$row->humidity
+					(double)$row->humidity
                 );
         } // while
 
