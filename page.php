@@ -9,11 +9,7 @@ if (!isset($loginSession))
 else if ((substr($page, 0, strlen($prefix)) != $prefix) || !is_readable($page))
     doUnauthorizedRedirect();
     
-if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 10)) {
-    // last request was more than 30 minutes ago
-    session_unset();     // unset $_SESSION variable for the run-time 
-    session_destroy();   // destroy session data in storage
-}
+
 $_SESSION['LAST_ACTIVITY'] = time();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
