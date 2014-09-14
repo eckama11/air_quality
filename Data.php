@@ -2,15 +2,7 @@
 require_once("common.php");
     if (!isset($loginSession))
         doUnauthenticatedRedirect();
-//$_SESSION['LAST_ACTIVITY'] = time();
-if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 10)) {
-    // last request was more than 30 minutes ago
-    session_unset();     // unset $_SESSION variable for the run-time 
-    session_destroy();   // destroy session data in storage
-}
-else {
-echo $_SESSION['LAST_ACTIVITY'];
-}        
+       
 //$sensor = $db->readSensors();
 $device = $loginSession->authenticatedUser->deviceId;
 $js_array = $db->readTemp($device);
