@@ -30,6 +30,7 @@ $db = new DBInterface("localhost", $dbName, $dbUsername, $dbPassword);
 if (array_key_exists(session_name(), $_COOKIE)) {
     try {
         session_start();
+        $_SESSION['LAST_ACTIVITY'] = time(); 
         $loginSession = $db->readLoginSession($_COOKIE[session_name()]);
     } catch (Exception $ex) {
         // Unable to restore session for some reason
