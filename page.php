@@ -19,29 +19,30 @@ else if ((substr($page, 0, strlen($prefix)) != $prefix) || !is_readable($page))
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" href="css/bootstrap-datepicker.css" />
 		<link rel="stylesheet" href="css/custom.css" />
-<script>
-function requiredField(elem, errorMsg) {
-    var rv = elem.val();
-    if (rv == "") {
-        elem.tooltip("destroy")
-            .addClass("error")
-            .data("title", errorMsg)
-            .tooltip();
-    } else {
-        elem.tooltip("destroy")
-            .removeClass("error")
-            .data("title", "");
-    }
-    return rv;
-}
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+		<script>
+			function requiredField(elem, errorMsg) {
+				var rv = elem.val();
+				if (rv == "") {
+					elem.tooltip("destroy")
+						.addClass("error")
+						.data("title", errorMsg)
+						.tooltip();
+				} else {
+					elem.tooltip("destroy")
+						.removeClass("error")
+						.data("title", "");
+				}
+				return rv;
+			}
 
-function showError(message) {
-    $("#message").text(message);
-    var messageAlert = $("#messageAlert");
-    messageAlert.css("z-index", "30000");
-    messageAlert.show().delay(3000).fadeOut("slow");
-}
-</script>
+			function showError(message) {
+				$("#message").text(message);
+				var messageAlert = $("#messageAlert");
+				messageAlert.css("z-index", "30000");
+				messageAlert.show().delay(3000).fadeOut("slow");
+			}
+		</script>
 	</head>
  
 	<body>

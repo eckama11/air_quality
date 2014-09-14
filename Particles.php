@@ -14,9 +14,9 @@ $readingCount = count($js_array);
 			<base href="<?php echo htmlentities(BASE_URL); ?>">
 			<title>Readings</title>
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<!-- StyleSheet -->
+			<!-- StyleSheet 
 			
-			<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+			<script type="text/javascript" src="https://www.google.com/jsapi"></script>-->
     		<script type="text/javascript">
 				google.load("visualization", "1", {packages:["corechart"]});
 				google.setOnLoadCallback(drawChart);
