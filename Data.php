@@ -45,6 +45,8 @@ $readingCount = count($js_array);
     		<br />
     		<?php if($readingCount > 1) : ?>
     			<div id="chart_div" style="width: 90%; height: 500px; margin: auto; border: 2px black solid;"></div>
+			<?php else : ?>
+				<div class="alert alert-danger" role="alert">There is no data for this day :(</div>
 			<?php endif; ?>
 			
 		</body>
