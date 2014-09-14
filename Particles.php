@@ -5,7 +5,7 @@ require_once("common.php");
         
 //$sensor = $db->readSensors();
 $device = $loginSession->authenticatedUser->deviceId;
-$js_array = $db->readHumidity($device);
+$js_array = $db->readParticles($device);
 //echo count($js_array);
 ?>
 
@@ -25,7 +25,7 @@ $js_array = $db->readHumidity($device);
 					var data = google.visualization.arrayToDataTable(<?= json_encode($js_array); ?>);
 
 					var options = {
-					  title: 'Humidity Readings'
+					  title: 'Particle Readings'
 					};
 
 					var chart = new google.visualization.LineChart(document.getElementById('chart_div'));

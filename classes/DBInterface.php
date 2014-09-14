@@ -505,11 +505,41 @@ class DBInterface {
     
     /**
      * Reads a list of all Sensor Readings from the database.
+     * @return  Array[Times, Particles] Array of times and temperatures read from today.
+     */
+     // THIS WILL NEED TO TAKE IN A SENSOR or USER TO OUTPUT JUST ONE SENSOR'S DATA or USER'S DATA
+     // WILL NEED TO TAKE IN DATE TO SHOW now it shows current date
+     public function readParticles( $device ) {
+        static $stmt;
+        $deviceId = $device;
+        if ($stmt == null)
+        	$sql = "SELECT DATE_FORMAT(timeInfo,'%r') as 'timeInfo', particles FROM sensors WHERE DATE(timeInfo) = DATE(NOW()) ".
+        	"AND impId='$deviceId'";
+            $stmt = $this->dbh->prepare($sql);
+             
+		$success = $stmt->execute(Array( ));
+        if ($success === false)
+            throw new Exception($this->formatErrorMessage($stmt, "Unable to query database for particle Reading records"));
+
+        $rv = Array();
+        $rv[] = array('Time', 'Particles');
+        while ($row = $stmt->fetchObject()) {
+            $rv[] = array(
+            		$row->timeInfo,
+					(double)$row->particles
+                );
+        } // while
+
+        return $rv;
+    } // readParticles
+    
+    /**
+     * Reads a list of all Sensor Readings from the database.
      * @return  Array[Times, Pressure] Array of times and temperatures read from today.
      */
      // THIS WILL NEED TO TAKE IN A SENSOR or USER TO OUTPUT JUST ONE SENSOR'S DATA or USER'S DATA
      // WILL NEED TO TAKE IN DATE TO SHOW now it shows current date
-    public function readPressure() {
+    public function readPressure( $device ) {
         static $stmt;
         if ($stmt == null)
         	$sql = "SELECT DATE_FORMAT(timeInfo,'%H:%i:%s') as 'timeInfo', pressure FROM sensors WHERE DATE(timeInfo) = DATE(NOW())";
@@ -529,60 +559,6 @@ class DBInterface {
 
         return $rv;
     } // readPressure
-    
-    /**
-     * Reads a list of all Sensor Readings from the database.
-     * @return  Array[Times, Altitude] Array of times and temperatures read from today.
-     */
-     // THIS WILL NEED TO TAKE IN A SENSOR or USER TO OUTPUT JUST ONE SENSOR'S DATA or USER'S DATA
-     // WILL NEED TO TAKE IN DATE TO SHOW now it shows current date
-     public function readAltitude() {
-        static $stmt;
-        if ($stmt == null)
-        	$sql = "SELECT DATE_FORMAT(timeInfo,'%H:%i:%s') as 'timeInfo', altitude FROM sensors WHERE DATE(timeInfo) = DATE(NOW())";
-            $stmt = $this->dbh->prepare($sql);
-             
-		$success = $stmt->execute(Array( ));
-        if ($success === false)
-            throw new Exception($this->formatErrorMessage($stmt, "Unable to query database for Altitude Reading records"));
-
-        $rv = Array();
-        while ($row = $stmt->fetchObject()) {
-            $rv[] = new Reading(
-            		$row->timeInfo,
-					$row->altitude
-                );
-        } // while
-
-        return $rv;
-    } // readAltitude
-    
-    /**
-     * Reads a list of all Sensor Readings from the database.
-     * @return  Array[Times, Particles] Array of times and temperatures read from today.
-     */
-     // THIS WILL NEED TO TAKE IN A SENSOR or USER TO OUTPUT JUST ONE SENSOR'S DATA or USER'S DATA
-     // WILL NEED TO TAKE IN DATE TO SHOW now it shows current date
-     public function readParticles() {
-        static $stmt;
-        if ($stmt == null)
-        	$sql = "SELECT DATE_FORMAT(timeInfo,'%H:%i:%s') as 'timeInfo', particles FROM sensors WHERE DATE(timeInfo) = DATE(NOW())";
-            $stmt = $this->dbh->prepare($sql);
-             
-		$success = $stmt->execute(Array( ));
-        if ($success === false)
-            throw new Exception($this->formatErrorMessage($stmt, "Unable to query database for particle Reading records"));
-
-        $rv = Array();
-        while ($row = $stmt->fetchObject()) {
-            $rv[] = new Reading(
-            		$row->timeInfo,
-					$row->particles
-                );
-        } // while
-
-        return $rv;
-    } // readAltitude
     
     /**
      * Reads a list of all Sensor Readings from the database.
