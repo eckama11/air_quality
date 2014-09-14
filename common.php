@@ -31,6 +31,7 @@ if (array_key_exists(session_name(), $_COOKIE)) {
     try {
         session_start();
         $_SESSION['LAST_ACTIVITY'] = time(); 
+        echo "This works";
         $loginSession = $db->readLoginSession($_COOKIE[session_name()]);
     } catch (Exception $ex) {
         // Unable to restore session for some reason

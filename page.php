@@ -8,9 +8,6 @@ if (!isset($loginSession))
     doUnauthenticatedRedirect();
 else if ((substr($page, 0, strlen($prefix)) != $prefix) || !is_readable($page))
     doUnauthorizedRedirect();
-    
-
-$_SESSION['LAST_ACTIVITY'] = time();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
