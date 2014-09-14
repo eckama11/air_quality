@@ -7,7 +7,7 @@ class User
     private $_username;
     private $_password;
     private $_email;
-    private $_device;
+    private $_deviceId;
 
     /**
      * Constructs a new User object.
@@ -16,10 +16,10 @@ class User
      * @param   string  $username
      * @param   string  $password
      * @param	string	$email
-     * @param	string	$device
+     * @param	string	$deviceId
      */
     public function __construct(
-            $id, $username, $password, $email, $device
+            $id, $username, $password, $email, $deviceId
         )
     {
         if (!is_numeric($id))
@@ -29,7 +29,7 @@ class User
         $this->_username = $username;
         $this->_password = $password;
         $this->_email = $email;
-        $this->_device = $device;
+        $this->_deviceId = $deviceId;
     } // __construct
     
     protected function getId() {
@@ -68,17 +68,17 @@ class User
 	} //setEmail
 
 	protected function getDevice() {
-        return $this->_device;
+        return $this->_deviceId;
     } // getDevice
     
 	protected function setDevice($newDevice) {
 		if (empty($newDevice))
 			throw new Exception("Device cannot be empty string");
-		$this->_device = $newDevice;
+		$this->_deviceId = $newDevice;
 	} //setEmail
 	
     public function __toString() {
-        return __CLASS__ ."(id=$this->id, username=$this->username, password=$this->password, email=$this->email, device=$this->device)";
+        return __CLASS__ ."(id=$this->id, username=$this->username, password=$this->password, email=$this->email, deviceId=$this->deviceId)";
     } // __toString
 
 } // class User
