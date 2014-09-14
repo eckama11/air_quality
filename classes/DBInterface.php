@@ -451,7 +451,7 @@ class DBInterface {
      // WILL NEED TO TAKE IN DATE TO SHOW now it shows current date
     public function readTemp( $device ) {
         static $stmt;
-        $deviceId = $device;
+        static $deviceId = $device;
         if ($stmt == null)
         	$sql = "SELECT DATE_FORMAT(timeInfo,'%r') as 'timeInfo', temperature FROM sensors WHERE DATE(timeInfo) = DATE(NOW()) ".
         	"AND impId='$deviceId'";
@@ -479,19 +479,21 @@ class DBInterface {
      */
      // THIS WILL NEED TO TAKE IN A SENSOR or USER TO OUTPUT JUST ONE SENSOR'S DATA or USER'S DATA
      // WILL NEED TO TAKE IN DATE TO SHOW now it shows current date
-    public function readHumidity() {
+    public function readHumidity( $device ) {
         static $stmt;
+        static $deviceId = $device;
         if ($stmt == null)
-        	$sql = "SELECT DATE_FORMAT(timeInfo,'%H:%i:%s') as 'timeInfo', humidity FROM sensors WHERE DATE(timeInfo) = DATE(NOW())";
+        	$sql = "SELECT DATE_FORMAT(timeInfo,'%H:%i:%s') as 'timeInfo', humidity FROM sensors WHERE DATE(timeInfo) = DATE(NOW()) ".
+            "AND impId='$deviceId'";
             $stmt = $this->dbh->prepare($sql);
              
 		$success = $stmt->execute(Array( ));
         if ($success === false)
             throw new Exception($this->formatErrorMessage($stmt, "Unable to query database for humidity Reading records"));
 
-        $rv = Array();
+        $rv = Array('Time', 'Humidity');
         while ($row = $stmt->fetchObject()) {
-            $rv[] = new Reading(
+            $rv[] = array(
             		$row->timeInfo,
 					$row->humidity
                 );

@@ -59,6 +59,7 @@ function showError(message) {
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Readings</a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="page.php/Data">Temperature</a></li>
+								<li><a href="page.php/Humidity">Humidity</a></li>
 							</ul>
 						</li>
 						<li><a href="page.php/Pass">Password Reset</a></li>
