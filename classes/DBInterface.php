@@ -534,15 +534,17 @@ class DBInterface {
     } // readParticles
     
     /**
-     * Reads a list of all Sensor Readings from the database.
-     * @return  Array[Times, Pressure] Array of times and temperatures read from today.
-     */
-     // THIS WILL NEED TO TAKE IN A SENSOR or USER TO OUTPUT JUST ONE SENSOR'S DATA or USER'S DATA
-     // WILL NEED TO TAKE IN DATE TO SHOW now it shows current date
+    * Reads a list of all Sensor Readings from the database.
+    * @return  Array[Times, Pressure] Array of times and temperatures read from today.
+    */
+    // THIS WILL NEED TO TAKE IN A SENSOR or USER TO OUTPUT JUST ONE SENSOR'S DATA or USER'S DATA
+    // WILL NEED TO TAKE IN DATE TO SHOW now it shows current date
     public function readPressure( $device ) {
         static $stmt;
+        $deviceId = $device;
         if ($stmt == null)
-        	$sql = "SELECT DATE_FORMAT(timeInfo,'%H:%i:%s') as 'timeInfo', pressure FROM sensors WHERE DATE(timeInfo) = DATE(NOW())";
+        	$sql = "SELECT DATE_FORMAT(timeInfo,'%r') as 'timeInfo', pressure FROM sensors WHERE DATE(timeInfo) = DATE(NOW()) ";
+            "AND impId='$deviceId'";
             $stmt = $this->dbh->prepare($sql);
              
 		$success = $stmt->execute(Array( ));
@@ -550,43 +552,15 @@ class DBInterface {
             throw new Exception($this->formatErrorMessage($stmt, "Unable to query database for pressure Reading records"));
 
         $rv = Array();
+        $rv[] = array('Time', 'Pressure');
         while ($row = $stmt->fetchObject()) {
-            $rv[] = new Reading(
+            $rv[] = array(
             		$row->timeInfo,
-					$row->pressure
+					(double)$row->pressure
                 );
         } // while
 
         return $rv;
     } // readPressure
-    
-    /**
-     * Reads a list of all Sensor Readings from the database.
-     * @return  Array[Times, Latitude, Longitude] Array of times and temperatures read from today.
-     //THIS WILL NEED A DIFFERENT CLASS THAN READING SINCE IT HAS 2 OUTPUTS
-     // THIS WILL NEED TO TAKE IN A SENSOR or USER TO OUTPUT JUST ONE SENSOR'S DATA or USER'S DATA
-     // WILL NEED TO TAKE IN DATE TO SHOW now it shows current date
-    public function readLatitudeLongitude() {
-        static $stmt;
-        if ($stmt == null)
-        	$sql = "SELECT DATE_FORMAT(timeInfo,'%H:%i:%s') as 'timeInfo', latitude, longitude FROM sensors WHERE DATE(timeInfo) = DATE(NOW())";
-            $stmt = $this->dbh->prepare($sql);
-             
-		$success = $stmt->execute(Array( ));
-        if ($success === false)
-            throw new Exception($this->formatErrorMessage($stmt, "Unable to query database for Reading records"));
-
-        $rv = Array();
-        while ($row = $stmt->fetchObject()) {
-            $rv[] = new Reading(
-            		$row->timeInfo,
-					$row->reading
-                );
-        } // while
-
-        return $rv;
-    } // readLatitudeLongitude
-    */
-    
-    
+      
 } // DBInterface

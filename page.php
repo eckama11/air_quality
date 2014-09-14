@@ -61,6 +61,7 @@ function showError(message) {
 								<li><a href="page.php/Data">Temperature</a></li>
 								<li><a href="page.php/Humidity">Humidity</a></li>
 								<li><a href="page.php/Particles">Particles</a></li>
+								<li><a href="page.php/Pressure">Pressure</a></li>
 							</ul>
 						</li>
 						<li><a href="page.php/Pass">Password Reset</a></li>
