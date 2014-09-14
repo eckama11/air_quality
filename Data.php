@@ -18,6 +18,14 @@ $readingCount = count($js_array);
 			<!-- StyleSheet -->
 			
 			<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+			<script type="text/javascript">
+				window.onresize = resize;
+
+				function resize()
+				{
+					window.location.reload();
+				}
+			</script>
     		<script type="text/javascript">
 				google.load("visualization", "1", {packages:["corechart"]});
 				google.setOnLoadCallback(drawChart);
