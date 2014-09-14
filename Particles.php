@@ -32,6 +32,14 @@ $readingCount = count($js_array);
 				  }
     		</script>
     		<script type="text/javascript">
+				window.onresize = resize;
+
+				function resize()
+				{
+					window.location.reload();
+				}
+			</script>
+    		<script type="text/javascript">
 				// Init date picker and display UI
 				$('#datepicker').datepicker();
 			</script>
