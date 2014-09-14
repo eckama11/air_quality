@@ -76,7 +76,7 @@ function showError(message) {
         </div>
 <?php	require_once($page); ?>
 		<!-- JavaScript -->
-		<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery1_11_1.js"></script>
 		<script type="text/javascript" src="js/bootstrap.js"></script>
 		<script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
 	</body>
