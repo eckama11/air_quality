@@ -127,7 +127,7 @@ function doLogin(form) {
 		</div>
 
 		<!-- JavaScript -->
-		<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+		<script src="js/jquery1_11_1.js"></script>
 		<script src="js/bootstrap.js"></script>
         <script>
             $('#username').focus();
