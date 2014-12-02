@@ -92,7 +92,7 @@ class DBInterface {
                 ':username' => $username
             ));
         $hash = $checkPassword->fetchObject()->password;
-        
+        }
         if(password_verify($password, $hash)){
         	//success
         	$loginStmt = $this->dbh->prepare(
@@ -145,7 +145,6 @@ class DBInterface {
 
         return $rv;
     } // createLoginSession
-    }
 
     /**
      * Removes a login session from the database.
