@@ -1,19 +1,22 @@
 <?php
-require_once("../creds.php");
-$db = new DBInterface("localhost", $dbName, $dbUsername, $dbPassword);
+require_once("creds.php");
+$conn = new mysqli("localhost", $dbUsername, $dbPassword, $dbName);
 
-$username = @$_POST['username'];
-$password = @$_POST['password'];
+$username = "eckama";//$_POST['username'];
+$password = "password";//$_POST['password'];
 
-try {
-    $session = $db->createLoginSession($username, $password);
-    session_id($session->sessionId);
-    session_start();
+$query = "SELECT password FROM user WHERE username = '$username'";
 
-    $rv = (Object)[ "redirect" => getLoginRedirect($session, $page) ];
-} catch (Exception $ex) {
-    $rv = (Object)[ "error" => $ex->getMessage() ];
+if (!$conn) 
+{
+	die('Connect Error ' . $conn->errno . ': ' . $conn->error);    
+} 
+
+else 
+{
+    if(password_verify($password, $conn->query($query) ) )
+    {
+    	echo "true";
+    }
 }
-
-header("Content-Type: application/json");
-echo json_encode($rv);
+//aslkdjf
