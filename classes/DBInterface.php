@@ -85,7 +85,7 @@ class DBInterface {
         $checkPassword = $this->dbh->prepare(
         	"SELECT password ".
         		"FROM user ".
-        		"WHERE username=:username"
+        		"WHERE username=:username AND password=:password"
         );
         $success = $checkPassword->execute(Array(
                 ':username' => $username
