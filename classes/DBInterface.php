@@ -128,12 +128,12 @@ class DBInterface {
 			else
 			{
 					//fail
-					throw new Exception($this->formatErrorMessage($loginStmt, "Unable to query database to authenticate Username"));
+					throw new Exception($this->formatErrorMessage("Username and password do not match. :("));
 			}     
     	} 
     	else 
     	{
-    		throw new Exception($this->formatErrorMessage($loginStmt, "Unable to query database to authenticate Username: Internal Error"));
+    		throw new Exception($this->formatErrorMessage("Unable to query database to authenticate Username: Internal Error"));
     	} 
         return $rv;
         
