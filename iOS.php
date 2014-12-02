@@ -1,5 +1,5 @@
 <?php
-require_once("creds.php");
+require_once("../creds.php");
 $db = new DBInterface("localhost", $dbName, $dbUsername, $dbPassword);
 
 $username = @$_POST['username'];
