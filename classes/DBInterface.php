@@ -142,7 +142,8 @@ class DBInterface {
         {
         	//fail
         	throw new Exception($this->formatErrorMessage($loginStmt, "Unable to query database to authenticate Username"));
-        }       
+        }     
+        }  
         return $rv;
 
     } // createLoginSession
