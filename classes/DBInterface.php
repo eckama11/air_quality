@@ -140,7 +140,6 @@ class DBInterface {
     		throw new Exception($this->formatErrorMessage($loginStmt, "Unable to query database to authenticate Username: Internal Error"));
     	} 
         return $rv;
-        //Request failed, unable to login: Int
 
     } // createLoginSession
 
