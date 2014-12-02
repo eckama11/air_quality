@@ -5,5 +5,5 @@
 ?>
 <div class="container padded">
 <p>Welcome, <?php echo htmlentities($loginSession->authenticatedUser->username); ?>!</p>
-<p>Please select an action from the menu at the top of the screen. :)</p>
+<p>Please select an action from the menu at the top of the screen. &amp;</p>
 </div>
