@@ -109,6 +109,10 @@ class DBInterface {
 							")"
 					);
 				
+				$success = $loginStmt->execute(Array(':username' => $username));
+				if (!$success)
+					throw new Exception($this->formatErrorMessage($loginStmt, "Unable to query database to authenticate User"));
+
 				$row = $loginStmt->fetchObject();
 				if (!$row)
 					throw new Exception("Unable to authenticate User, incorrect username or password");
@@ -136,7 +140,7 @@ class DBInterface {
     		throw new Exception($this->formatErrorMessage($loginStmt, "Unable to query database to authenticate Username: Internal Error"));
     	} 
         return $rv;
-        
+        //Request failed, unable to login: Int
 
     } // createLoginSession
 
