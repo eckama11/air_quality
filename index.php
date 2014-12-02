@@ -63,12 +63,12 @@ function doLogin(form) {
                 document.location.href = data.redirect;
         })
         .fail(function( jqXHR, textStatus, errorThrown ) {
-            console.log("Error: "+ textStatus +" (errorThrown="+ errorThrown +")");
+            console.log("Error: "+ textStatus +" (errorThrown=" + errorThrown + ")");
             console.log(jqXHR);
 
             $("#spinner").hide();
             $("#loginDiv").show();
-            showError("Request failed, unable to login: "+ errorThrown + password + username);
+            showError("Request failed, unable to login: " + errorThrown);
         })
     return false;
 } // doLogin
