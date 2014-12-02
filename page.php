@@ -46,7 +46,6 @@ else if ((substr($page, 0, strlen($prefix)) != $prefix) || !is_readable($page))
 	</head>
  
 	<body>
-	<h1>FUCK THIS SHIT</h1>
 		<div class="navbar navbar-inverse navbar-static-top">
 			<div class="container">
 				<a href="#" class="navbar-brand">Air Quality</a>
