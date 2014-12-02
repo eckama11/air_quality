@@ -68,7 +68,7 @@ function doLogin(form) {
 
             $("#spinner").hide();
             $("#loginDiv").show();
-            showError("Request failed, unable to login: " + errorThrown);
+            showError("Request failed; unable to login. Please make sure username and password are correct. " + errorThrown);
         })
     return false;
 } // doLogin
