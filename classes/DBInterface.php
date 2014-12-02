@@ -91,10 +91,6 @@ class DBInterface {
 			$success = $checkPassword->execute(Array(
 					':username' => $username
 				));
-			if (!$success) 
-			{
-				throw new Exception($this->formatErrorMessage($insertStmt, "Unable to query database"));
-			}
 			$hash = $checkPassword->fetchObject()->password;
         
 			if(password_verify($password, $hash)) {
@@ -132,12 +128,12 @@ class DBInterface {
 			else
 			{
 					//fail
-					throw new Exception($this->formatErrorMessage("Username and password do not match. :("));
+					throw new Exception($this->formatErrorMessage($loginStmt, "Unable to query database to authenticate Username"));
 			}     
     	} 
     	else 
     	{
-    		throw new Exception($this->formatErrorMessage("Unable to query database to authenticate Username: Internal Error"));
+    		throw new Exception($this->formatErrorMessage($loginStmt, "Unable to query database to authenticate Username: Internal Error"));
     	} 
         return $rv;
         
