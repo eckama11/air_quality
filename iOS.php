@@ -15,7 +15,8 @@ if (!$conn)
 
 else 
 {
-    if(password_verify($password, $conn->query($query)->fetch_field_direct(0) ) )
+	$result = $conn->query($query)->fetch_assoc();
+    if(password_verify($password, $result['password'] ) )
     {
     	echo "true";
     }
