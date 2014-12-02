@@ -1,4 +1,5 @@
 <?php
+
 require_once("creds.php");
 $conn = new mysqli("localhost", $dbUsername, $dbPassword, $dbName);
 
@@ -14,9 +15,13 @@ if (!$conn)
 
 else 
 {
-    if(password_verify($password, $conn->query($query) ) )
+    if(password_verify($password, $conn->query($query)->fetch_field_direct(0) ) )
     {
     	echo "true";
+    }
+    else
+    {
+    	echo "False";
     }
 }
 //aslkdjf
