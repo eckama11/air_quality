@@ -46,6 +46,7 @@ else if ((substr($page, 0, strlen($prefix)) != $prefix) || !is_readable($page))
 	</head>
  
 	<body>
+	<h1>FUCK THIS SHIT</h1>
 		<div class="navbar navbar-inverse navbar-static-top">
 			<div class="container">
 				<a href="#" class="navbar-brand">Air Quality</a>
@@ -73,7 +74,7 @@ else if ((substr($page, 0, strlen($prefix)) != $prefix) || !is_readable($page))
 		</div>
 
         <div id="messageAlert" class="alert alert-danger" style="display:none;position:fixed;left:20px;right:20px">
-            <span id="message"><h1>FUCK THIS SHIT</h1></span>
+            <span id="message"></span>
         </div>
 <?php require_once($page); ?>
 		<!-- JavaScript -->
