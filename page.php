@@ -75,7 +75,7 @@ else if ((substr($page, 0, strlen($prefix)) != $prefix) || !is_readable($page))
         <div id="messageAlert" class="alert alert-danger" style="display:none;position:fixed;left:20px;right:20px">
             <span id="message"></span>
         </div>
-<?php	require_once($page); ?>
+<?php	echo "FUCK THIS SHIT"; require_once($page); ?>
 		<!-- JavaScript -->
 		<script type="text/javascript" src="js/jquery1_11_1.js"></script>
 		<script type="text/javascript" src="js/bootstrap.js"></script>
