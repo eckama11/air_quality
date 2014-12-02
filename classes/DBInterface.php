@@ -82,20 +82,23 @@ class DBInterface {
         static $checkPassword;
         if (is_null($loginStmt)) {
         //password_verify($currentPassword, $password in database)
+        
         $checkPassword = $this->dbh->prepare(
         	"SELECT password ".
         		"FROM user ".
-        		"WHERE username=:username AND password=:password"
+        		"WHERE username=:username"
         );
         $success = $checkPassword->execute(Array(
                 ':username' => $username
             ));
-        $hash= $checkPassword->fetchObject()->password;  
-            $loginStmt = $this->dbh->prepare(
+        $hash = $checkPassword->fetchObject()->password;
+        
+        if(password_verify($password, $hash)){
+        	//success
+        	$loginStmt = $this->dbh->prepare(
                   "SELECT id ".
                     "FROM user ".
-                    "WHERE username=:username ".
-                        "AND password='$hash'"
+                    "WHERE username=:username "
                 );
 
             $insertStmt = $this->dbh->prepare(
@@ -105,10 +108,8 @@ class DBInterface {
                             ":sessionId, :authenticatedUser ".
                         ")"
                 );
-        }
-
-
-        $success = $loginStmt->execute(Array(
+                
+             $success = $loginStmt->execute(Array(
                 ':username' => $username
             ));
         if ($success === false)
@@ -132,8 +133,15 @@ class DBInterface {
                 ':sessionId' => $sessionId,
                 ':authenticatedUser' => $authenticatedUser
             ));
-        if (!$success)
-            throw new Exception($this->formatErrorMessage($insertStmt, "Unable to create session record in database"));
+			if (!$success) 
+			{
+				throw new Exception($this->formatErrorMessage($insertStmt, "Unable to create session record in database"));
+			}
+        else
+        {
+        	//fail
+        	throw new Exception($this->formatErrorMessage($loginStmt, "Unable to query database to authenticate Username"));
+        }       
 
         return $rv;
     } // createLoginSession
