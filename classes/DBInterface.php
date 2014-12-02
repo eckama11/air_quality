@@ -145,6 +145,7 @@ class DBInterface {
 
         return $rv;
     } // createLoginSession
+    }
 
     /**
      * Removes a login session from the database.
