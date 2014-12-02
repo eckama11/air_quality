@@ -81,70 +81,67 @@ class DBInterface {
         static $insertStmt;
         static $checkPassword;
         if (is_null($loginStmt)) {
-        //password_verify($currentPassword, $password in database)
+			//password_verify($currentPassword, $password in database)
+		
+			$checkPassword = $this->dbh->prepare(
+				"SELECT password ".
+					"FROM user ".
+					"WHERE username=:username"
+			);
+			$success = $checkPassword->execute(Array(
+					':username' => $username
+				));
+			$hash = $checkPassword->fetchObject()->password;
         
-        $checkPassword = $this->dbh->prepare(
-        	"SELECT password ".
-        		"FROM user ".
-        		"WHERE username=:username"
-        );
-        $success = $checkPassword->execute(Array(
-                ':username' => $username
-            ));
-        $hash = $checkPassword->fetchObject()->password;
-        
-        if(password_verify($password, $hash)){
-        	//success
-        	$loginStmt = $this->dbh->prepare(
-                  "SELECT id ".
-                    "FROM user ".
-                    "WHERE username=:username "
-                );
+			if(password_verify($password, $hash)) {
+				//success
+				$loginStmt = $this->dbh->prepare(
+					  "SELECT id ".
+						"FROM user ".
+						"WHERE username=:username "
+					);
 
-            $insertStmt = $this->dbh->prepare(
-                    "INSERT INTO loginSession ( ".
-                            "sessionId, authenticatedUser ".
-                        ") VALUES ( ".
-                            ":sessionId, :authenticatedUser ".
-                        ")"
-                );
-                
-             $success = $loginStmt->execute(Array(
-                ':username' => $username
-            ));
-        if (!$success)
-            throw new Exception($this->formatErrorMessage($loginStmt, "Unable to query database to authenticate User"));
+				$insertStmt = $this->dbh->prepare(
+						"INSERT INTO loginSession ( ".
+								"sessionId, authenticatedUser ".
+							") VALUES ( ".
+								":sessionId, :authenticatedUser ".
+							")"
+					);
+				
+				$success = $loginStmt->execute(Array(':username' => $username));
+				if (!$success)
+					throw new Exception($this->formatErrorMessage($loginStmt, "Unable to query database to authenticate User"));
 
-        $row = $loginStmt->fetchObject();
-        if (!$row)
-            throw new Exception("Unable to authenticate User, incorrect username or password");
+				$row = $loginStmt->fetchObject();
+			
+				if (!$row)
+					throw new Exception("Unable to authenticate User, incorrect username or password");
 
-        $authenticatedUser = $row->id;
+				$authenticatedUser = $row->id;
 
-        // Generate a new session ID
-        // This may be somewhat predictable, but should be strong enough for purposes of the demo
-        $sessionId = md5(uniqid(microtime()) . $_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT']);
-/*----------*/
-        $rv = new LoginSession( $sessionId, $this->readUser($authenticatedUser) );
-                //if(true)
-                //      throw new Exception($this->formatErrorMessage($loginStmt, "Here"));
-        // Create the loginSession record
-        $success = $insertStmt->execute(Array(
-                ':sessionId' => $sessionId,
-                ':authenticatedUser' => $authenticatedUser
-            ));
-			if (!$success) 
-			{
-				throw new Exception($this->formatErrorMessage($insertStmt, "Unable to create session record in database"));
+				// Generate a new session ID
+				// This may be somewhat predictable, but should be strong enough for purposes of the demo
+				$sessionId = md5(uniqid(microtime()) . $_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT']);
+				/*----------*/
+				$rv = new LoginSession( $sessionId, $this->readUser($authenticatedUser) );
+				// Create the loginSession record
+				$success = $insertStmt->execute(Array(':sessionId' => $sessionId, ':authenticatedUser' => $authenticatedUser));
+				if (!$success) 
+					throw new Exception($this->formatErrorMessage($insertStmt, "Unable to create session record in database"));
 			}
-		}
-        else
-        {
-        	//fail
-        	throw new Exception($this->formatErrorMessage($loginStmt, "Unable to query database to authenticate Username"));
-        }     
-        }  
+			else
+			{
+					//fail
+					throw new Exception($this->formatErrorMessage($loginStmt, "Unable to query database to authenticate Username"));
+			}     
+    	} 
+    	else 
+    	{
+    		throw new Exception($this->formatErrorMessage($loginStmt, "Unable to query database to authenticate Username: Internal Error"));
+    	} 
         return $rv;
+        //Request failed, unable to login: Int
 
     } // createLoginSession
 
