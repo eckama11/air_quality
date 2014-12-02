@@ -91,6 +91,10 @@ class DBInterface {
 			$success = $checkPassword->execute(Array(
 					':username' => $username
 				));
+			if (!$success) 
+			{
+				throw new Exception($this->formatErrorMessage($insertStmt, "Unable to query database"));
+			}
 			$hash = $checkPassword->fetchObject()->password;
         
 			if(password_verify($password, $hash)) {
