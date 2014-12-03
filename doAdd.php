@@ -27,10 +27,10 @@ try {
 	// id = 0 means no id given yet 
 	//will be used in DBInterface to make new id
 	$id = 0;
-		
+	$passwordHash = password_hash($password1, PASSWORD_DEFAULT);	
     // Create/update the user record
     $user1 = new User(
-                $id, $username, $password1, $email, $deviceId
+                $id, $username, $passwordHash, $email, $deviceId
             );        
             
     $user = $db->writeUser($user1);
