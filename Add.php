@@ -62,8 +62,8 @@ if (isset($loginSession))
 					"dataType" : "json"
 					})
 					.done(function(data) {
-            			$("#spinner").hide();
-						if (data.error != null) {
+            			if (data.error != null) {
+							$("#spinner").hide();
                 			showError(data.error);
                 			$("#content").show();
             			} else
@@ -73,12 +73,12 @@ if (isset($loginSession))
 						console.log("Error: "+ textStatus +" (errorThrown="+ errorThrown +")");
 						console.log(jqXHR);
 						$("#spinner").hide();
-						$("#loginDiv").show();
-						showError("Request failed, unable to login: "+ errorThrown);
+						$("#signUpDiv").show();
+						showError("Request failed, unable to add new user: "+ textStatus);
 					})
 				return false;
 			} // doLogin
-			</script>
+		</script>
 		</head>
  
 		<body>
@@ -113,7 +113,7 @@ if (isset($loginSession))
 					<div id="successDiv" style="padding:10px; outline:10px solid black; display:none">
         				You have been added. Go to login by clicking the Air Quality link on the top left.
     				</div>
-					<div id="loginDiv" class="col-md-3 col-md-offset-5" style="padding-bottom:10px; outline: 10px solid black;">
+					<div id="signUpDiv" class="col-md-3 col-md-offset-5" style="padding-bottom:10px; outline: 10px solid black;">
 						<form class="form-horizontal" method="post" onsubmit="return addUser(this)">
 							<fieldset>
 								<legend style="color:black;">Sign Up</legend>

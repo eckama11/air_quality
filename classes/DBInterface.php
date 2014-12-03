@@ -335,7 +335,7 @@ class DBInterface {
 
         $success = $stmt->execute($params);
 
-        if ($success)
+        if (!$success)
             throw new Exception($this->formatErrorMessage($stmt, "Unable to store user record in database"));
 
         if ($user->id == 0)
