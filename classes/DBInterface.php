@@ -311,7 +311,7 @@ class DBInterface {
                     "INSERT INTO user ( ".
                             "username, password, email, deviceId".
                         ") VALUES ( ".
-                            ":username, :password, :email, :device".
+                            ":username, :password, :email, :deviceId".
                         ")"
                 );
 
@@ -323,7 +323,7 @@ class DBInterface {
                         ':username' => $user->username,
                 ':password' => $user->password,
                 ':email' => $user->email,
-                ':device' => $user->device
+                ':deviceId' => $user->deviceId
             );
 
         if ($user->id == 0) {
@@ -348,7 +348,7 @@ class DBInterface {
                 $user->username,
                 $user->password,
                 $user->email,
-                $user->device
+                $user->deviceId
             );
     } // writeUser
 

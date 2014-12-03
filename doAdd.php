@@ -6,7 +6,7 @@ require_once("common.php");
 // check that username is not taken
 $username = @$_POST['username'];
 $email = @$_POST['email'];
-$device = @$_POST['device'];
+$deviceId = @$_POST['device'];
 $password1 = @$_POST['password1'];
 $password2 = @$_POST['password2'];
 
@@ -30,7 +30,7 @@ try {
 		
     // Create/update the user record
     $user1 = new User(
-                $id, $username, $password1, $email, $device
+                $id, $username, $password1, $email, $deviceId
             );        
             
     $user = $db->writeUser($user1);
