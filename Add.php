@@ -62,8 +62,8 @@ if (isset($loginSession))
 					"dataType" : "json"
 					})
 					.done(function(data) {
-            			if (data.error != null) {
-							$("#spinner").hide();
+            			$("#spinner").hide();
+						if (data.error != null) {
                 			showError(data.error);
                 			$("#content").show();
             			} else
@@ -74,10 +74,10 @@ if (isset($loginSession))
 						console.log(jqXHR);
 						$("#spinner").hide();
 						$("#signUpDiv").show();
-						showError("Request failed, unable to add new user: "+ textStatus);
+						showError("Request failed, unable to add new user: "+ errorThrown);
 					})
 				return false;
-			} // doLogin
+			} // addUser
 		</script>
 		</head>
  
