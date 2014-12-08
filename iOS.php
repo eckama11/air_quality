@@ -29,7 +29,7 @@ else
 			$stmt->execute();
 
 			/* bind result variables */
-			$stmt->bind_result($id);
+			$stmt->bind_result($deviceId);
 
 			/* fetch value */
 			$stmt->fetch();
@@ -41,7 +41,7 @@ else
 		/* close connection */
 		$mysqli->close();
 		
-		if ($id) 
+		if ($deviceId) 
 		{
 			echo '{"success":1}';
 		} 
