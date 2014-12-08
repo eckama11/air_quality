@@ -26,7 +26,7 @@ class LoginVC: UIViewController {
         var username:NSString = txtUsername.text
         var password:NSString = txtPassword.text
         var temperature:NSArray = NSArray();
-        var humidity:NSArray = NSArray();
+        var humidity:NSString = NSString();
         var pressure:NSArray = NSArray();
         var particles:NSArray = NSArray();
         
