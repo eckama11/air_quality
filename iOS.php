@@ -10,19 +10,19 @@ if (!$conn)
 
 else 
 {
-	$username = "eckama";//$conn->real_escape_string($_POST['username']);
-	$password = "password";//$conn->real_escape_string($_POST['password']);
+	$username = $conn->real_escape_string($_POST['username']);
+	$password = $conn->real_escape_string($_POST['password']);
 
 	$query = "SELECT password FROM user WHERE username = '$username'";
 	
 	$result = $conn->query($query)->fetch_assoc();
     if(password_verify($password, $result['password'] ) )
     {
-    	echo "true";
+    	echo '{"success":1}';
     }
     else
     {
-    	echo "False";
+    	echo '{"success":0,"error_message":"Username and password do not match."}';
     }
 }
 //aslkdjf
