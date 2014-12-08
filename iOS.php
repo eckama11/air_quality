@@ -18,7 +18,7 @@ else
 	$result = $conn->query($query)->fetch_assoc();
     if(password_verify($password, $result['password'] ) )
     {
-    	echo '{"success":1}';
+    	echo '{"success":1 "temp":2 "hum":3 "pres":4 "part":5}';
     }
     else
     {
