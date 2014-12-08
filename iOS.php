@@ -54,6 +54,6 @@ else
     }
     else
     {
-    	echo '{"success":0,"error_message":"Username and password do not match."}';
+    	echo '{"success":0,"error_message":"' . $password .'"}';
     }
 }
