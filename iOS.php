@@ -6,16 +6,14 @@ $conn = new mysqli("localhost", $dbUsername, $dbPassword, $dbName);
 /* check connection */
 if (!$conn) 
 {
-	echo '{"success":0,"error_message":"Connection did not work."}';
+	echo '{"success":0,"error_message":"' . mysqli_connect_error() . '"}';
 	die('Connect Error ' . $conn->errno . ': ' . $conn->error);    
 } 
 
 else 
 {
-	$username =  "eckama";
-	$password =	 "password";
-	//$username = $conn->real_escape_string($_POST['username']);
-	//$password = $conn->real_escape_string($_POST['password']);
+	$username = $conn->real_escape_string($_POST['username']);
+	$password = $conn->real_escape_string($_POST['password']);
 
 	$query = "SELECT password FROM user WHERE username = '$username'";
 	
@@ -54,6 +52,6 @@ else
     }
     else
     {
-    	echo '{"success":0,"error_message":"connection is not working}';
+    	echo '{"success":0,"error_message":"Username and password do not match."}';
     }
 }
