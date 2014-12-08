@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>45731F80-490D-4BC2-ADD7-B2AEDCAC174F</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Air_Quality</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>E702D824DE98B50CF17014872094A69CEA33D933</key>
+		<string>https://github.com/eckama11/air_quality.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>iOS/Air_Quality/Air_Quality.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>E702D824DE98B50CF17014872094A69CEA33D933</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/eckama11/air_quality.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E702D824DE98B50CF17014872094A69CEA33D933</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E702D824DE98B50CF17014872094A69CEA33D933</string>
+			<key>IDESourceControlWCCName</key>
+			<string>air_quality</string>
+		</dict>
+	</array>
+</dict>
+</plist>
