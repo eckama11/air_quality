@@ -54,6 +54,6 @@ else
     }
     else
     {
-    	echo '{"success":0,"error_message":"'$password'"}';
+    	echo '{"success":0,"error_message":"$password"}';
     }
 }
