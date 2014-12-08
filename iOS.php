@@ -10,8 +10,8 @@ if (!$conn)
 
 else 
 {
-	$username = $conn->real_escape_string($_POST['username']);
-	$password = $conn->real_escape_string($_POST['password']);
+	$username = "eckama";//$conn->real_escape_string($_POST['username']);
+	$password = "password";//$conn->real_escape_string($_POST['password']);
 
 	$query = "SELECT password FROM user WHERE username = '$username'";
 	
