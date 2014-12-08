@@ -6,7 +6,7 @@ $conn = new mysqli("localhost", $dbUsername, $dbPassword, $dbName);
 /* check connection */
 if (!$conn) 
 {
-	echo '{"success":0,"error_message":"' . mysqli_connect_error() . '"}';
+	echo '{"success":0,"error_message":"Connection did not work."}';
 	die('Connect Error ' . $conn->errno . ': ' . $conn->error);    
 } 
 
