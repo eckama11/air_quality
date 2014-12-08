@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         if (isLoggedIn != 1) {
             self.performSegueWithIdentifier("goto_login", sender: self)
         } else {
-            self.usernameLabel.text = prefs.valueForKey("USERNAME") as NSString
+            self.usernameLabel.text = prefs.objectForKey("USERNAME") as NSString
         }
     }
     
