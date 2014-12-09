@@ -22,6 +22,7 @@ else
 	} // while
 	*/
 	$resultHQ = $conn->query($humQuery)->fetch_assoc();
-	echo '{"success":1, "hum":"'.$resultHQ.'"}';
+	$hum= $resultHQ['humidity'];
+	echo '{"success":1, "hum":"'.$hum.'"}';
     }
 }
