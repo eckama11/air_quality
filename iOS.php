@@ -17,10 +17,6 @@ else
 	
 	$result = $conn->query($query)->fetch_assoc();
 	
-	$deviceQuery = "SELECT deviceId FROM user WHERE username = '$username'";
-    $resultDQ = $conn->query($deviceQuery)->fetch_assoc();
-    $deviceId= $resultDQ['deviceId'];
-    echo $deviceId;
     if(password_verify($password, $result['password'] ) )
     {
     	$deviceQuery = "SELECT deviceId FROM user WHERE username = '$username'";
