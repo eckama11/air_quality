@@ -22,7 +22,7 @@ else
     	$resultDQ = $con->query($deviceQuery)->fetch_assoc();
     	$deviceId= $resultDQ[deviceId];
     	//$humQuery = "Select timeInfo FROM sensors WHERE impId = '$deviceId'";
-    	echo '{"success":1, "hum":"$deviceId"}';
+    	echo '{"success":1, "hum":3}';
     }
     else
     {
