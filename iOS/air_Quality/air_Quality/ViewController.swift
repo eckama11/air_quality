@@ -9,10 +9,18 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet var dateLabel: UILabel!
+    
+    @IBOutlet var datePicker: UIDatePicker!
     
     @IBOutlet var usernameLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        datePicker.addTarget(self, action: Selector("datePickerChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+        var dateFormatterA = NSDateFormatter()
+        dateFormatterA.dateStyle = NSDateFormatterStyle.ShortStyle
+        var strDate = dateFormatterA.stringFromDate(datePicker.date)
+        dateLabel.text = strDate
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -29,13 +37,25 @@ class ViewController: UIViewController {
         if (isLoggedIn != 1) {
             self.performSegueWithIdentifier("goto_login", sender: self)
         } else {
-            self.usernameLabel.text = prefs.objectForKey("USERNAME") as NSString
+            var myString = String(prefs.integerForKey("HUM"));
+            self.usernameLabel.text = myString//prefs.objectForKey("USERNAME") as NSString
         }
     }
     
     @IBAction func logoutTapped(sender: UIButton) {
+        let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        prefs.setInteger(0, forKey: "ISLOGGEDIN")
         self.performSegueWithIdentifier("goto_login", sender: self)
     }
-
+    
+    func datePickerChanged(datePicker:UIDatePicker) {
+        var dateFormatter = NSDateFormatter()
+        
+        dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
+        dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
+        
+        var strDate = dateFormatter.stringFromDate(datePicker.date)
+        dateLabel.text = strDate
+    }
 }
 

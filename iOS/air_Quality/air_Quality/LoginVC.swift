@@ -25,6 +25,10 @@ class LoginVC: UIViewController {
     @IBAction func signinTapped(sender: UIButton) {
         var username:NSString = txtUsername.text
         var password:NSString = txtPassword.text
+        var temperature:NSArray = NSArray();
+        var humidity:NSString = NSString();
+        var pressure:NSArray = NSArray();
+        var particles:NSArray = NSArray();
         
         if ( username.isEqualToString("") || password.isEqualToString("") ) {
             
@@ -77,9 +81,9 @@ class LoginVC: UIViewController {
                     
                     let success:NSInteger = jsonData.valueForKey("success") as NSInteger
                     //let temperature = jsonData.valueForKey("temp") as NSArray;
-                    let humidity:NSInteger = jsonData.valueForKey("hum") as NSInteger;
+                    
                     //let pressure = jsonData.valueForKey("pres") as NSArray;
-                   // let particles = jsonData.valueForKey("part") as NSArray;
+                    //let particles = jsonData.valueForKey("part") as NSArray;
                     
                     //[jsonData[@"success"] integerValue];
                     
@@ -91,7 +95,7 @@ class LoginVC: UIViewController {
                         
                         var prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
                         prefs.setObject(username, forKey: "USERNAME")
-                        
+                        let humidity = jsonData.valueForKey("hum") as NSInteger;
                         //prefs.setObject(temperature, forKey: "TEMP")
                         prefs.setObject(humidity, forKey:"HUM")
                         //prefs.setObject(pressure, forKey:"PRESSURE");

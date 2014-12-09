@@ -18,7 +18,11 @@ else
 	$result = $conn->query($query)->fetch_assoc();
     if(password_verify($password, $result['password'] ) )
     {
-    	echo '{"success":1, "hum":3}';
+    	$deviceQuery = "SELECT deviceId FROM user WHERE username = '$username'":
+    	$resultDQ = $con->query($deviceQuery)->fetch_assoc();
+    	$deviceId= $resultDQ[deviceId];
+    	//$humQuery = "Select timeInfo FROM sensors WHERE impId = '$deviceId'";
+    	echo '{"success":1, "hum":"$deviceId"}';
     }
     else
     {
