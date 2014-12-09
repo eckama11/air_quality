@@ -2,8 +2,7 @@
 
 require_once("creds.php");
 $mysqli = new mysqli("localhost", $dbUsername, $dbPassword, $dbName);
-echo "hello";
-/*
+
 if (!$mysqli) 
 {
 	die('Connect Error ' . $conn->errno . ': ' . $conn->error);    
@@ -11,6 +10,8 @@ if (!$mysqli)
 
 else 
 {
+	echo "hello new world";
+	/*
 	$deviceId = "2336c2eb6e4936ee";
 	if ($result = $mysqli->query("Select DATE_FORMAT(timeInfo,'%r') as 'timeInfo', humidity FROM sensors WHERE DATE(timeInfo) = DATE(timeInfo) = DATE(NOW()) AND impId = '$deviceId'")
 	{
@@ -30,5 +31,5 @@ else
     {
     	echo '{"success":0, "hum": null}';
     }
+    */
 }
-*/
