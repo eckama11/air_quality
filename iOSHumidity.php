@@ -21,7 +21,7 @@ else
 			);
 	} // while
 	*/
-	$resultDQ = $conn->query($humQuery)->fetch_assoc();
-	echo '{"success":1, "hum":"'.$humQuery.'"}';
+	$resultHQ = $conn->query($humQuery)->fetch_assoc();
+	echo '{"success":1, "hum":"'.$resultHQ.'"}';
     }
 }
