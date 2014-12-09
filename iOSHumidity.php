@@ -16,7 +16,6 @@ else
 	if ($result = $mysqli->query("SELECT DATE_FORMAT(timeInfo,'%r') as 'timeInfo', humidity FROM sensors WHERE DATE(timeInfo) = DATE(NOW()) ".
             "AND impId='$deviceId'"))
     {
-		echo "hello new world :)";
 	/*
 		//$rv[] = array('Time', 'Pressure');
 		 while ($row = $stmt->fetchObject()) {
@@ -26,10 +25,10 @@ else
 				);
 		} // while
 		
-		
+	*/	
 		echo '{"success":1, "hum":"'.$result->num_rows.'"}';
 		$result->close();
-	*/
+	
     }
     else 
     {
