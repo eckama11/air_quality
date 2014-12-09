@@ -11,10 +11,8 @@ if (!$mysqli)
 else 
 {
 	$deviceId = "2336c2eb6e4936ee";
-	$date = date('mdy');//$_POST['date'];
-	echo $date;
-	if ($result = $mysqli->query("SELECT DATE_FORMAT(timeInfo,'%m%d%y') as 'timeInfo', humidity FROM sensors WHERE timeInfo = '$date'".
-            "AND impId='$deviceId'"))
+	$date = date('mdy');
+	if ($result = $mysqli->query("SELECT DATE_FORMAT(timeInfo,'%m%d%y') as 'timeInfo', humidity FROM sensors WHERE timeInfo = '$date' AND impId='$deviceId'"))
     {	
 		$inc = 1;
 		while($resultSet = $result->fetch_assoc()){
