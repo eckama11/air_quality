@@ -10,8 +10,8 @@ if (!$conn)
 
 else 
 {
-	$username = "eckama";//$conn->real_escape_string($_POST['username']);
-	$password = "password";//$conn->real_escape_string($_POST['password']);
+	$username = $conn->real_escape_string($_POST['username']);
+	$password = $conn->real_escape_string($_POST['password']);
 
 	$query = "SELECT password FROM user WHERE username = '$username'";
 	
@@ -23,7 +23,7 @@ else
     	$resultDQ = $conn->query($deviceQuery)->fetch_assoc();
     	$deviceId= $resultDQ['deviceId'];
     	//$humQuery = "Select timeInfo FROM sensors WHERE impId = '$deviceId'";
-    	echo '{"success":1, "hum":"'.$deviceId.'"}';
+    	echo '{"success":1, "hum":"'.$deviceId.'","info":2}';
     }
     else
     {
