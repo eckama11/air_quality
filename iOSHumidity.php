@@ -26,7 +26,7 @@ else
 		} // while
 		
 	*/	
-		echo '{"success":1, "hum":"'.$result->num_rows.'"}';
+		echo '{"success":1, "hum":"'.$result->timeInfo.'"}';
 		$result->close();
 	
     }
