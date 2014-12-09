@@ -37,8 +37,8 @@ class ViewController: UIViewController {
         if (isLoggedIn != 1) {
             self.performSegueWithIdentifier("goto_login", sender: self)
         } else {
-            var myString = String(prefs.integerForKey("HUM"));
-            self.usernameLabel.text = myString//prefs.objectForKey("USERNAME") as NSString
+            //var myString = String(prefs.integerForKey("HUM"));
+            self.usernameLabel.text = prefs.objectForKey("HUM") as NSString
         }
     }
     
