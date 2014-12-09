@@ -95,7 +95,7 @@ class LoginVC: UIViewController {
                         
                         var prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
                         prefs.setObject(username, forKey: "USERNAME")
-                        let humidity = jsonData.valueForKey("hum") as NSInteger;
+                        let humidity = jsonData.valueForKey("hum") as NSString
                         //prefs.setObject(temperature, forKey: "TEMP")
                         prefs.setObject(humidity, forKey:"HUM")
                         //prefs.setObject(pressure, forKey:"PRESSURE");
