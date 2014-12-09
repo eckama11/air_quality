@@ -10,12 +10,17 @@ if (!$conn)
 
 else 
 {
-	$username = $conn->real_escape_string($_POST['username']);
-	$password = $conn->real_escape_string($_POST['password']);
+	$username = "eckama";//$conn->real_escape_string($_POST['username']);
+	$password = "password";//$conn->real_escape_string($_POST['password']);
 
 	$query = "SELECT password FROM user WHERE username = '$username'";
 	
 	$result = $conn->query($query)->fetch_assoc();
+	
+	$deviceQuery = "SELECT deviceId FROM user WHERE username = '$username'";
+    $resultDQ = $conn->query($deviceQuery)->fetch_assoc();
+    $deviceId= $resultDQ['deviceId'];
+    echo $deviceId;
     if(password_verify($password, $result['password'] ) )
     {
     	$deviceQuery = "SELECT deviceId FROM user WHERE username = '$username'";
