@@ -11,7 +11,7 @@ if (!$conn)
 else 
 {
 	$deviceId = "2336c2eb6e4936ee";
-	if ($result = $mysqli->query("Select DATE_FORMAT(timeInfo,'%r') as 'timeInfo', humidity FROM sensors WHERE DATE(timeInfo) = DATE(timeInfo) = DATE(NOW()) AND impId = '$deviceId'")
+	if ($result = $conn->query("Select DATE_FORMAT(timeInfo,'%r') as 'timeInfo', humidity FROM sensors WHERE DATE(timeInfo) = DATE(timeInfo) = DATE(NOW()) AND impId = '$deviceId'")
 	{
 		//$rv[] = array('Time', 'Pressure');
 		/* while ($row = $stmt->fetchObject()) {
@@ -21,8 +21,6 @@ else
 				);
 		} // while
 		*/
-		$resultHQ = $conn->query($humQuery)->fetch_assoc();
-		$hum= $resultHQ['humidity'];
 		echo '{"success":1, "hum":"'.$result->num_rows.'"}';
     }
     else 
