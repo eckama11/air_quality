@@ -14,7 +14,7 @@ else
 	
 	$deviceId = "2336c2eb6e4936ee";
 	if ($result = $mysqli->query("SELECT DATE_FORMAT(timeInfo,'%r') as 'timeInfo', humidity FROM sensors WHERE DATE(timeInfo) = DATE(NOW()) ".
-            "AND impId='$deviceId'")
+            "AND impId='$deviceId'"))
     {
 		echo "hello new world :)";
 	/*
