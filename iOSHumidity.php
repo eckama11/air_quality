@@ -2,7 +2,7 @@
 
 require_once("creds.php");
 $mysqli = new mysqli("localhost", $dbUsername, $dbPassword, $dbName);
-
+echo "hello";
 if (!$cmysqli) 
 {
 	die('Connect Error ' . $conn->errno . ': ' . $conn->error);    
