@@ -22,7 +22,7 @@ else
 	}
 	
 	/* Select queries return a resultset */
-	if ($result = $mysqli->query($query)) {
+	else if ($result = $mysqli->query($query)) {
 
 		/* free result set */
 		$result->close();
