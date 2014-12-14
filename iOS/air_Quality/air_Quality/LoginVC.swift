@@ -21,7 +21,7 @@ class LoginVC: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
     @IBAction func signinTapped(sender: UIButton) {
         var username:NSString = txtUsername.text
         var password:NSString = txtPassword.text
@@ -141,6 +141,6 @@ class LoginVC: UIViewController {
                 alertView.show()
             }
         }
-
+        
     }
 }

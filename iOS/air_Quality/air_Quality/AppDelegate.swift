@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  Air_Quality
 //
-//  Created by Amanda Eckhardt on 12/3/14.
+//  Created by Amanda Eckhardt on 12/9/14.
 //  Copyright (c) 2014 Amanda Eckhardt. All rights reserved.
 //
 

@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "52E244071A2F880E00CC974D"
+               BlueprintIdentifier = "52AA4BD01A38020200D4B5C2"
                BuildableName = "Air_Quality.app"
                BlueprintName = "Air_Quality"
                ReferencedContainer = "container:Air_Quality.xcodeproj">
@@ -28,9 +28,23 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "52E2441C1A2F880F00CC974D"
+               BlueprintIdentifier = "52AA4BE51A38020200D4B5C2"
                BuildableName = "Air_QualityTests.xctest"
                BlueprintName = "Air_QualityTests"
+               ReferencedContainer = "container:Air_Quality.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "52AA4C0A1A38116700D4B5C2"
+               BuildableName = "JBChartTests.xctest"
+               BlueprintName = "JBChartTests"
                ReferencedContainer = "container:Air_Quality.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,9 +60,19 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "52E2441C1A2F880F00CC974D"
+               BlueprintIdentifier = "52AA4BE51A38020200D4B5C2"
                BuildableName = "Air_QualityTests.xctest"
                BlueprintName = "Air_QualityTests"
+               ReferencedContainer = "container:Air_Quality.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "52AA4C0A1A38116700D4B5C2"
+               BuildableName = "JBChartTests.xctest"
+               BlueprintName = "JBChartTests"
                ReferencedContainer = "container:Air_Quality.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -56,7 +80,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "52E244071A2F880E00CC974D"
+            BlueprintIdentifier = "52AA4BD01A38020200D4B5C2"
             BuildableName = "Air_Quality.app"
             BlueprintName = "Air_Quality"
             ReferencedContainer = "container:Air_Quality.xcodeproj">
@@ -75,7 +99,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "52E244071A2F880E00CC974D"
+            BlueprintIdentifier = "52AA4BD01A38020200D4B5C2"
             BuildableName = "Air_Quality.app"
             BlueprintName = "Air_Quality"
             ReferencedContainer = "container:Air_Quality.xcodeproj">
@@ -93,7 +117,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "52E244071A2F880E00CC974D"
+            BlueprintIdentifier = "52AA4BD01A38020200D4B5C2"
             BuildableName = "Air_Quality.app"
             BlueprintName = "Air_Quality"
             ReferencedContainer = "container:Air_Quality.xcodeproj">
