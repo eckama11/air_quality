@@ -34,6 +34,6 @@ else
     	$addUserQuery = "INSERT INTO user username, password, email, deviceId VALUES '$username', '$password', '$email', '$deviceId'";
     	$mysqli->query($addUserQuery);
     	$mysqli->close();
-    	echo '{"success":1, "hum":"'.$deviceId.'"}';
+    	echo '{"success":1, "error_message":"User added. Go to Login."}';
     }
 }
