@@ -17,7 +17,6 @@ else
 	if ($result->num_rows > 0)
     {	
     	echo '{"success":1}';
-    	
 		$inc = 1;
 		while($resultSet = $result->fetch_assoc()){
 			$str1 = '{"time": "';
@@ -25,7 +24,7 @@ else
 			$str3 = '","humidity":"';
 			$str4 = $resultSet['humidity'];
 			$str5 = '"}';
-			$full. = $str1.$str2.$str3.$str4.$str5;
+			$full = $full.$str1.$str2.$str3.$str4.$str5;
 			if (!$inc == $result->num_rows) {
 				//add comma to result
 				$full.= ",";
