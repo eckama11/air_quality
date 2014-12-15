@@ -80,7 +80,7 @@ class LoginVC: UIViewController {
                     
                     
                     let success:NSInteger = jsonData.valueForKey("success") as NSInteger
-                    let humidity:NSString = jsonData.valueForKey("hum") as NSString
+                    
                     
                     //let temperature = jsonData.valueForKey("temp") as NSArray;
                     //let pressure = jsonData.valueForKey("pres") as NSArray;
@@ -91,7 +91,7 @@ class LoginVC: UIViewController {
                     if(success == 1)
                     {
                         NSLog("Login SUCCESS");
-                        
+                        let humidity:NSString = jsonData.valueForKey("hum") as NSString
                         var prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
                         prefs.setObject(username, forKey: "USERNAME")
                         

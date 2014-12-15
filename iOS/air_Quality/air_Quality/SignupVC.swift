@@ -96,6 +96,12 @@ class SignupVC: UIViewController {
                     if(success == 1)
                     {
                         NSLog("Signup SUCCESS");
+                        var alertView:UIAlertView = UIAlertView()
+                        alertView.title = "Signup successful!"
+                        alertView.message = "You can now Login."
+                        alertView.delegate = self
+                        alertView.addButtonWithTitle("OK")
+                        alertView.show()
                         self.dismissViewControllerAnimated(true, completion: nil)
                     } else {
                         var error_msg:NSString

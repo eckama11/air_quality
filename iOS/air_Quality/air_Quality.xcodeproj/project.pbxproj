@@ -99,7 +99,7 @@
 		52AA4BE61A38020200D4B5C2 /* Air_QualityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Air_QualityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52AA4BEB1A38020200D4B5C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52AA4BEC1A38020200D4B5C2 /* Air_QualityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Air_QualityTests.swift; sourceTree = "<group>"; };
-		52AA4BF61A38025500D4B5C2 /* HumidityVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HumidityVC.swift; sourceTree = "<group>"; };
+		52AA4BF61A38025500D4B5C2 /* HumidityVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = HumidityVC.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		52AA4BF81A3803B500D4B5C2 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		52AA4BFA1A38056F00D4B5C2 /* SignupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
 		52AA4C011A38116700D4B5C2 /* JBChart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JBChart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
