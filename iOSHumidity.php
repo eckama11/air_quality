@@ -22,7 +22,8 @@ else
 		while($resultSet = $result->fetch_assoc()){
 			$time[$inc] = $resultSet['timeInfo'];
 			$humidity[$inc] = $resultSet['humidity'];
-			echo '{"time": "$time[$inc]", "humidity": "$humidity[$inc]"}';
+			echo "time: ". $time[$inc];
+			echo "humidity: ". $humidity[$inc];
 			//echo "Result $inc: {$resultSet['timeInfo']} - {$resultSet['humidity']}<br/>\n";
 			$inc++;
 		}
