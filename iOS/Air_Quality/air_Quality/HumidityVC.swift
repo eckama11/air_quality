@@ -128,7 +128,7 @@ class HumidityVC: UIViewController, JBBarChartViewDelegate, JBBarChartViewDataSo
         var header = UILabel(frame: CGRectMake(0, 0, barChart.frame.width, 50))
         header.textColor = UIColor.whiteColor()
         header.font = UIFont.systemFontOfSize(24)
-        header.text = "Readings"
+        header.text = "Humidity"
         header.textAlignment = NSTextAlignment.Center
         
         barChart.footerView = footerView
@@ -173,7 +173,7 @@ class HumidityVC: UIViewController, JBBarChartViewDelegate, JBBarChartViewDataSo
         let data = humidity[Int(index)]
         let key = time[Int(index)]
         
-        informationLabel.text = "Humidity on \(key): \(data)"
+        informationLabel.text = "Humidity at \(key): \(data)"
     }
     
     func didDeselectBarChartView(barChartView: JBBarChartView!) {
