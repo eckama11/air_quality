@@ -16,8 +16,8 @@ else
 	$result = $mysqli->query("SELECT DATE_FORMAT(timeInfo,'%h%i %p') as 'timeInfo', humidity FROM sensors WHERE DATE(timeInfo) = DATE('$date') AND impId='$deviceId'");
 	if ($result->num_rows > 0)
     {	
-    	echo '{"success":1}';
-    	$full = '{"data":[';
+    	//echo '{"success":1}';
+    	$full = '{"success":1,"data":[';
 		$inc = 1;
 		while($resultSet = $result->fetch_assoc()){
 			$str1 = '{"time": "';
