@@ -23,8 +23,8 @@ else
 			$time[$inc] = $resultSet['timeInfo'];
 			$humidity[$inc] = $resultSet['humidity'];
 			//echo '{"success":1, "hum":"'.$deviceId.'"}'
-			echo '{"time:"'.$time[$inc].'"}';
-			echo '{"humidity:"'.$humidity[$inc].'"}';
+			echo '{"time:"'.$time[$inc].'}';
+			echo '{"humidity:"'.$humidity[$inc].'}';
 			//echo "Result $inc: {$resultSet['timeInfo']} - {$resultSet['humidity']}<br/>\n";
 			$inc++;
 		}
