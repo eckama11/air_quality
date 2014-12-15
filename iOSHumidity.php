@@ -17,7 +17,7 @@ else
 	if ($result->num_rows > 0)
     {	
 		$inc = 1;
-		echo $result[timeInfo];
+		echo $result->timeInfo;
 		//while($resultSet = $result->fetch_assoc()){
 			//echo "Result $inc: {$resultSet['timeInfo']} - {$resultSet['humidity']}<br/>\n";
 			//$inc++;
