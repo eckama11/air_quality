@@ -38,8 +38,6 @@ else
 		$full = $full.$end;
 		echo $full;
 		//echo implode("<br/>",$time);
-		echo $inc;
-		echo $result->num_rows;
 		$result->close();
 		
     }

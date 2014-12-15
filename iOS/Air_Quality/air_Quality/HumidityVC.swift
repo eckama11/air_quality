@@ -64,7 +64,7 @@ class HumidityVC: UIViewController{
                 let success = 0
                 NSLog("Response ==> %@", "here0");
                 //here
-                var jsonResult: NSDictionary = NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
+                var jsonResult: NSDictionary = NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error:nil) as NSDictionary
                 println(jsonResult)
                 /*if let info = parsedObject as? NSDictionary {
                     NSLog("Response ==> %@", "here1");
