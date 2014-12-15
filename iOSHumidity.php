@@ -30,7 +30,7 @@ else
 			
 			if (!$inc == $result->num_rows) {
 				//add comma to result
-				$full.= ",";
+				$full= $full.",";
 			}
 			$inc++;
 		}
