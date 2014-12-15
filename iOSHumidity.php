@@ -29,7 +29,6 @@ else
 			$full = $full.$str1.$str2.$str3.$str4.$str5;
 			
 			if ($inc < $result->num_rows) {
-				echo "YESSSS";
 				//add comma to result
 				$full= $full.",";
 			}
