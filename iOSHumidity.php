@@ -17,6 +17,7 @@ else
 	if ($result->num_rows > 0)
     {	
     	echo '{"success":1}';
+    	$full = "";
 		$inc = 1;
 		while($resultSet = $result->fetch_assoc()){
 			$str1 = '{"time": "';
