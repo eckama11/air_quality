@@ -380,8 +380,8 @@
                     </view>
                     <connections>
                         <outlet property="backView" destination="osD-lq-3kZ" id="JgV-h0-61L"/>
+                        <outlet property="barChart" destination="Vit-vG-nR4" id="kKo-Ct-X6w"/>
                         <outlet property="informationLabel" destination="OKb-8c-O7N" id="bPo-Ws-3Wh"/>
-                        <outlet property="lineChart" destination="Vit-vG-nR4" id="CsS-1I-HOW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7gQ-r7-J5C" userLabel="First Responder" sceneMemberID="firstResponder"/>
