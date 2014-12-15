@@ -16,29 +16,30 @@ else
 	$result = $mysqli->query("SELECT DATE_FORMAT(timeInfo,'%h%i %p') as 'timeInfo', humidity FROM sensors WHERE DATE(timeInfo) = DATE('$date') AND impId='$deviceId'");
 	if ($result->num_rows > 0)
     {	
-    	echo '{"success":0}';
+    	echo '{"success":1}';
     	
 		$inc = 1;
 		while($resultSet = $result->fetch_assoc()){
-			$data.= '{"time": "'.$resultSet['timeInfo'].'", "humidity": "'.$resultSet['humidity'].'"}';
-			//$humidity[$inc] = $resultSet['humidity'];
-			//echo '{"success":1, "hum":"'.$deviceId.'"}'
+			$str1 = '{"time": "';
+			$str2 = $resultSet[timeInfo];
+			$str3 = '","humidity":"';
+			$str4 = $resultSet[humidity];
+			$str5 = '"}';
+			$full = $str1.$str2.$str3.$str4.$str5;
 			if (!$inc == $result->num_rows) {
 				//add comma to result
-				$data.= ","
+				$full.= ","
 			}
-			//echo '{"humidity": "'.$humidity[$inc].'"}';
-			//echo "Result $inc: {$resultSet['timeInfo']} - {$resultSet['humidity']}<br/>\n";
 			$inc++;
 		}
-		echo $data;
+		echo $full;
 		//echo implode("<br/>",$time);
 		$result->close();
 	
     }
     else 
     {
-    	echo '{"success":0, "hum": null}';
+    	echo '{"success":0}';
     }
     
 }
