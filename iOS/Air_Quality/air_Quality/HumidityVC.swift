@@ -9,28 +9,82 @@
 import UIKit
 import JBChart
 
-class HumidityVC: UIViewController, JBBarChartViewDelegate, JBBarChartViewDataSource {
-    
+class HumidityVC: UIViewController{
+    //, JBBarChartViewDelegate, JBBarChartViewDataSource 
     @IBOutlet var backView: UIView!
     
     @IBOutlet var lineChart: JBBarChartView!
     
     @IBOutlet var informationLabel: UILabel!
     
-    var _chartLegend: [String] = [];
-    
-    func downloadData() {
-        // Data
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let deviceId:NSString = prefs.objectForKey("deviceId") as NSString
+        let date:NSDate = prefs.objectForKey("date") as NSDate
+        var post:NSString = "deviceId=\(deviceId)&date=\(date)"
         
-        let json = JSON(url:"http://beta.eckama.com/air_quality/iOSHumidity.php")
-        if let times = json["time"].asArray {
-            var i:Int = 0
-            var chartLegend:NSArray
-            for time in times {
-                var humidity:Double = time["humidity"].asDouble!;
-                
-            }
+        NSLog("PostData: %@",post);
+        
+        var url:NSURL = NSURL(string:"http://beta.eckama.com/air_quality/iOS.php")!
+        
+        var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+        
+        var postLength:NSString = String( postData.length )
+        
+        var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "POST"
+        request.HTTPBody = postData
+        request.setValue(postLength, forHTTPHeaderField: "Content-Length")
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        
+        
+        var reponseError: NSError?
+        var response: NSURLResponse?
+        
+        var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&reponseError)
+        
+        if ( urlData != nil ) {
+            let res = response as NSHTTPURLResponse!;
             
+            NSLog("Response code: %ld", res.statusCode);
+            
+            if (res.statusCode >= 200 && res.statusCode < 300)
+            {
+                var responseData:NSString  = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
+                
+                NSLog("Response ==> %@", responseData);
+                
+                var error: NSError?
+                
+                let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers , error: &error) as NSDictionary
+                
+                let success:NSInteger = jsonData.valueForKey("success") as NSInteger
+                
+                if(success == 1)
+                {
+                    var alertView:UIAlertView = UIAlertView()
+                    alertView.title = "All worked!"
+                    alertView.message = "working"
+                    alertView.delegate = self
+                    alertView.addButtonWithTitle("OK")
+                    alertView.show()
+                }
+                else {
+                    var alertView:UIAlertView = UIAlertView()
+                    alertView.title = "Nothing worked!"
+                    alertView.message = "didn't work"
+                    alertView.delegate = self
+                    alertView.addButtonWithTitle("OK")
+                    alertView.show()
+                }
+            }
         }
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
 }

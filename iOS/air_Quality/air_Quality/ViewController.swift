@@ -17,11 +17,14 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         datePicker.addTarget(self, action: Selector("datePickerChanged:"), forControlEvents: UIControlEvents.ValueChanged)
         var dateFormatterA = NSDateFormatter()
         dateFormatterA.dateFormat = "yyyy-MM-dd"
         var strDate = dateFormatterA.stringFromDate(datePicker.date)
         dateLabel.text = strDate
+        
+        prefs.setObject(strDate, forKey: "date")
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -32,14 +35,14 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
-        
         let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        let isLoggedIn:Int = prefs.integerForKey("ISLOGGEDIN") as Int
+        //let isLoggedIn:Int = prefs.integerForKey("ISLOGGEDIN") as Int
+        let isLoggedIn = 0
+        NSLog("%i",isLoggedIn as Int)
         if (isLoggedIn != 1) {
             self.performSegueWithIdentifier("goto_login", sender: self)
         } else {
-            //var myString = String(prefs.integerForKey("HUM"));
-            self.usernameLabel.text = prefs.objectForKey("HUM") as NSString
+            self.usernameLabel.text = prefs.objectForKey("deviceId") as NSString
         }
     }
     @IBAction func logouTapped(sender: UIButton) {
@@ -50,10 +53,12 @@ class ViewController: UIViewController {
     }
     
     func datePickerChanged(datePicker:UIDatePicker) {
+        let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         var dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
         var strDate = dateFormatter.stringFromDate(datePicker.date)
         dateLabel.text = strDate
+        prefs.setObject(strDate, forKey: "date")
     }
 }

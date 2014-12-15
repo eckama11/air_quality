@@ -22,7 +22,7 @@ else
     	$deviceQuery = "SELECT deviceId FROM user WHERE username = '$username'";
     	$resultDQ = $conn->query($deviceQuery)->fetch_assoc();
     	$deviceId= $resultDQ['deviceId'];
-    	echo '{"success":1, "hum":"'.$deviceId.'"}';
+    	echo '{"success":1, "deviceId":"'.$deviceId.'"}';
     }
     else
     {
