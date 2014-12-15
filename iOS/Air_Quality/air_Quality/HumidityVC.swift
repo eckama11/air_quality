@@ -26,7 +26,7 @@ class HumidityVC: UIViewController{
         
         NSLog("PostData: %@",post);
         
-        var url:NSURL = NSURL(string:"http://beta.eckama.com/air_quality/iOS.php")!
+        var url:NSURL = NSURL(string:"http://beta.eckama.com/air_quality/iOSHumidity.php")!
         
         var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         

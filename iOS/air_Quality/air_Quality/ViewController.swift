@@ -36,8 +36,7 @@ class ViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        //let isLoggedIn:Int = prefs.integerForKey("ISLOGGEDIN") as Int
-        let isLoggedIn = 0
+        let isLoggedIn:Int = prefs.integerForKey("ISLOGGEDIN") as Int
         NSLog("%i",isLoggedIn as Int)
         if (isLoggedIn != 1) {
             self.performSegueWithIdentifier("goto_login", sender: self)
