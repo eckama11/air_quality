@@ -21,9 +21,9 @@ else
 		$inc = 1;
 		while($resultSet = $result->fetch_assoc()){
 			$str1 = '{"time": "';
-			$str2 = $resultSet[timeInfo];
+			$str2 = $resultSet['timeInfo'];
 			$str3 = '","humidity":"';
-			$str4 = $resultSet[humidity];
+			$str4 = $resultSet['humidity'];
 			$str5 = '"}';
 			$full = $str1.$str2.$str3.$str4.$str5;
 			if (!$inc == $result->num_rows) {
