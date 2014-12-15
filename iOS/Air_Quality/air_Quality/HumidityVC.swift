@@ -62,22 +62,17 @@ class HumidityVC: UIViewController{
                 let parsedObject: AnyObject? = NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.AllowFragments,
                     error:&parseError)
                 let success = 0
-                NSLog("Response ==> %@", "here0");
                 //here
-                var jsonResult: NSDictionary = NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error:nil) as NSDictionary
-                println(jsonResult)
-                /*if let info = parsedObject as? NSDictionary {
-                    NSLog("Response ==> %@", "here1");
+                
+                if let info = parsedObject as? NSDictionary {
                     if let success = info["success"] as? Int {
-                        NSLog("Response ==> %@", "here2");
                         if(success == 1)
                         {
-                            var alertView:UIAlertView = UIAlertView()
-                            alertView.title = "All worked!"
-                            alertView.message = "working"
-                            alertView.delegate = self
-                            alertView.addButtonWithTitle("OK")
-                            alertView.show()
+                            NSLog("Response ==> %@", "here0");
+                            if let data = info["data"] as? NSArray {
+                                NSLog("Response ==> %@", "here1");
+                                
+                            }
                         }
                         else {
                             var alertView:UIAlertView = UIAlertView()
@@ -88,7 +83,7 @@ class HumidityVC: UIViewController{
                             alertView.show()
                         }
                     }
-                }*/
+                }
             }
         }
     }
