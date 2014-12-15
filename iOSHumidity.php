@@ -23,7 +23,8 @@ else
 			//echo "Result $inc: {$resultSet['timeInfo']} - {$resultSet['humidity']}<br/>\n";
 			$inc++;
 		}
-		echo implode(" ",$row);
+		echo implode("<br/>",$row);
+		
 		$result->close();
 	
     }
