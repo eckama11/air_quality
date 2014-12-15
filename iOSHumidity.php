@@ -17,7 +17,7 @@ else
 	if ($result->num_rows > 0)
     {	
     	echo '{"success":1}';
-    	$full = "";
+    	$full = '{"data":[';
 		$inc = 1;
 		while($resultSet = $result->fetch_assoc()){
 			$str1 = '{"time": "';
@@ -32,6 +32,8 @@ else
 			}
 			$inc++;
 		}
+		$end = ']}';
+		$full = $full.$end;
 		echo $full;
 		//echo implode("<br/>",$time);
 		$result->close();
