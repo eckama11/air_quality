@@ -27,7 +27,7 @@ else
 			$str4 = $resultSet['humidity'];
 			$str5 = '"}';
 			$full = $full.$str1.$str2.$str3.$str4.$str5;
-			echo $inc.$result->num_rows;
+			
 			if (!$inc == $result->num_rows) {
 				//add comma to result
 				$full.= ",";
@@ -39,7 +39,8 @@ else
 		echo $full;
 		//echo implode("<br/>",$time);
 		$result->close();
-	
+		echo $inc;
+		echo $result->num_rows;
     }
     else 
     {
