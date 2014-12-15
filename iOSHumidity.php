@@ -19,7 +19,7 @@ else
 		$inc = 0;
 		while($resultSet = $result->fetch_assoc()){
 			$row[inc] = $resultSet['timeInfo'];
-			echo $row[inc];
+			echo $row[$inc];
 			echo "Result $inc: {$resultSet['timeInfo']} - {$resultSet['humidity']}<br/>\n";
 			$inc++;
 		}
