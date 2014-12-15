@@ -20,6 +20,7 @@ class HumidityVC: UIViewController, JBBarChartViewDelegate, JBBarChartViewDataSo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        informationLabel.text = ""
         let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         let deviceId:NSString = prefs.objectForKey("deviceId") as NSString
         NSLog("c: %@","c");
