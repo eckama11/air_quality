@@ -21,7 +21,9 @@ class HumidityVC: UIViewController{
         super.viewDidLoad()
         let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         let deviceId:NSString = prefs.objectForKey("deviceId") as NSString
-        let date:NSDate = prefs.objectForKey("date") as NSDate
+        NSLog("c: %@","c");
+        let date:NSString = prefs.objectForKey("date") as NSString
+        NSLog("d: %@",date);
         var post:NSString = "deviceId=\(deviceId)&date=\(date)"
         
         NSLog("PostData: %@",post);
@@ -56,29 +58,33 @@ class HumidityVC: UIViewController{
                 
                 NSLog("Response ==> %@", responseData);
                 
-                var error: NSError?
-                
-                let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers , error: &error) as NSDictionary
-                
-                let success:NSInteger = jsonData.valueForKey("success") as NSInteger
-                
-                if(success == 1)
-                {
-                    var alertView:UIAlertView = UIAlertView()
-                    alertView.title = "All worked!"
-                    alertView.message = "working"
-                    alertView.delegate = self
-                    alertView.addButtonWithTitle("OK")
-                    alertView.show()
+                var parseError: NSError?
+                let parsedObject: AnyObject? = NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.AllowFragments,
+                    error:&parseError)
+                let success = 0
+                if let info = parsedObject as? NSDictionary {
+                    if let success = info["success"] as? Int {
+                        if(success == 1)
+                        {
+                            var alertView:UIAlertView = UIAlertView()
+                            alertView.title = "All worked!"
+                            alertView.message = "working"
+                            alertView.delegate = self
+                            alertView.addButtonWithTitle("OK")
+                            alertView.show()
+                        }
+                        else {
+                            var alertView:UIAlertView = UIAlertView()
+                            alertView.title = "Nothing worked!"
+                            alertView.message = "didn't work"
+                            alertView.delegate = self
+                            alertView.addButtonWithTitle("OK")
+                            alertView.show()
+                        }
+                    }
                 }
-                else {
-                    var alertView:UIAlertView = UIAlertView()
-                    alertView.title = "Nothing worked!"
-                    alertView.message = "didn't work"
-                    alertView.delegate = self
-                    alertView.addButtonWithTitle("OK")
-                    alertView.show()
-                }
+                
+                
             }
         }
     }

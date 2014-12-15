@@ -25,6 +25,7 @@ class ViewController: UIViewController {
         dateLabel.text = strDate
         
         prefs.setObject(strDate, forKey: "date")
+        NSLog("d: %@",strDate);
         // Do any additional setup after loading the view, typically from a nib.
     }
     
