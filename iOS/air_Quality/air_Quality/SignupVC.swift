@@ -90,25 +90,12 @@ class SignupVC: UIViewController {
                     
                     
                     let success:NSInteger = jsonData.valueForKey("success") as NSInteger
-                    let humidity:NSString = jsonData.valueForKey("hum") as NSString
                     
-                    NSLog("Humidity: %ld", humidity);
+                    NSLog("Success: %ld", success);
                     
                     if(success == 1)
                     {
-                        NSLog("Login SUCCESS");
-                        
-                        var prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-                        prefs.setObject(username, forKey: "USERNAME")
-                        
-                        //prefs.setObject(temperature, forKey: "TEMP")
-                        prefs.setObject(humidity, forKey:"HUM")
-                        //prefs.setObject(pressure, forKey:"PRESSURE");
-                        //prefs.setObject(particles, forKey:"PARTICLES")
-                        
-                        prefs.setInteger(1, forKey: "ISLOGGEDIN")
-                        prefs.synchronize()
-                        
+                        NSLog("Signup SUCCESS");
                         self.dismissViewControllerAnimated(true, completion: nil)
                     } else {
                         var error_msg:NSString
@@ -119,7 +106,7 @@ class SignupVC: UIViewController {
                             error_msg = "Unknown Error"
                         }
                         var alertView:UIAlertView = UIAlertView()
-                        alertView.title = "Sign in Failed!"
+                        alertView.title = "Signup Failed!"
                         alertView.message = error_msg
                         alertView.delegate = self
                         alertView.addButtonWithTitle("OK")
@@ -129,7 +116,7 @@ class SignupVC: UIViewController {
                     
                 } else {
                     var alertView:UIAlertView = UIAlertView()
-                    alertView.title = "Sign in Failed!"
+                    alertView.title = "Sign up Failed!"
                     alertView.message = "Connection Failed"
                     alertView.delegate = self
                     alertView.addButtonWithTitle("OK")
@@ -137,7 +124,7 @@ class SignupVC: UIViewController {
                 }
             } else {
                 var alertView:UIAlertView = UIAlertView()
-                alertView.title = "Sign in Failed!"
+                alertView.title = "Signup Failed!"
                 alertView.message = "Connection Failure"
                 if let error = reponseError {
                     alertView.message = (error.localizedDescription)

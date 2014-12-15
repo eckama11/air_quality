@@ -1,39 +1,34 @@
 <?php
-
+header('Content-type: application/json');
 require_once("creds.php");
-$conn = new mysqli("localhost", $dbUsername, $dbPassword, $dbName);
+require_once("common.php");
 
-if (!$conn) 
-{
-	die('Connect Error ' . $conn->errno . ': ' . $conn->error);    
-} 
 
-else 
-{
-	$username = $conn->real_escape_string($_POST['username']);
-	$password = $conn->real_escape_string($_POST['password']);
-	$email = $conn->real_escape_string($_POST['email']);
-	$deviceId = $conn->real_escape_string($_POST['device']);
+if($_POST) {
+	$username = @$_POST['username'];
+	$email = @$_POST['email'];
+	$deviceId = @$_POST['device'];
+	$password1 = @$_POST['password'];
 
-	$query = "SELECT id FROM user WHERE username = '$username'";
-	
-	if ($username == "" || $password == "" || $email == "" || $deviceId == "") {
-		echo '{"success":0,"error_message":"All fields are required."}';
+	$mysqli = new mysqli("localhost", $dbUsername, $dbPassword, $dbName);
+	/* check connection */
+	if (mysqli_connect_errno()) {
+	error_log("Connect failed: " . mysqli_connect_error());
+		echo '{"success":0,"error_message":"' . mysqli_connect_error() . '"}';
+	} else {
+		try {
+			if ($db->isUsernameInUse($username)) {
+				echo '{"success":0,"error_message":"Username Exist."}';
+			}
+			else {
+				$id = 0;
+				$passwordHash = password_hash($password1, PASSWORD_DEFAULT);
+				$user1 = new User($id, $username, $passwordHash, $email, $deviceId); 
+				$user = $db->writeUser($user1);
+				echo '{"success":1}';
+			}
+		}
+	} catch (Exception $ex) {
+    	echo '{"success":0,"error_message":"Error happened."}';
 	}
-	
-	/* Select queries return a resultset */
-	else if ($result = $mysqli->query($query)) {
-
-		/* free result set */
-		$result->close();
-		echo '{"success":0,"error_message":"Username already in use."}';
-	}
-    else
-    {
-    
-    	$addUserQuery = "INSERT INTO user username, password, email, deviceId VALUES '$username', '$password', '$email', '$deviceId'";
-    	$mysqli->query($addUserQuery);
-    	$mysqli->close();
-    	echo '{"success":1, "error_message":"User added. Go to Login."}';
-    }
 }
