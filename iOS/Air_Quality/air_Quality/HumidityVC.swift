@@ -13,24 +13,23 @@ class HumidityVC: UIViewController, JBBarChartViewDelegate, JBBarChartViewDataSo
     
     @IBOutlet var backView: UIView!
     
-    @IBOutlet var lineChart: JBLineChartView!
+    @IBOutlet var lineChart: JBBarChartView!
     
     @IBOutlet var informationLabel: UILabel!
     
+    var _chartLegend: [String] = [];
+    
     func downloadData() {
         // Data
-        var results = [];
-        var dateFormatter = NSDateFormatter();
-        dateFormatter.dateFormat = "MM-dd";
         
-        let json = JSON(url:"http://api.openweathermap.org/data/2.5/forecast/daily?q=atlanta&mode=json&units=metric&cnt=5")
-        if let days = json["days"].asArray {
-            var i:Int = 0 ;
-            for day in days {
+        let json = JSON(url:"http://beta.eckama.com/air_quality/iOSHumidity.php")
+        if let times = json["time"].asArray {
+            var i:Int = 0
+            var chartLegend:NSArray
+            for time in times {
+                var humidity:Double = time["humidity"].asDouble!;
+                
             }
-            
-            _lineChartView.reloadData()
-            _lineChartView.setState(JBChartViewState.Expanded, animated: true)
             
         }
     }

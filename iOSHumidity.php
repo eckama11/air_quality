@@ -18,16 +18,20 @@ else
     {	
     	echo '{"success":0}';
     	
-		$inc = 0;
+		$inc = 1;
 		while($resultSet = $result->fetch_assoc()){
-			$time[$inc] = $resultSet['timeInfo'];
-			$humidity[$inc] = $resultSet['humidity'];
+			$data.= '{"time": "'.$resultSet['timeInfo'].'", "humidity": "'.$resultSet['humidity'].'"}';
+			//$humidity[$inc] = $resultSet['humidity'];
 			//echo '{"success":1, "hum":"'.$deviceId.'"}'
-			echo '{"time": "'.$time[$inc].'"}';
-			echo '{"humidity": "'.$humidity[$inc].'"}';
+			if (!$inc == $result->num_rows) {
+				//add comma to result
+				$data.= ","
+			}
+			//echo '{"humidity": "'.$humidity[$inc].'"}';
 			//echo "Result $inc: {$resultSet['timeInfo']} - {$resultSet['humidity']}<br/>\n";
 			$inc++;
 		}
+		echo $data;
 		//echo implode("<br/>",$time);
 		$result->close();
 	
