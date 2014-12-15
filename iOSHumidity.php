@@ -17,10 +17,11 @@ else
 	if ($result->num_rows > 0)
     {	
 		$inc = 1;
-		while($resultSet = $result->fetch_assoc()){
-			echo "Result $inc: {$resultSet['timeInfo']} - {$resultSet['humidity']}<br/>\n";
-			$inc++;
-		}
+		echo $result[timeInfo];
+		//while($resultSet = $result->fetch_assoc()){
+			//echo "Result $inc: {$resultSet['timeInfo']} - {$resultSet['humidity']}<br/>\n";
+			//$inc++;
+		//}
 		$result->close();
 	
     }
