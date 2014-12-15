@@ -14,7 +14,7 @@ else
 	//$date = date('Y-m-d');
 	$dateA = $_POST['date'];
 	$deviceIdA = $_POST['deviceId'];
-	$result = $mysqli->query("SELECT DATE_FORMAT(timeInfo,'%h%i %p') as 'timeInfo', humidity FROM sensors WHERE DATE(timeInfo) = DATE('$dateA') AND impId='$deviceIdA'");
+	$result = $mysqli->query("SELECT DATE_FORMAT(timeInfo,'%h%:i %p') as 'timeInfo', humidity FROM sensors WHERE DATE(timeInfo) = DATE('$dateA') AND impId='$deviceIdA'");
 	if ($result->num_rows > 0)
     {	
     	//echo '{"success":1}';

@@ -81,10 +81,11 @@ class HumidityVC: UIViewController, JBBarChartViewDelegate, JBBarChartViewDataSo
                                     NSLog("Response ==> %@", "here4");
                                     barChart.backgroundColor = UIColor.blueColor()
                                     NSLog("Response ==> %@", "here5");
+                                    barChart.delegate = self
                                     barChart.dataSource = self
                                     barChart.minimumValue = 0
                                     barChart.maximumValue = 100
-                                    barChart.reloadData()
+                                    //barChart.reloadData()
                                     barChart.setState(.Collapsed, animated: false)
                                 }
                                 //println(time)
@@ -172,7 +173,7 @@ class HumidityVC: UIViewController, JBBarChartViewDelegate, JBBarChartViewDataSo
         let data = humidity[Int(index)]
         let key = time[Int(index)]
         
-        informationLabel.text = "humidity on \(key): \(data)"
+        informationLabel.text = "Humidity on \(key): \(data)"
     }
     
     func didDeselectBarChartView(barChartView: JBBarChartView!) {
