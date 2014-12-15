@@ -26,7 +26,7 @@ class HumidityVC: UIViewController{
         NSLog("d: %@",date);
         var post:NSString = "deviceId=\(deviceId)&date=\(date)"
         
-        NSLog("PostData: %@",post);
+        NSLog("PostData: %@",date);
         
         var url:NSURL = NSURL(string:"http://beta.eckama.com/air_quality/iOSHumidity.php")!
         

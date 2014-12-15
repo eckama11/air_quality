@@ -12,7 +12,8 @@ else
 {
 	$deviceId = "2336c2eb6e4936ee";
 	$date = date('Y-m-d');
-	$dateA = date('Y-m-d',$_POST['date']);
+	$dateA = new DateTime($_POST['date']);
+	//$dateA = date('Y-m-d',$_POST['date']);
 	$deviceIdA = $_POST['deviceId'];
 	$result = $mysqli->query("SELECT DATE_FORMAT(timeInfo,'%h%i %p') as 'timeInfo', humidity FROM sensors WHERE DATE(timeInfo) = DATE('$dateA') AND impId='$deviceIdA'");
 	if ($result->num_rows > 0)

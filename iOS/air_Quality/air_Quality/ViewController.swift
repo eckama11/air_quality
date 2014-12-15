@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         datePicker.addTarget(self, action: Selector("datePickerChanged:"), forControlEvents: UIControlEvents.ValueChanged)
         var dateFormatterA = NSDateFormatter()
-        dateFormatterA.dateFormat = "yyyy-MM-dd"
+        dateFormatterA.dateFormat = "yyyy/MM/dd"
         var strDate = dateFormatterA.stringFromDate(datePicker.date)
         dateLabel.text = strDate
         
@@ -55,7 +55,7 @@ class ViewController: UIViewController {
     func datePickerChanged(datePicker:UIDatePicker) {
         let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         var dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.dateFormat = "yyyy/MM/dd"
         dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
         var strDate = dateFormatter.stringFromDate(datePicker.date)
         dateLabel.text = strDate
