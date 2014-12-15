@@ -16,15 +16,17 @@ else
 	$result = $mysqli->query("SELECT DATE_FORMAT(timeInfo,'%h%i %p') as 'timeInfo', humidity FROM sensors WHERE DATE(timeInfo) = DATE('$date') AND impId='$deviceId'");
 	if ($result->num_rows > 0)
     {	
+    	echo '{"success":0}';
+    	
 		$inc = 0;
 		while($resultSet = $result->fetch_assoc()){
-			$row[$inc] = $resultSet['timeInfo'];
-			//echo $row[$inc];
+			$time[$inc] = $resultSet['timeInfo'];
+			$humidity[$inc] = $resultSet['humidity'];
+			echo '{"time": $time[$inc], "humidity":$humidity[$inc]}';
 			//echo "Result $inc: {$resultSet['timeInfo']} - {$resultSet['humidity']}<br/>\n";
 			$inc++;
 		}
-		echo implode("<br/>",$row);
-		
+		//echo implode("<br/>",$time);
 		$result->close();
 	
     }
