@@ -7,13 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5226A3EC1A3A9357001B41AE /* ChartInformationValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5226A3E51A3A9357001B41AE /* ChartInformationValueView.swift */; };
-		5226A3ED1A3A9357001B41AE /* ChartInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5226A3E61A3A9357001B41AE /* ChartInformationView.swift */; };
-		5226A3EE1A3A9357001B41AE /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5226A3E71A3A9357001B41AE /* FooterView.swift */; };
-		5226A3EF1A3A9357001B41AE /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5226A3E81A3A9357001B41AE /* HeaderView.swift */; };
-		5226A3F01A3A9357001B41AE /* json.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5226A3E91A3A9357001B41AE /* json.swift */; };
-		5226A3F11A3A9357001B41AE /* TooltipTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5226A3EA1A3A9357001B41AE /* TooltipTipView.swift */; };
-		5226A3F21A3A9357001B41AE /* TooltipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5226A3EB1A3A9357001B41AE /* TooltipView.swift */; };
 		52AA4BD71A38020200D4B5C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AA4BD61A38020200D4B5C2 /* AppDelegate.swift */; };
 		52AA4BD91A38020200D4B5C2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AA4BD81A38020200D4B5C2 /* ViewController.swift */; };
 		52AA4BDC1A38020200D4B5C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52AA4BDA1A38020200D4B5C2 /* Main.storyboard */; };
@@ -82,13 +75,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5226A3E51A3A9357001B41AE /* ChartInformationValueView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartInformationValueView.swift; sourceTree = "<group>"; };
-		5226A3E61A3A9357001B41AE /* ChartInformationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartInformationView.swift; sourceTree = "<group>"; };
-		5226A3E71A3A9357001B41AE /* FooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
-		5226A3E81A3A9357001B41AE /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
-		5226A3E91A3A9357001B41AE /* json.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = json.swift; sourceTree = "<group>"; };
-		5226A3EA1A3A9357001B41AE /* TooltipTipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TooltipTipView.swift; sourceTree = "<group>"; };
-		5226A3EB1A3A9357001B41AE /* TooltipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TooltipView.swift; sourceTree = "<group>"; };
 		52AA4BD11A38020200D4B5C2 /* Air_Quality.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Air_Quality.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52AA4BD51A38020200D4B5C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52AA4BD61A38020200D4B5C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -175,13 +161,6 @@
 		52AA4BD31A38020200D4B5C2 /* Air_Quality */ = {
 			isa = PBXGroup;
 			children = (
-				5226A3E51A3A9357001B41AE /* ChartInformationValueView.swift */,
-				5226A3E61A3A9357001B41AE /* ChartInformationView.swift */,
-				5226A3E71A3A9357001B41AE /* FooterView.swift */,
-				5226A3E81A3A9357001B41AE /* HeaderView.swift */,
-				5226A3E91A3A9357001B41AE /* json.swift */,
-				5226A3EA1A3A9357001B41AE /* TooltipTipView.swift */,
-				5226A3EB1A3A9357001B41AE /* TooltipView.swift */,
 				52AA4BD61A38020200D4B5C2 /* AppDelegate.swift */,
 				52AA4BD81A38020200D4B5C2 /* ViewController.swift */,
 				52AA4BDA1A38020200D4B5C2 /* Main.storyboard */,
@@ -445,16 +424,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				52AA4BD91A38020200D4B5C2 /* ViewController.swift in Sources */,
-				5226A3EF1A3A9357001B41AE /* HeaderView.swift in Sources */,
-				5226A3F21A3A9357001B41AE /* TooltipView.swift in Sources */,
 				52AA4BFB1A38056F00D4B5C2 /* SignupVC.swift in Sources */,
 				52AA4BF71A38025500D4B5C2 /* HumidityVC.swift in Sources */,
 				52AA4BF91A3803B500D4B5C2 /* LoginVC.swift in Sources */,
-				5226A3ED1A3A9357001B41AE /* ChartInformationView.swift in Sources */,
-				5226A3F11A3A9357001B41AE /* TooltipTipView.swift in Sources */,
-				5226A3EE1A3A9357001B41AE /* FooterView.swift in Sources */,
-				5226A3F01A3A9357001B41AE /* json.swift in Sources */,
-				5226A3EC1A3A9357001B41AE /* ChartInformationValueView.swift in Sources */,
 				52AA4BD71A38020200D4B5C2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
