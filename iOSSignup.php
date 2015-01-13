@@ -1,4 +1,8 @@
 <?php
+if(!function_exists('password_hash')){
+require("includes/password_hash.php.inc");
+}
+
 require_once("common.php");
 
 $username = @$_POST['username'];
