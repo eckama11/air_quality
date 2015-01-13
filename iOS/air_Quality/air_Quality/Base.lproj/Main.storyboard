@@ -34,12 +34,6 @@
                                     <!--2014-12-08 23:51:22 +0000-->
                                 </date>
                             </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HTT-X4-GUg">
-                                <rect key="frame" x="117" y="346" width="86" height="30"/>
-                                <state key="normal" title="Temperature">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vJC-1A-naf">
                                 <rect key="frame" x="130" y="375" width="61" height="30"/>
                                 <state key="normal" title="Humidity">
@@ -49,18 +43,6 @@
                                     <segue destination="fy6-EM-okQ" kind="modal" id="FU4-uc-CSr"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="go3-So-kMa">
-                                <rect key="frame" x="130" y="413" width="60" height="30"/>
-                                <state key="normal" title="Pressure">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="d" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2dc-F8-q2S">
-                                <rect key="frame" x="49" y="444" width="223" height="38"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RUu-RI-VJc">
                                 <rect key="frame" x="136" y="474" width="49" height="30"/>
                                 <state key="normal" title="Logout">
@@ -76,18 +58,14 @@
                             <constraint firstAttribute="centerX" secondItem="vJC-1A-naf" secondAttribute="centerX" id="0Ps-9K-sP5"/>
                             <constraint firstAttribute="centerX" secondItem="9hz-nR-09m" secondAttribute="centerX" id="3uf-Q8-4Mf"/>
                             <constraint firstAttribute="centerX" secondItem="R7i-6L-xr9" secondAttribute="centerX" id="Di6-Q8-SFd"/>
-                            <constraint firstAttribute="centerX" secondItem="2dc-F8-q2S" secondAttribute="centerX" id="Y5e-gj-fd7"/>
                             <constraint firstAttribute="centerX" secondItem="Wf1-eN-qHs" secondAttribute="centerX" id="YfT-cW-TdX"/>
                             <constraint firstAttribute="centerX" secondItem="RUu-RI-VJc" secondAttribute="centerX" id="fDP-Kx-0so"/>
-                            <constraint firstAttribute="centerX" secondItem="go3-So-kMa" secondAttribute="centerX" id="gqC-cj-Pkc"/>
-                            <constraint firstAttribute="centerX" secondItem="HTT-X4-GUg" secondAttribute="centerX" id="nx3-nt-rtL"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Air Quality" id="fsJ-4U-B3h"/>
                     <connections>
                         <outlet property="dateLabel" destination="Wf1-eN-qHs" id="Taf-T2-n4j"/>
                         <outlet property="datePicker" destination="R7i-6L-xr9" id="Vmn-Rg-9tI"/>
-                        <outlet property="usernameLabel" destination="2dc-F8-q2S" id="A9W-ed-UcN"/>
                         <segue destination="eon-Nz-vyE" kind="modal" identifier="goto_login" id="0gk-qi-Sjl"/>
                     </connections>
                 </viewController>
@@ -339,25 +317,28 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="osD-lq-3kZ">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CiH-MO-WFd">
-                                        <rect key="frame" x="259" y="17" width="53" height="30"/>
-                                        <state key="normal" title="Refresh">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Air Quality" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gst-pB-lUA">
                                         <rect key="frame" x="0.0" y="21" width="304" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CiH-MO-WFd">
+                                        <rect key="frame" x="259" y="17" width="53" height="30"/>
+                                        <state key="normal" title="Refresh">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="loadData" destination="fy6-EM-okQ" eventType="touchUpInside" id="BlT-RH-ata"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SR3-Pl-wSr">
                                         <rect key="frame" x="8" y="17" width="35" height="30"/>
                                         <state key="normal" title="Back">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="vXZ-lx-hvc" kind="modal" id="Hf8-xA-CgZ"/>
+                                            <action selector="dismissController" destination="fy6-EM-okQ" eventType="touchUpInside" id="B6m-2E-gs5"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -394,7 +375,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="Hf8-xA-CgZ"/>
-    </inferredMetricsTieBreakers>
 </document>
