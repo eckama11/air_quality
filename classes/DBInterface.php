@@ -1,5 +1,7 @@
 <?php
-
+if(!function_exists('password_verify')){
+require(../includes/password_hash.php.inc');
+}
 class DBInterface {
     private $dbh;
 
