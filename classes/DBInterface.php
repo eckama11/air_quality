@@ -269,7 +269,7 @@ class DBInterface {
      public function updateUser( User $user) {
         static $stmtUpdate;
         if (is_null($stmtUpdate) || empty($stmtUpdate)) {
-                $sql = 'UPDATE user SET username = :username, password=:password, email=:email, deviceId=:deviceId WHERE id=:id';
+                $sql = 'UPDATE user SET username=:username, password=:password, email=:email, deviceId=:deviceId WHERE id=:id';
                 $stmtUpdate = $this->dbh->prepare($sql);
 
             if (!$stmtUpdate)
@@ -280,7 +280,7 @@ class DBInterface {
                         ':username' => $user->username,
                 ':password' => $user->password,
                 ':email' => $user->email,
-                ':device' => $user->deviceId,
+                ':deviceId' => $user->deviceId,
                 ':id' => $user->id
             );
 
@@ -294,7 +294,7 @@ class DBInterface {
                 $user->username,
                 $user->password,
                 $user->email,
-                $user->device
+                $user->deviceId
             );
      }
 
