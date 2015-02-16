@@ -33,11 +33,11 @@ $readingCount = count($js_array);
     	</head>
 		<body>
 		
-    		<input type="text" class="form-control datepicker" style="display: block; text-align:center; width: 20%; margin-left: auto; margin-right: auto; border: 2px black solid;" 
+    		<input type="text" class="form-control" id="datepicker" style="display: block; text-align:center; width: 20%; margin-left: auto; margin-right: auto; border: 2px black solid;" 
     		data-provide="datepicker" data-date-format="yyyy-mm-dd" placeholder="Click to choose a date..." />
   			<script type="text/javascript">
 				// Init date picker and display UI
-				$('.datepicker').datepicker({
+				$('#datepicker').datepicker({
 					format: "yyyy-mm-dd",
 					clearBtn: true,
 					todayBtn: "linked",
