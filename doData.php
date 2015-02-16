@@ -7,10 +7,15 @@
 
   $con = new mysqli("localhost",$dbUsername,$dbPassword,$dbName);
   if (!$con) {
-    die("connection failed: " . $con->error);
+    die("connection to beta failed: " . $con->error);
   }
   unset($dbuser,$dbpass);
-
+  
+  $con2 = new mysqli("just115.justhost.com","islehar1_eckama","TlqoG^giL9P}7e#&*T","islehar1_air-quality");
+  if (!$con2) {
+    die("connection to production failed: " . $con2->error);
+  }
+  
   $imp = $con->real_escape_string($_POST['imp']);
   $newTemp = floatval($con->real_escape_string($_POST['newTemp']));
   $newHum = floatval($con->real_escape_string($_POST['newHum']));
@@ -26,13 +31,21 @@
 
   $query = "INSERT INTO `sensors`(impID, timeInfo, temperature, humidity, pressure, altitude, latitude, longitude, particles)
   values(?,?,?,?,?,?,?,?,?)";
+  
   $stmt = $con->prepare($query);
+  $stmt2 = $con2->prepare($query);
+  
   $stmt->bind_param('ssddddddd',$imp, $time, $newTemp, $newHum, $pressure, $altitude, $latitude, $longitude, $particles);
-  if ( !$stmt->execute() ) {
-    die("database insert failed: " . $con->errno . ': ' . $con->error);
+  $stmt2->bind_param('ssddddddd',$imp, $time, $newTemp, $newHum, $pressure, $altitude, $latitude, $longitude, $particles);
+ 
+  $res = $stmt->execute();
+  $res2 = $stmt2->execute();
+ 
+  if ( !$res ) {
+    die("database insert on beta failed: " . $con->errno . ': ' . $con->error);
+  }elseif( !$res2 ){
+    die("database insert on production failed: " . $con2->errno . ': ' . $con2->error);
   }
 
-  echo "\r\n".$newTemp;
-  echo "\r\nsuccess";
-
   $con->close();
+  $con2->close();
