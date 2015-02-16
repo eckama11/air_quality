@@ -456,7 +456,7 @@ class DBInterface {
      */
      // THIS WILL NEED TO TAKE IN A SENSOR or USER TO OUTPUT JUST ONE SENSOR'S DATA or USER'S DATA
      // WILL NEED TO TAKE IN DATE TO SHOW now it shows current date
-    public function readTemp( $device ) {
+    public function readTemp( $date, $device ) {
         static $stmt;
         $deviceId = $device;
         if ($stmt == null)
