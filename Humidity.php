@@ -6,7 +6,8 @@ require_once("common.php");
 //$sensor = $db->readSensors();
 $device = $loginSession->authenticatedUser->deviceId;
 if(isset($_POST['calDate'])){
-	$date = date('m/d/Y',$_POST['calDate']); //Use posted date
+	echo strtotime($_POST['calDate']);
+	$date = date('m/d/Y',strtotime($_POST['calDate'])); //Use posted date
 }else{
 	$date = date('m/d/Y'); //Default to today
 }
