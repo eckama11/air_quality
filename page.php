@@ -43,6 +43,9 @@ else if ((substr($page, 0, strlen($prefix)) != $prefix) || !is_readable($page))
 				messageAlert.show().delay(3000).fadeOut("slow");
 			}
 		</script>
+		<script type="text/javascript" src="js/jquery1_11_1.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
 	</head>
  
 	<body>
@@ -77,9 +80,7 @@ else if ((substr($page, 0, strlen($prefix)) != $prefix) || !is_readable($page))
         </div>
 <?php require_once($page); ?>
 		<!-- JavaScript -->
-		<script type="text/javascript" src="js/jquery1_11_1.js"></script>
-		<script type="text/javascript" src="js/bootstrap.js"></script>
-		<script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+		
 	</body>
 </html>
 	
