@@ -518,11 +518,11 @@ class DBInterface {
      */
      // THIS WILL NEED TO TAKE IN A SENSOR or USER TO OUTPUT JUST ONE SENSOR'S DATA or USER'S DATA
      // WILL NEED TO TAKE IN DATE TO SHOW now it shows current date
-     public function readParticles( $device ) {
+     public function readParticles($date, $device ) {
         static $stmt;
         $deviceId = $device;
         if ($stmt == null)
-        	$sql = "SELECT DATE_FORMAT(timeInfo,'%r') as 'timeInfo', particles FROM sensors WHERE DATE(timeInfo) = DATE(NOW()) ".
+        	$sql = "SELECT DATE_FORMAT(timeInfo,'%r') as 'timeInfo', particles FROM sensors WHERE DATE_FORMAT(timeInfo,'%m/%d/%Y') = '$date' ".
         	"AND impId='$deviceId'";
             $stmt = $this->dbh->prepare($sql);
              
