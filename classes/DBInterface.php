@@ -491,7 +491,7 @@ class DBInterface {
         $deviceId = $device;
         //$DATE(NOW())
         if ($stmt == null)
-        	$sql = "SELECT DATE_FORMAT(timeInfo,'%r') as 'timeInfo', humidity FROM sensors WHERE DATE(timeInfo) = '$date' ".
+        	$sql = "SELECT DATE_FORMAT(timeInfo,'%r') as 'timeInfo', humidity FROM sensors WHERE DATE_FORMAT(timeInfo,'%m/%d/%Y') = '$date' ".
             "AND impId='$deviceId'";
             $stmt = $this->dbh->prepare($sql);
              

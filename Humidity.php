@@ -39,8 +39,7 @@ $readingCount = count($js_array);
 		<body>
 		
 		<form method="post">
-    		<input name='calDate' value="<?php echo $date; ?>" type="text" class="form-control" id="datepicker" style="display: block; text-align:center; width: 20%; margin-left: auto; margin-right: auto; border: 2px black solid;" 
-    		data-provide="datepicker" placeholder="Click to choose a date..." />
+    		<input name='calDate' value="<?php echo $date; ?>" type="text" class="form-control" id="datepicker" style="display: block; text-align:center; width: 20%; margin-left: auto; margin-right: auto; border: 2px black solid;" data-provide="datepicker" placeholder="Click to choose a date..." />
   			<script type="text/javascript">
 				// Init date picker and display UI
 				$('#datepicker').datepicker({
