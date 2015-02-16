@@ -8,7 +8,7 @@ $device = $loginSession->authenticatedUser->deviceId;
 if(isset($_POST['calDate'])){
 	$date = $_POST['calDate']; //Use posted date
 }else{
-	$date = date('Y-m-d'); //Default to today
+	$date = date('m/d/Y'); //Default to today
 }
 $js_array = $db->readHumidity($date,$device);
 $readingCount = count($js_array);
@@ -43,7 +43,7 @@ $readingCount = count($js_array);
   			<script type="text/javascript">
 				// Init date picker and display UI
 				$('#datepicker').datepicker({
-					format: "yyyy-mm-dd",
+					format: "mm/dd/yyyy",
 					clearBtn: true,
 					todayBtn: "linked",
 					autoclose: true,
