@@ -5,7 +5,11 @@ require_once("common.php");
         
 //$sensor = $db->readSensors();
 $device = $loginSession->authenticatedUser->deviceId;
-$date = date('Y-m-d');
+if(isset($_POST['calDate'])){
+	$date = $_POST['calDate'];
+}else{
+	$date = date('Y-m-d');
+}
 $js_array = $db->readHumidity($date,$device);
 $readingCount = count($js_array);
 ?>
@@ -33,8 +37,9 @@ $readingCount = count($js_array);
     	</head>
 		<body>
 		
-    		<input type="text" class="form-control" id="datepicker" style="display: block; text-align:center; width: 20%; margin-left: auto; margin-right: auto; border: 2px black solid;" 
-    		data-provide="datepicker" data-date-format="yyyy-mm-dd" placeholder="Click to choose a date..." />
+		<form method="post">
+    		<input name='calDate' type="text" class="form-control" id="datepicker" style="display: block; text-align:center; width: 20%; margin-left: auto; margin-right: auto; border: 2px black solid;" 
+    		data-provide="datepicker" placeholder="Click to choose a date..." />
   			<script type="text/javascript">
 				// Init date picker and display UI
 				$('#datepicker').datepicker({
@@ -43,9 +48,10 @@ $readingCount = count($js_array);
 					todayBtn: "linked",
 					autoclose: true
 				}).on('changeDate', function(){
-					alert("Date Changed");
+					$(this).parent('form').submit();
 				});
 			</script>
+		</form>
     		<br />
 			<?php if($readingCount > 1) : ?>
     			<div id="chart_div" style="width: 90%; height: 500px; margin: auto; border: 2px black solid;"></div>
