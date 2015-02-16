@@ -14,26 +14,14 @@ if(isset($_POST['calDate'])){
 $js_array = $db->readHumidity($date,$device);
 $readingCount = count($js_array);
 ?>
-    <script type="text/javascript">
-		google.load("visualization", "1", {packages:["corechart"]});
-		google.setOnLoadCallback(drawChart);
-		function drawChart() {
-			var data = google.visualization.arrayToDataTable(<?= json_encode($js_array); ?>);
-			var options = {
-				title: 'Humidity Readings'
-			};
-
-			var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-			chart.draw(data, options);
+    
+	<script type="text/javascript">
+		window.onresize = resize;
+		function resize()
+		{
+			window.location.reload();
 		}
-    </script>
-    		<script type="text/javascript">
-				window.onresize = resize;
-				function resize()
-				{
-					window.location.reload();
-				}
-			</script>
+	</script>
     		
     	</head>
 		<body>
@@ -56,6 +44,19 @@ $readingCount = count($js_array);
 		</form>
     		<br />
 			<?php if($readingCount > 1) : ?>
+			<script type="text/javascript">
+		google.load("visualization", "1", {packages:["corechart"]});
+		google.setOnLoadCallback(drawChart);
+		function drawChart() {
+			var data = google.visualization.arrayToDataTable(<?= json_encode($js_array); ?>);
+			var options = {
+				title: 'Humidity Readings'
+			};
+
+			var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+			chart.draw(data, options);
+		}
+    </script>
     			<div id="chart_div" style="width: 90%; height: 500px; margin: auto; border: 2px black solid;"></div>
 			<?php else : ?>
 				<div class="alert alert-danger" role="alert" style="width: 50%; margin: auto;">There is no data for this day :(</div>
