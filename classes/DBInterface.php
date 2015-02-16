@@ -460,7 +460,7 @@ class DBInterface {
         static $stmt;
         $deviceId = $device;
         if ($stmt == null)
-        	$sql = "SELECT DATE_FORMAT(timeInfo,'%r') as 'timeInfo', temperature FROM sensors WHERE DATE(timeInfo) = DATE(NOW()) ".
+        	$sql = "SELECT DATE_FORMAT(timeInfo,'%r') as 'timeInfo', temperature FROM sensors WHERE DATE_FORMAT(timeInfo,'%m/%d/%Y') = '$date'  ".
         	"AND impId='$deviceId'";
             $stmt = $this->dbh->prepare($sql);
              
@@ -511,30 +511,6 @@ class DBInterface {
         return $rv;
     } // readHumidity
     
-   /* public function readHumidity( $device ) {
-        static $stmt;
-        $deviceId = $device;
-        if ($stmt == null)
-        	$sql = "SELECT DATE_FORMAT(timeInfo,'%r') as 'timeInfo', humidity FROM sensors WHERE DATE(timeInfo) = DATE(NOW()) ".
-            "AND impId='$deviceId'";
-            $stmt = $this->dbh->prepare($sql);
-             
-		$success = $stmt->execute(Array( ));
-        if ($success === false)
-            throw new Exception($this->formatErrorMessage($stmt, "Unable to query database for humidity Reading records"));
-
-        $rv = Array();
-        $rv[] = array('Time', 'Humidity');
-        while ($row = $stmt->fetchObject()) {
-            $rv[] = array(
-            		$row->timeInfo,
-					(double)$row->humidity
-                );
-        } // while
-
-        return $rv;
-    } // readHumidity
-    */
     
     /**
      * Reads a list of all Sensor Readings from the database.
