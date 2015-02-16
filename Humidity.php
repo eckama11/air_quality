@@ -49,7 +49,7 @@ $readingCount = count($js_array);
 					todayBtn: "linked",
 					autoclose: true,
 					endDate: "<?php echo $today;?>",
-					todayHighlight: true,
+					todayHighlight: true
 				}).on('changeDate', function(){
 					$(this).parent('form').submit();
 				});
