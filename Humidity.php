@@ -50,7 +50,6 @@ $readingCount = count($js_array);
 					autoclose: true,
 					endDate: "<?php echo $today;?>",
 					todayHighlight: true,
-					forceParse: false
 				}).on('changeDate', function(){
 					$(this).parent('form').submit();
 				});
