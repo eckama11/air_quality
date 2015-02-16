@@ -42,6 +42,8 @@ $readingCount = count($js_array);
 					clearBtn: true,
 					todayBtn: "linked",
 					autoclose: true
+				}).on('changeDate', function(){
+					alert("Date Changed");
 				});
 			</script>
     		<br />
