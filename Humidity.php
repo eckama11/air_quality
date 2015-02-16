@@ -5,7 +5,7 @@ require_once("common.php");
         
 //$sensor = $db->readSensors();
 $device = $loginSession->authenticatedUser->deviceId;
-$date = DATE(NOW());
+$date = date();
 $js_array = $db->readHumidity($date,$device);
 $readingCount = count($js_array);
 ?>
