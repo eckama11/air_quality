@@ -6,9 +6,9 @@ require_once("common.php");
 //$sensor = $db->readSensors();
 $device = $loginSession->authenticatedUser->deviceId;
 if(isset($_POST['calDate'])){
-	$date = date('m\d\Y',$_POST['calDate']); //Use posted date
+	$date = date('m-d-Y',$_POST['calDate']); //Use posted date
 }else{
-	$date = date('m\d\Y'); //Default to today
+	$date = date('m-d-Y'); //Default to today
 }
 $js_array = $db->readHumidity($date,$device);
 $readingCount = count($js_array);
@@ -43,7 +43,7 @@ $readingCount = count($js_array);
   			<script type="text/javascript">
 				// Init date picker and display UI
 				$('#datepicker').datepicker({
-					format: "mm\dd\yyyy",
+					format: "mm-dd-yyyy",
 					clearBtn: true,
 					todayBtn: "linked",
 					autoclose: true,
