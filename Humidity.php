@@ -43,12 +43,11 @@ $readingCount = count($js_array);
   			<script type="text/javascript">
 				// Init date picker and display UI
 				$('#datepicker').datepicker({
-					format: "mm/dd/yyyy",
+					format: "yyyy-mm-dd",
 					clearBtn: true,
 					todayBtn: "linked",
 					autoclose: true,
 					endDate: Date.now(),
-					startDate: "2014-01-01",
 					todayHighlight: true
 				}).on('changeDate', function(){
 					$(this).parent('form').submit();
