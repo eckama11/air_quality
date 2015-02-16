@@ -44,7 +44,7 @@ else if ((substr($page, 0, strlen($prefix)) != $prefix) || !is_readable($page))
 			}
 		</script>
 		<script type="text/javascript" src="js/jquery1_11_1.js"></script>
-		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
 	</head>
  
