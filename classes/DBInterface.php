@@ -511,7 +511,7 @@ class DBInterface {
         return $rv;
     } // readHumidity
     
-    public function readHumidity( $device ) {
+   /* public function readHumidity( $device ) {
         static $stmt;
         $deviceId = $device;
         if ($stmt == null)
@@ -534,6 +534,7 @@ class DBInterface {
 
         return $rv;
     } // readHumidity
+    */
     
     /**
      * Reads a list of all Sensor Readings from the database.
