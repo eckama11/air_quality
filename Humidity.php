@@ -7,7 +7,6 @@ require_once("common.php");
 $device = $loginSession->authenticatedUser->deviceId;
 $today = date('m/d/Y');
 if(isset($_POST['calDate'])){
-	echo strtotime($_POST['calDate']);
 	$date = date('m/d/Y',strtotime($_POST['calDate'])); //Use posted date
 }else{
 	$date = date('m/d/Y'); //Default to today
@@ -40,7 +39,7 @@ $readingCount = count($js_array);
 		<body>
 		
 		<form method="post">
-    		<input name='calDate' value='<?php $date; ?>' type="text" class="form-control" id="datepicker" style="display: block; text-align:center; width: 20%; margin-left: auto; margin-right: auto; border: 2px black solid;" 
+    		<input name='calDate' value="<?php echo $date; ?>" type="text" class="form-control" id="datepicker" style="display: block; text-align:center; width: 20%; margin-left: auto; margin-right: auto; border: 2px black solid;" 
     		data-provide="datepicker" placeholder="Click to choose a date..." />
   			<script type="text/javascript">
 				// Init date picker and display UI
