@@ -488,7 +488,6 @@ class DBInterface {
      // WILL NEED TO TAKE IN DATE TO SHOW now it shows current date
     public function readHumidity($date, $device ) {
         static $stmt;
-        $date = DATE(NOW());
         $deviceId = $device;
         if ($stmt == null)
         	$sql = "SELECT DATE_FORMAT(timeInfo,'%r') as 'timeInfo', humidity FROM sensors WHERE DATE(timeInfo) = $date ".
