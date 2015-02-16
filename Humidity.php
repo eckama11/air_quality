@@ -41,12 +41,12 @@ $readingCount = count($js_array);
 			</script>
     		<script type="text/javascript">
 				// Init date picker and display UI
-				$('#datepicker').datepicker(
+				$('#datepicker').datepicker({
 					format: 'yyyy-mm-dd',
 					autoclose: true,
 					clearBtn: true,
 					todayBtn: true
-				);
+				});
 			</script>
     	</head>
 		<body>
