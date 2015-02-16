@@ -25,6 +25,19 @@ $readingCount = count($js_array);
 					window.location.reload();
 				}
 			</script>
+    		
+    		
+    	</head>
+		<body>
+		
+    		<input type="text" class="form-control" style="display: block; text-align:center; width: 20%; margin-left: auto; margin-right: auto; border: 2px black solid;" id="datepicker" 
+    		data-provide="datepicker" data-date-format="yyyy-mm-dd" placeholder="Click to choose a date..." />
+  			<script type="text/javascript">
+				// Init date picker and display UI
+				$('#datepicker').datepicker();
+			</script>
+    		<br />
+    		<?php if($readingCount > 1) : ?>
     		<script type="text/javascript">
 				google.load("visualization", "1", {packages:["corechart"]});
 				google.setOnLoadCallback(drawChart);
@@ -39,18 +52,6 @@ $readingCount = count($js_array);
 					chart.draw(data, options);
 				  }
     		</script>
-    		<script type="text/javascript">
-				// Init date picker and display UI
-				$('#datepicker').datepicker();
-			</script>
-    	</head>
-		<body>
-		
-    		<input type="text" class="form-control" style="display: block; text-align:center; width: 20%; margin-left: auto; margin-right: auto; border: 2px black solid;" id="datepicker" 
-    		data-provide="datepicker" data-date-format="yyyy-mm-dd" placeholder="Click to choose a date..." />
-  			
-    		<br />
-    		<?php if($readingCount > 1) : ?>
     			<div id="chart_div" style="width: 90%; height: 500px; margin: auto; border: 2px black solid;"></div>
 			<?php else : ?>
 				<div class="alert alert-danger" role="alert" style="width: 50%; margin: auto;">There is no data for this day :(</div>
