@@ -5,6 +5,12 @@ require_once("common.php");
        
 //$sensor = $db->readSensors();
 $device = $loginSession->authenticatedUser->deviceId;
+$today = date('m/d/Y');
+if(isset($_POST['calDate'])){
+	$date = date('m/d/Y',strtotime($_POST['calDate'])); //Use posted date
+}else{
+	$date = date('m/d/Y'); //Default to today
+}
 $js_array = $db->readTemp($device);
 $readingCount = count($js_array);
 ?>
@@ -30,12 +36,22 @@ $readingCount = count($js_array);
     	</head>
 		<body>
 		
-    		<input type="text" class="form-control" style="display: block; text-align:center; width: 20%; margin-left: auto; margin-right: auto; border: 2px black solid;" id="datepicker" 
-    		data-provide="datepicker" data-date-format="yyyy-mm-dd" placeholder="Click to choose a date..." />
+    		<form method="post">
+    		<input name='calDate' value="<?php echo $date; ?>" type="text" class="form-control" id="datepicker" style="display: block; text-align:center; width: 20%; margin-left: auto; margin-right: auto; border: 2px black solid;" data-provide="datepicker" placeholder="Click to choose a date..." />
   			<script type="text/javascript">
 				// Init date picker and display UI
-				$('#datepicker').datepicker();
+				$('#datepicker').datepicker({
+					format: "mm/dd/yyyy",
+					clearBtn: true,
+					todayBtn: "linked",
+					autoclose: true,
+					endDate: "<?php echo $today;?>",
+					todayHighlight: true
+				}).on('changeDate', function(){
+					$(this).parent('form').submit();
+				});
 			</script>
+		</form>
     		<br />
     		<?php if($readingCount > 1) : ?>
     		<script type="text/javascript">
