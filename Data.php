@@ -11,7 +11,7 @@ if(isset($_POST['calDate'])){
 }else{
 	$date = date('m/d/Y'); //Default to today
 }
-$js_array = $db->readTemp($device);
+$js_array = $db->readTemp($date,$device);
 $readingCount = count($js_array);
 ?>
 
