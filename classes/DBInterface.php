@@ -486,6 +486,31 @@ class DBInterface {
      */
      // THIS WILL NEED TO TAKE IN A SENSOR or USER TO OUTPUT JUST ONE SENSOR'S DATA or USER'S DATA
      // WILL NEED TO TAKE IN DATE TO SHOW now it shows current date
+    public function readHumidity($date, $device ) {
+        static $stmt;
+        $date = DATE(NOW());
+        $deviceId = $device;
+        if ($stmt == null)
+        	$sql = "SELECT DATE_FORMAT(timeInfo,'%r') as 'timeInfo', humidity FROM sensors WHERE DATE(timeInfo) = $date ".
+            "AND impId='$deviceId'";
+            $stmt = $this->dbh->prepare($sql);
+             
+		$success = $stmt->execute(Array( ));
+        if ($success === false)
+            throw new Exception($this->formatErrorMessage($stmt, "Unable to query database for humidity Reading records"));
+
+        $rv = Array();
+        $rv[] = array('Time', 'Humidity');
+        while ($row = $stmt->fetchObject()) {
+            $rv[] = array(
+            		$row->timeInfo,
+					(double)$row->humidity
+                );
+        } // while
+
+        return $rv;
+    } // readHumidity
+    
     public function readHumidity( $device ) {
         static $stmt;
         $deviceId = $device;
